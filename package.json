@@ -4,7 +4,7 @@
   "description": "test utilities for Context Service JS Tests",
   "main": "index.js",
   "bin" : {
-	  "cs-token" : "node ./scripts/token.js"
+	  "cs-token" : "./bin/token.js"
   },
   "scripts": {
     "cs-token": "node ./scripts/token.js"
