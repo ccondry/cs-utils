@@ -1,0 +1,23 @@
+{
+  "name": "cs-js-test-utils",
+  "version": "1.0.0",
+  "description": "test utilities for Context Service JS Tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@sqbu-github.cisco.com:CBABU/cs-js-test-utils.git"
+  },
+  "keywords": [
+    "javascript",
+    "utilities"
+  ],
+  "author": "context service",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "0.9.1",
+    "es6-promise": "3.0.2"
+  }
+}
