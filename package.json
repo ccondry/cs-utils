@@ -4,7 +4,7 @@
   "description": "test utilities for Context Service JS Tests",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "token": "node ./scripts/token.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "0.9.1",
+    "chalk": "^1.1.1",
     "es6-promise": "3.0.2"
   }
 }
