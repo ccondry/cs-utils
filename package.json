@@ -6,9 +6,6 @@
   "bin" : {
 	  "cs-token" : "./bin/token.js"
   },
-  "scripts": {
-    "cs-token": "node ./scripts/token.js"
-  },
   "repository": {
     "type": "git",
     "url": "git@sqbu-github.cisco.com:CBABU/cs-js-test-utils.git"

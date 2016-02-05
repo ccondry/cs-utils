@@ -1,4 +1,14 @@
-var exec = require('child_process').exec;
-var child = exec('node ./scripts/token.js', function(err, stdout, stderr) {
-  console.log(stdout);
+#!/usr/bin/env node
+'use strict';
+var auth = require("../index.js").Auth,
+	chalk = require("chalk");
+
+auth.getToken()
+.then(function(token){
+	console.log(chalk.gray("************************ ACCESS TOKEN ************************"));
+	console.log(chalk.green(token.access_token))
+	console.log(chalk.gray("**************************************************************"));
+})
+.catch(function(e){
+	console.error("Error getting token",e);
 });
