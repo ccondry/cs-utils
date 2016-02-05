@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "test utilities for Context Service JS Tests",
   "main": "index.js",
+  "bin" : {
+	  "cs-token" : "node ./scripts/token.js"
+  },
   "scripts": {
-    "token": "node ./scripts/token.js"
+    "cs-token": "node ./scripts/token.js"
   },
   "repository": {
     "type": "git",
