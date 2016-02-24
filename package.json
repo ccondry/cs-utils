@@ -5,7 +5,15 @@
   "description": "test utilities for Context Service JS Tests",
   "main": "index.js",
   "bin": {
-    "cs-token": "./bin/token.js"
+    "cs-token": "./bin/token.js",
+	"cs-pod-create": "./bin/pod.create.js",
+	"cs-pod-get": "./bin/pod.get.js",
+	"cs-pod-delete": "./bin/pod.delete.js",
+	"cs-pod-update": "./bin/pod.update.js",
+	"cs-customer-create": "./bin/customer.create.js",
+	"cs-customer-get": "./bin/customer.get.js",
+	"cs-customer-delete": "./bin/customer.delete.js",
+	"cs-customer-update": "./bin/customer.update.js"
   },
   "repository": {
     "type": "git",
