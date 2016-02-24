@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 'use strict';
 var sdk = require("../sdk/ContextService.js"),
+	help = require("./help.js"),
 	chalk = require("chalk"),
 	argv = require('minimist')(process.argv.slice(2));
 if(argv.help ){
-	console.log(chalk.yellow("Usage: cs-pod-create --token [--discovery] [--prod] [--customerId] [--fieldset] [--field] [--help]"));
+	help.showHelp('cs-pod-create',{id:true,fieldset:true,field:true});
 	return;
 }
 if(!argv.token ){
 	console.log(chalk.red("Please provide token"));
-	console.log(chalk.yellow("Usage: cs-pod-create --token [--discovery] [--customerId] [--fieldset] [--field] [--help]"));
+	help.showHelp('cs-pod-create',{id:true,fieldset:true,field:true});
 	return;
 }
 var discovery = 'https://discovery.rciad.ciscoccservice.com/';
