@@ -14,7 +14,7 @@ if(!argv.token ){
 }
 if(!argv.id ){
 	console.log(chalk.red("Please provide pod id"));
-	console.log(chalk.yellow("Usage: cs-pod-get --token --id [--discovery] [--prod]  [--help]"));
+	console.log(chalk.yellow("Usage: cs-pod-update --token --id [--discovery] [--customerId] [--fieldset] [--field] [--help]"));
 	return;
 }
 
