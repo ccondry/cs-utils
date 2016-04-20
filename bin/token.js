@@ -4,7 +4,7 @@ var auth = require("../index.js").Auth,
 	chalk = require("chalk"),
 	argv = require('minimist')(process.argv.slice(2));
 
-var KMS_SCOPES = 'webex-squared:kms_read webex-squared:kms_bind webex-squared:kms_write';
+var KMS_SCOPES = 'webex-squared:kms_read webex-squared:kms_bind webex-squared:kms_write spark:kms';
 
 if(argv.help ){
 	console.log(chalk.yellow("Usage: cs-token [--user] [--password] [--orgid] [--kms] [--help]"));
