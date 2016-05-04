@@ -2,22 +2,9 @@
 require('es6-promise').polyfill();
 module.exports = require('./src/js/ContextService');
 
-},{"./src/js/ContextService":222,"es6-promise":20}],2:[function(require,module,exports){
-(function (Buffer){
-(function () {
-  "use strict";
-
-  function atob(str) {
-    return new Buffer(str, 'base64').toString('binary');
-  }
-
-  module.exports = atob;
-}());
-
-}).call(this,require("buffer").Buffer)
-},{"buffer":undefined}],3:[function(require,module,exports){
+},{"./src/js/ContextService":250,"es6-promise":19}],2:[function(require,module,exports){
 module.exports = require('./lib/axios');
-},{"./lib/axios":6}],4:[function(require,module,exports){
+},{"./lib/axios":5}],3:[function(require,module,exports){
 'use strict';
 
 var defaults = require('./../defaults');
@@ -118,7 +105,7 @@ module.exports = function httpAdapter(resolve, reject, config) {
   req.end(data);
 };
 
-},{"./../../package.json":17,"./../defaults":9,"./../helpers/buildUrl":10,"./../helpers/transformData":14,"./../utils":16,"buffer":undefined,"http":undefined,"https":undefined,"url":undefined}],5:[function(require,module,exports){
+},{"./../../package.json":16,"./../defaults":8,"./../helpers/buildUrl":9,"./../helpers/transformData":13,"./../utils":15,"buffer":undefined,"http":undefined,"https":undefined,"url":undefined}],4:[function(require,module,exports){
 'use strict';
 
 /*global ActiveXObject:true*/
@@ -236,7 +223,7 @@ module.exports = function xhrAdapter(resolve, reject, config) {
   request.send(data);
 };
 
-},{"./../defaults":9,"./../helpers/buildUrl":10,"./../helpers/cookies":11,"./../helpers/parseHeaders":12,"./../helpers/transformData":14,"./../helpers/urlIsSameOrigin":15,"./../utils":16}],6:[function(require,module,exports){
+},{"./../defaults":8,"./../helpers/buildUrl":9,"./../helpers/cookies":10,"./../helpers/parseHeaders":11,"./../helpers/transformData":13,"./../helpers/urlIsSameOrigin":14,"./../utils":15}],5:[function(require,module,exports){
 'use strict';
 
 var defaults = require('./defaults');
@@ -326,7 +313,7 @@ axios.interceptors = {
   createShortMethodsWithData('post', 'put', 'patch');
 })();
 
-},{"./core/InterceptorManager":7,"./core/dispatchRequest":8,"./defaults":9,"./helpers/spread":13,"./utils":16}],7:[function(require,module,exports){
+},{"./core/InterceptorManager":6,"./core/dispatchRequest":7,"./defaults":8,"./helpers/spread":12,"./utils":15}],6:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -380,7 +367,7 @@ InterceptorManager.prototype.forEach = function (fn) {
 
 module.exports = InterceptorManager;
 
-},{"./../utils":16}],8:[function(require,module,exports){
+},{"./../utils":15}],7:[function(require,module,exports){
 'use strict';
 
 /**
@@ -408,7 +395,7 @@ module.exports = function dispatchRequest(config) {
 };
 
 
-},{"../adapters/http":4,"../adapters/xhr":5}],9:[function(require,module,exports){
+},{"../adapters/http":3,"../adapters/xhr":4}],8:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -472,7 +459,7 @@ module.exports = {
   xsrfHeaderName: 'X-XSRF-TOKEN'
 };
 
-},{"./utils":16}],10:[function(require,module,exports){
+},{"./utils":15}],9:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -533,7 +520,7 @@ module.exports = function buildUrl(url, params) {
   return url;
 };
 
-},{"./../utils":16}],11:[function(require,module,exports){
+},{"./../utils":15}],10:[function(require,module,exports){
 'use strict';
 
 /**
@@ -578,7 +565,7 @@ module.exports = {
   }
 };
 
-},{"./../utils":16}],12:[function(require,module,exports){
+},{"./../utils":15}],11:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -614,7 +601,7 @@ module.exports = function parseHeaders(headers) {
   return parsed;
 };
 
-},{"./../utils":16}],13:[function(require,module,exports){
+},{"./../utils":15}],12:[function(require,module,exports){
 'use strict';
 
 /**
@@ -643,7 +630,7 @@ module.exports = function spread(callback) {
   };
 };
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -664,7 +651,7 @@ module.exports = function transformData(data, headers, fns) {
   return data;
 };
 
-},{"./../utils":16}],15:[function(require,module,exports){
+},{"./../utils":15}],14:[function(require,module,exports){
 'use strict';
 
 /**
@@ -724,7 +711,7 @@ module.exports = function urlIsSameOrigin(requestUrl) {
         parsed.host === originUrl.host);
 };
 
-},{"./../utils":16}],16:[function(require,module,exports){
+},{"./../utils":15}],15:[function(require,module,exports){
 'use strict';
 
 /*global toString:true*/
@@ -975,7 +962,7 @@ module.exports = {
   trim: trim
 };
 
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports={
   "name": "axios",
   "version": "0.7.0",
@@ -1043,7 +1030,7 @@ module.exports={
   "gitHead": "e8136b1f746d87d9ac620cb50c26722db555169a",
   "_id": "axios@0.7.0",
   "_shasum": "489c269044d5066dfa2c64c749cb131b176f4a7a",
-  "_from": "axios@>=0.7.0 <0.8.0",
+  "_from": "axios@0.7.0",
   "_npmVersion": "2.13.4",
   "_nodeVersion": "0.10.33",
   "_npmUser": {
@@ -1065,7 +1052,7 @@ module.exports={
   "readme": "ERROR: No README data found!"
 }
 
-},{}],18:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 /**
  * Determine if an object is Buffer
  *
@@ -1084,7 +1071,7 @@ module.exports = function (obj) {
     ))
 }
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (Buffer){
 (function () {
   "use strict";
@@ -1106,7 +1093,7 @@ module.exports = function (obj) {
 }());
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":undefined}],20:[function(require,module,exports){
+},{"buffer":undefined}],19:[function(require,module,exports){
 (function (global){
 /*!
  * @overview es6-promise - a tiny implementation of Promises/A+.
@@ -2077,176 +2064,7 @@ module.exports = function (obj) {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],21:[function(require,module,exports){
-/**
- * lodash 3.0.4 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern modularize exports="npm" -o ./`
- * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- * Available under MIT license <https://lodash.com/license>
- */
-
-/** Used as the `TypeError` message for "Functions" methods. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/** Used for native method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Creates a cache object to store key/value pairs.
- *
- * @private
- * @static
- * @name Cache
- * @memberOf _.memoize
- */
-function MapCache() {
-  this.__data__ = {};
-}
-
-/**
- * Removes `key` and its value from the cache.
- *
- * @private
- * @name delete
- * @memberOf _.memoize.Cache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed successfully, else `false`.
- */
-function mapDelete(key) {
-  return this.has(key) && delete this.__data__[key];
-}
-
-/**
- * Gets the cached value for `key`.
- *
- * @private
- * @name get
- * @memberOf _.memoize.Cache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the cached value.
- */
-function mapGet(key) {
-  return key == '__proto__' ? undefined : this.__data__[key];
-}
-
-/**
- * Checks if a cached value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf _.memoize.Cache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function mapHas(key) {
-  return key != '__proto__' && hasOwnProperty.call(this.__data__, key);
-}
-
-/**
- * Sets `value` to `key` of the cache.
- *
- * @private
- * @name set
- * @memberOf _.memoize.Cache
- * @param {string} key The key of the value to cache.
- * @param {*} value The value to cache.
- * @returns {Object} Returns the cache object.
- */
-function mapSet(key, value) {
-  if (key != '__proto__') {
-    this.__data__[key] = value;
-  }
-  return this;
-}
-
-/**
- * Creates a function that memoizes the result of `func`. If `resolver` is
- * provided it determines the cache key for storing the result based on the
- * arguments provided to the memoized function. By default, the first argument
- * provided to the memoized function is coerced to a string and used as the
- * cache key. The `func` is invoked with the `this` binding of the memoized
- * function.
- *
- * **Note:** The cache is exposed as the `cache` property on the memoized
- * function. Its creation may be customized by replacing the `_.memoize.Cache`
- * constructor with one whose instances implement the [`Map`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-properties-of-the-map-prototype-object)
- * method interface of `get`, `has`, and `set`.
- *
- * @static
- * @memberOf _
- * @category Function
- * @param {Function} func The function to have its output memoized.
- * @param {Function} [resolver] The function to resolve the cache key.
- * @returns {Function} Returns the new memoizing function.
- * @example
- *
- * var upperCase = _.memoize(function(string) {
- *   return string.toUpperCase();
- * });
- *
- * upperCase('fred');
- * // => 'FRED'
- *
- * // modifying the result cache
- * upperCase.cache.set('fred', 'BARNEY');
- * upperCase('fred');
- * // => 'BARNEY'
- *
- * // replacing `_.memoize.Cache`
- * var object = { 'user': 'fred' };
- * var other = { 'user': 'barney' };
- * var identity = _.memoize(_.identity);
- *
- * identity(object);
- * // => { 'user': 'fred' }
- * identity(other);
- * // => { 'user': 'fred' }
- *
- * _.memoize.Cache = WeakMap;
- * var identity = _.memoize(_.identity);
- *
- * identity(object);
- * // => { 'user': 'fred' }
- * identity(other);
- * // => { 'user': 'barney' }
- */
-function memoize(func, resolver) {
-  if (typeof func != 'function' || (resolver && typeof resolver != 'function')) {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  var memoized = function() {
-    var args = arguments,
-        key = resolver ? resolver.apply(this, args) : args[0],
-        cache = memoized.cache;
-
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    var result = func.apply(this, args);
-    memoized.cache = cache.set(key, result);
-    return result;
-  };
-  memoized.cache = new memoize.Cache;
-  return memoized;
-}
-
-// Add functions to the `Map` cache.
-MapCache.prototype['delete'] = mapDelete;
-MapCache.prototype.get = mapGet;
-MapCache.prototype.has = mapHas;
-MapCache.prototype.set = mapSet;
-
-// Assign cache to `_.memoize`.
-memoize.Cache = MapCache;
-
-module.exports = memoize;
-
-},{}],22:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/aes-cbc-hmac-sha2.js - AES-CBC-HMAC-SHA2 Composited Encryption
@@ -2757,7 +2575,7 @@ var aesCbcHmacSha2 = {};
 module.exports = aesCbcHmacSha2;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"../util":73,"../util/databuffer.js":72,"./helpers.js":31,"./hmac.js":33,"./sha.js":39,"buffer":undefined}],23:[function(require,module,exports){
+},{"../deps/forge.js":46,"../util":71,"../util/databuffer.js":70,"./helpers.js":29,"./hmac.js":31,"./sha.js":37,"buffer":undefined}],21:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/aes-gcm.js - AES-GCM Encryption and Key-Wrapping
@@ -3108,7 +2926,7 @@ var aesGcm = {};
 module.exports = aesGcm;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/ciphermodes/gcm":41,"./constants.js":26,"./helpers.js":31,"buffer":undefined}],24:[function(require,module,exports){
+},{"../deps/ciphermodes/gcm":39,"./constants.js":24,"./helpers.js":29,"buffer":undefined}],22:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/aes-kw.js - AES-KW Key-Wrapping
@@ -3338,7 +3156,7 @@ var aesKw = {};
 module.exports = aesKw;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"../util/databuffer.js":72,"./helpers.js":31,"buffer":undefined}],25:[function(require,module,exports){
+},{"../deps/forge.js":46,"../util/databuffer.js":70,"./helpers.js":29,"buffer":undefined}],23:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/concat.js - Concat Key Derivation
@@ -3413,7 +3231,7 @@ var concat = {};
 module.exports = concat;
 
 }).call(this,require("buffer").Buffer)
-},{"./constants.js":26,"./sha.js":39,"buffer":undefined}],26:[function(require,module,exports){
+},{"./constants.js":24,"./sha.js":37,"buffer":undefined}],24:[function(require,module,exports){
 /*!
  * algorithms/constants.js - Constants used in Cryptographic Algorithms
  *
@@ -3467,7 +3285,7 @@ module.exports = {
   }
 };
 
-},{}],27:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /*!
  * algorithms/dir.js - Direct key mode
  *
@@ -3502,7 +3320,7 @@ var direct = {
 
 module.exports = direct;
 
-},{}],28:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/ec-util.js - Elliptic Curve Utility Functions
@@ -3593,7 +3411,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/ecc":46,"../deps/forge.js":48,"../util":73,"buffer":undefined,"lodash.clone":89}],29:[function(require,module,exports){
+},{"../deps/ecc":44,"../deps/forge.js":46,"../util":71,"buffer":undefined,"lodash.clone":87}],27:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/ecdh.js - Elliptic Curve Diffie-Hellman algorithms
@@ -4038,7 +3856,7 @@ function ecdhesKwDecryptFn(unwrap) {
 //*/
 
 }).call(this,require("buffer").Buffer)
-},{"../util":73,"../util/merge":74,"./aes-kw.js":24,"./concat.js":25,"./constants.js":26,"./ec-util.js":28,"./helpers.js":31,"./hkdf.js":32,"buffer":undefined,"lodash.clone":89,"lodash.omit":132,"lodash.pick":156}],30:[function(require,module,exports){
+},{"../util":71,"../util/merge":72,"./aes-kw.js":22,"./concat.js":23,"./constants.js":24,"./ec-util.js":26,"./helpers.js":29,"./hkdf.js":30,"buffer":undefined,"lodash.clone":87,"lodash.omit":129,"lodash.pick":152}],28:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/ecdsa.js - Elliptic Curve Digitial Signature Algorithms
@@ -4219,7 +4037,7 @@ var ecdsa = {};
 module.exports = ecdsa;
 
 }).call(this,require("buffer").Buffer)
-},{"./ec-util.js":28,"./helpers.js":31,"./sha.js":39,"buffer":undefined}],31:[function(require,module,exports){
+},{"./ec-util.js":26,"./helpers.js":29,"./sha.js":37,"buffer":undefined}],29:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/helpers.js - Internal functions and fields used in Cryptographic
@@ -4367,7 +4185,7 @@ exports.setupFallback = function(nodejs, webcrypto, fallback) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":undefined,"es6-promise":76}],32:[function(require,module,exports){
+},{"buffer":undefined,"es6-promise":74}],30:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/hkdf.js - HMAC-based Extract-and-Expand Key Derivation
@@ -4458,7 +4276,7 @@ var hkdf = {};
 module.exports = hkdf;
 
 }).call(this,require("buffer").Buffer)
-},{"./constants.js":26,"./hmac.js":33,"buffer":undefined}],33:[function(require,module,exports){
+},{"./constants.js":24,"./hmac.js":31,"buffer":undefined}],31:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/hmac.js - HMAC-based "signatures"
@@ -4668,7 +4486,7 @@ var hmac = {};
 module.exports = hmac;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"../util/databuffer.js":72,"./constants":26,"./helpers.js":31,"buffer":undefined}],34:[function(require,module,exports){
+},{"../deps/forge.js":46,"../util/databuffer.js":70,"./constants":24,"./helpers.js":29,"buffer":undefined}],32:[function(require,module,exports){
 /*!
  * algorithms/index.js - Cryptographic Algorithms Entry Point
  *
@@ -4780,7 +4598,7 @@ exports.decrypt = function(alg, key, cdata, props) {
   return op(key, cdata, props || {});
 };
 
-},{"./aes-cbc-hmac-sha2.js":22,"./aes-gcm.js":23,"./aes-kw.js":24,"./concat.js":25,"./dir.js":27,"./ecdh.js":29,"./ecdsa.js":30,"./hkdf.js":32,"./hmac.js":33,"./pbes2.js":35,"./rsaes.js":37,"./rsassa.js":38,"./sha.js":39}],35:[function(require,module,exports){
+},{"./aes-cbc-hmac-sha2.js":20,"./aes-gcm.js":21,"./aes-kw.js":22,"./concat.js":23,"./dir.js":25,"./ecdh.js":27,"./ecdsa.js":28,"./hkdf.js":30,"./hmac.js":31,"./pbes2.js":33,"./rsaes.js":35,"./rsassa.js":36,"./sha.js":37}],33:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/pbes2.js - Password-Based Encryption (v2) Algorithms
@@ -5018,7 +4836,7 @@ var pbes2 = {};
 module.exports = pbes2;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"../util":73,"./aes-kw.js":24,"./constants.js":26,"./helpers.js":31,"buffer":undefined}],36:[function(require,module,exports){
+},{"../deps/forge.js":46,"../util":71,"./aes-kw.js":22,"./constants.js":24,"./helpers.js":29,"buffer":undefined}],34:[function(require,module,exports){
 /*!
  * algorithms/rsa-util.js - RSA Utility Functions
  *
@@ -5075,7 +4893,7 @@ module.exports = {
   convertToJWK: convertToJWK
 };
 
-},{"../deps/forge.js":48,"../util":73,"lodash.clone":89}],37:[function(require,module,exports){
+},{"../deps/forge.js":46,"../util":71,"lodash.clone":87}],35:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/rsassa.js - RSA Signatures
@@ -5242,7 +5060,7 @@ var rsaes = {};
 module.exports = rsaes;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"../util/databuffer.js":72,"./helpers.js":31,"./rsa-util.js":36,"buffer":undefined}],38:[function(require,module,exports){
+},{"../deps/forge.js":46,"../util/databuffer.js":70,"./helpers.js":29,"./rsa-util.js":34,"buffer":undefined}],36:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/rsassa.js - RSA Signatures
@@ -5465,7 +5283,7 @@ var rsassa = {};
 module.exports = rsassa;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"./constants":26,"./helpers.js":31,"./rsa-util.js":36,"buffer":undefined}],39:[function(require,module,exports){
+},{"../deps/forge.js":46,"./constants":24,"./helpers.js":29,"./rsa-util.js":34,"buffer":undefined}],37:[function(require,module,exports){
 (function (Buffer){
 /*!
  * algorithms/sha.js - Cryptographic Secure Hash Algorithms, versions 1 and 2
@@ -5533,7 +5351,7 @@ var sha = {};
 module.exports = sha;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"./helpers.js":31,"buffer":undefined}],40:[function(require,module,exports){
+},{"../deps/forge.js":46,"./helpers.js":29,"buffer":undefined}],38:[function(require,module,exports){
 (function (Buffer){
 /*!
  * deps/ciphermodes/gcm/helpers.js - AES-GCM Helper Functions
@@ -5796,7 +5614,7 @@ var helpers = module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../pack.js":44,"buffer":undefined,"lodash.fill":102,"long":185}],41:[function(require,module,exports){
+},{"../pack.js":42,"buffer":undefined,"lodash.fill":100,"long":181}],39:[function(require,module,exports){
 (function (Buffer){
 /*!
  * deps/ciphermodes/gcm/index.js - AES-GCM implementation Entry Point
@@ -6111,7 +5929,7 @@ Gcm.prototype.zeroBlock = function() {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../../../deps/forge.js":48,"../../../util/databuffer.js":72,"../helpers.js":43,"../pack.js":44,"./helpers.js":40,"./multipliers.js":42,"buffer":undefined,"long":185}],42:[function(require,module,exports){
+},{"../../../deps/forge.js":46,"../../../util/databuffer.js":70,"../helpers.js":41,"../pack.js":42,"./helpers.js":38,"./multipliers.js":40,"buffer":undefined,"long":181}],40:[function(require,module,exports){
 /*!
  * deps/ciphermodes/gcm/multipliers.js - AES-GCM Multipliers
  *
@@ -6206,7 +6024,7 @@ module.exports = {
   "8k": Gcm8KMultiplier
 };
 
-},{"../pack.js":44,"./helpers.js":40}],43:[function(require,module,exports){
+},{"../pack.js":42,"./helpers.js":38}],41:[function(require,module,exports){
 /*!
  * deps/ciphermodes/helpers.js - Cipher Helper Functions
  *
@@ -6229,7 +6047,7 @@ module.exports = {
   encrypt: doEncrypt
 };
 
-},{"./pack.js":44}],44:[function(require,module,exports){
+},{"./pack.js":42}],42:[function(require,module,exports){
 (function (Buffer){
 /*!
  * deps/ciphermodes/pack.js - Pack/Unpack Functions
@@ -6356,7 +6174,7 @@ var pack = module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":undefined,"long":185}],45:[function(require,module,exports){
+},{"buffer":undefined,"long":181}],43:[function(require,module,exports){
 /**
  * deps/ecc/curves.js - Elliptic Curve NIST/SECG/X9.62 Parameters
  * Original Copyright (c) 2003-2005  Tom Wu.
@@ -6467,7 +6285,7 @@ CURVES["P-256"] = CURVES.secp256r1;
 CURVES["P-384"] = CURVES.secp384r1;
 CURVES["P-521"] = CURVES.secp521r1;
 
-},{"./math.js":47,"jsbn":77}],46:[function(require,module,exports){
+},{"./math.js":45,"jsbn":75}],44:[function(require,module,exports){
 (function (Buffer){
 /**
  * deps/ecc/index.js - Elliptic Curve Entry Point
@@ -6705,7 +6523,7 @@ exports.asPrivateKey = function(curve, d) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../../deps/forge":48,"./curves.js":45,"./math.js":47,"buffer":undefined,"jsbn":77}],47:[function(require,module,exports){
+},{"../../deps/forge":46,"./curves.js":43,"./math.js":45,"buffer":undefined,"jsbn":75}],45:[function(require,module,exports){
 /**
  * deps/ecc/math.js - Elliptic Curve Math
  * Original Copyright (c) 2003-2005  Tom Wu.
@@ -7102,7 +6920,7 @@ module.exports = {
   ECCurveFp: ECCurveFp
 };
 
-},{"jsbn":77}],48:[function(require,module,exports){
+},{"jsbn":75}],46:[function(require,module,exports){
 /*!
  * deps/forge.js - Forge Package Customization
  *
@@ -7206,7 +7024,7 @@ if ("function" === typeof setImmediate) {
 
 module.exports = forge;
 
-},{"node-forge/js/aes":186,"node-forge/js/aesCipherSuites":187,"node-forge/js/asn1":188,"node-forge/js/cipher":189,"node-forge/js/cipherModes":190,"node-forge/js/hmac":192,"node-forge/js/jsbn":193,"node-forge/js/md":194,"node-forge/js/mgf":196,"node-forge/js/pem":200,"node-forge/js/pkcs1":201,"node-forge/js/pkcs5":202,"node-forge/js/pkcs7":203,"node-forge/js/prime":206,"node-forge/js/prng":207,"node-forge/js/pss":208,"node-forge/js/random":209,"node-forge/js/sha1":211,"node-forge/js/sha256":212,"node-forge/js/sha512":213,"node-forge/js/util":215,"node-forge/js/x509":216}],49:[function(require,module,exports){
+},{"node-forge/js/aes":182,"node-forge/js/aesCipherSuites":183,"node-forge/js/asn1":184,"node-forge/js/cipher":185,"node-forge/js/cipherModes":186,"node-forge/js/hmac":188,"node-forge/js/jsbn":189,"node-forge/js/md":190,"node-forge/js/mgf":192,"node-forge/js/pem":196,"node-forge/js/pkcs1":197,"node-forge/js/pkcs5":198,"node-forge/js/pkcs7":199,"node-forge/js/prime":202,"node-forge/js/prng":203,"node-forge/js/pss":204,"node-forge/js/random":205,"node-forge/js/sha1":207,"node-forge/js/sha256":208,"node-forge/js/sha512":209,"node-forge/js/util":211,"node-forge/js/x509":212}],47:[function(require,module,exports){
 /*!
  * index.js - Main Entry Point
  *
@@ -7227,7 +7045,7 @@ module.exports = {
   parse: require("./parse")
 };
 
-},{"./algorithms":34,"./jwe":54,"./jwk":59,"./jws":65,"./parse":69,"./util":73,"es6-promise":76}],50:[function(require,module,exports){
+},{"./algorithms":32,"./jwe":52,"./jwk":57,"./jws":63,"./parse":67,"./util":71,"es6-promise":74}],48:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jwe/decrypt.js - Decrypt from a JWE
@@ -7441,7 +7259,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../jwk":59,"../util/base64url":71,"buffer":undefined,"lodash.assign":78,"zlib":undefined}],51:[function(require,module,exports){
+},{"../jwk":57,"../util/base64url":69,"buffer":undefined,"lodash.assign":76,"zlib":undefined}],49:[function(require,module,exports){
 /*!
  * jwe/defaults.js - Defaults for JWEs
  *
@@ -7481,7 +7299,7 @@ var JWEDefaults = {
 
 module.exports = JWEDefaults;
 
-},{}],52:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jwe/encrypt.js - Encrypt to a JWE
@@ -8121,7 +7939,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../algorithms/constants":26,"../jwk":59,"../util":73,"./defaults":51,"./helpers":53,"buffer":undefined,"lodash.assign":78,"lodash.clone":89,"zlib":undefined}],53:[function(require,module,exports){
+},{"../algorithms/constants":24,"../jwk":57,"../util":71,"./defaults":49,"./helpers":51,"buffer":undefined,"lodash.assign":76,"lodash.clone":87,"zlib":undefined}],51:[function(require,module,exports){
 /*!
  * jwe/helpers.js - JWE Internal Helper Functions
  *
@@ -8148,7 +7966,7 @@ module.exports = {
   }
 };
 
-},{"../algorithms/constants":26,"../jwk":59}],54:[function(require,module,exports){
+},{"../algorithms/constants":24,"../jwk":57}],52:[function(require,module,exports){
 /*!
  * jwe/index.js - JSON Web Encryption (JWE) Entry Point
  *
@@ -8163,7 +7981,7 @@ var JWE = {
 
 module.exports = JWE;
 
-},{"./decrypt":50,"./encrypt":52}],55:[function(require,module,exports){
+},{"./decrypt":48,"./encrypt":50}],53:[function(require,module,exports){
 /*!
  * jwk/basekey.js - JWK Key Base Class Implementation
  *
@@ -8795,7 +8613,7 @@ var JWKBaseKeyObject = function(kty, ks, props, cfg) {
 
 module.exports = JWKBaseKeyObject;
 
-},{"../algorithms":34,"../util/merge":74,"./constants.js":56,"./helpers.js":58,"lodash.clone":89,"lodash.flatten":104,"lodash.intersection":109,"lodash.omit":132,"lodash.pick":156,"lodash.uniq":168,"uuid":221}],56:[function(require,module,exports){
+},{"../algorithms":32,"../util/merge":72,"./constants.js":54,"./helpers.js":56,"lodash.clone":87,"lodash.flatten":101,"lodash.intersection":106,"lodash.omit":129,"lodash.pick":152,"lodash.uniq":164,"uuid":217}],54:[function(require,module,exports){
 /*!
  * jwk/constants.js - Constants for JWKs
  *
@@ -8812,7 +8630,7 @@ module.exports = {
   MODE_UNWRAP: "unwrap"
 };
 
-},{}],57:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jwk/rsa.js - RSA Key Representation
@@ -9069,7 +8887,7 @@ module.exports = Object.freeze({
 })(require("./keystore").registry);
 
 }).call(this,require("buffer").Buffer)
-},{"../algorithms/ec-util.js":28,"../deps/ecc":46,"../deps/forge":48,"./basekey.js":55,"./helpers.js":58,"./keystore":60,"buffer":undefined}],58:[function(require,module,exports){
+},{"../algorithms/ec-util.js":26,"../deps/ecc":44,"../deps/forge":46,"./basekey.js":53,"./helpers.js":56,"./keystore":58,"buffer":undefined}],56:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jwk/helpers.js - JWK Internal Helper Functions and Constants
@@ -9430,7 +9248,7 @@ module.exports = {
 };
 
 }).call(this,{"isBuffer":require("../../../browserify/node_modules/insert-module-globals/node_modules/is-buffer/index.js")})
-},{"../../../browserify/node_modules/insert-module-globals/node_modules/is-buffer/index.js":18,"../deps/forge":48,"../util":73,"lodash.clone":89}],59:[function(require,module,exports){
+},{"../../../browserify/node_modules/insert-module-globals/node_modules/is-buffer/index.js":17,"../deps/forge":46,"../util":71,"lodash.clone":87}],57:[function(require,module,exports){
 /*!
  * jwk/index.js - JSON Web Key (JWK) Entry Point
  *
@@ -9456,7 +9274,7 @@ require("./octkey.js");
 require("./rsakey.js");
 require("./eckey.js");
 
-},{"./constants.js":56,"./eckey.js":57,"./keystore.js":60,"./octkey.js":61,"./rsakey.js":62}],60:[function(require,module,exports){
+},{"./constants.js":54,"./eckey.js":55,"./keystore.js":58,"./octkey.js":59,"./rsakey.js":60}],58:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jwk/keystore.js - JWK KeyStore Implementation
@@ -10081,7 +9899,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge":48,"../util":73,"../util/merge":74,"./basekey.js":55,"./helpers.js":58,"buffer":undefined,"lodash.clone":89}],61:[function(require,module,exports){
+},{"../deps/forge":46,"../util":71,"../util/merge":72,"./basekey.js":53,"./helpers.js":56,"buffer":undefined,"lodash.clone":87}],59:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jwk/octkey.js - Symmetric Octet Key Representation
@@ -10286,7 +10104,7 @@ module.exports = Object.freeze({
 })(require("./keystore").registry);
 
 }).call(this,require("buffer").Buffer)
-},{"../util":73,"./basekey.js":55,"./helpers.js":58,"./keystore":60,"buffer":undefined}],62:[function(require,module,exports){
+},{"../util":71,"./basekey.js":53,"./helpers.js":56,"./keystore":58,"buffer":undefined}],60:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jwk/rsa.js - RSA Key Representation
@@ -10601,7 +10419,7 @@ module.exports = Object.freeze({
 })(require("./keystore").registry);
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"./basekey.js":55,"./helpers.js":58,"./keystore":60,"buffer":undefined}],63:[function(require,module,exports){
+},{"../deps/forge.js":46,"./basekey.js":53,"./helpers.js":56,"./keystore":58,"buffer":undefined}],61:[function(require,module,exports){
 /*!
  * jws/defaults.js - Defaults for JWSs
  *
@@ -10628,7 +10446,7 @@ var JWSDefaults = {
 
 module.exports = JWSDefaults;
 
-},{}],64:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 /*!
  * jws/helpers.js - JWS Internal Helper Functions
  *
@@ -10642,7 +10460,7 @@ module.exports = {
   }
 };
 
-},{}],65:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 /*!
  * jws/index.js - JSON Web Signature (JWS) Entry Point
  *
@@ -10657,7 +10475,7 @@ var JWS = {
 
 module.exports = JWS;
 
-},{"./sign":66,"./verify":67}],66:[function(require,module,exports){
+},{"./sign":64,"./verify":65}],64:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jws/sign.js - Sign to JWS
@@ -11028,7 +10846,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../jwk":59,"../util":73,"../util/merge":74,"./defaults":63,"./helpers":64,"buffer":undefined,"lodash.clone":89,"lodash.uniq":168}],67:[function(require,module,exports){
+},{"../jwk":57,"../util":71,"../util/merge":72,"./defaults":61,"./helpers":62,"buffer":undefined,"lodash.clone":87,"lodash.uniq":164}],65:[function(require,module,exports){
 (function (Buffer){
 /*!
  * jws/verify.js - Verifies from a JWS
@@ -11173,7 +10991,7 @@ module.exports = {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"../jwk":59,"../util/base64url":71,"../util/merge":74,"buffer":undefined,"lodash.clone":89}],68:[function(require,module,exports){
+},{"../jwk":57,"../util/base64url":69,"../util/merge":72,"buffer":undefined,"lodash.clone":87}],66:[function(require,module,exports){
 /*!
  * parse/compact.js - JOSE Compact Serialization Parser
  *
@@ -11225,7 +11043,7 @@ function parseCompact(input) {
 
 module.exports = parseCompact;
 
-},{"../jwe":54,"../jws":65,"../util":73}],69:[function(require,module,exports){
+},{"../jwe":52,"../jws":63,"../util":71}],67:[function(require,module,exports){
 (function (Buffer){
 /*!
  * parse/index.js - JOSE Parser Entry Point
@@ -11254,7 +11072,7 @@ parse.compact = compact;
 parse.json = json;
 
 }).call(this,{"isBuffer":require("../../../browserify/node_modules/insert-module-globals/node_modules/is-buffer/index.js")})
-},{"../../../browserify/node_modules/insert-module-globals/node_modules/is-buffer/index.js":18,"./compact":68,"./json":70}],70:[function(require,module,exports){
+},{"../../../browserify/node_modules/insert-module-globals/node_modules/is-buffer/index.js":17,"./compact":66,"./json":68}],68:[function(require,module,exports){
 /*!
  * parse/compact.js - JOSE JSON Serialization Parser
  *
@@ -11351,7 +11169,7 @@ function parseJSON(input) {
 
 module.exports = parseJSON;
 
-},{"../jwe":54,"../jws":65,"../util":73,"../util/merge":74}],71:[function(require,module,exports){
+},{"../jwe":52,"../jws":63,"../util":71,"../util/merge":72}],69:[function(require,module,exports){
 /*!
  * util/base64url.js - Implementation of web-safe Base64 Encoder/Decoder
  *
@@ -11392,7 +11210,7 @@ var base64url = {
 
 module.exports = base64url;
 
-},{"urlsafe-base64":218}],72:[function(require,module,exports){
+},{"urlsafe-base64":214}],70:[function(require,module,exports){
 (function (Buffer){
 /*!
  * util/databuffer.js - Forge-compatible Buffer based on Node.js Buffers
@@ -11876,7 +11694,7 @@ DataBuffer.asBuffer = function(orig) {
 module.exports = forge.util.ByteBuffer = DataBuffer;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"./base64url.js":71,"buffer":undefined}],73:[function(require,module,exports){
+},{"../deps/forge.js":46,"./base64url.js":69,"buffer":undefined}],71:[function(require,module,exports){
 (function (Buffer){
 /*!
  * util/index.js - Utilities Entry Point
@@ -11939,7 +11757,7 @@ util = {
 module.exports = util;
 
 }).call(this,require("buffer").Buffer)
-},{"../deps/forge.js":48,"./base64url.js":71,"./utf8.js":75,"buffer":undefined}],74:[function(require,module,exports){
+},{"../deps/forge.js":46,"./base64url.js":69,"./utf8.js":73,"buffer":undefined}],72:[function(require,module,exports){
 (function (Buffer){
 /*!
  * util/utf8.js - Implementation of UTF-8 Encoder/Decoder
@@ -12005,7 +11823,7 @@ function mergeBuffer(a, b) {
 module.exports = partialRight(merge, mergeBuffer);
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":undefined,"lodash.merge":115,"lodash.partialright":150}],75:[function(require,module,exports){
+},{"buffer":undefined,"lodash.merge":112,"lodash.partialright":147}],73:[function(require,module,exports){
 /*!
  * util/utf8.js - Implementation of UTF-8 Encoder/Decoder
  *
@@ -12034,7 +11852,7 @@ utf8.decode = function(input) {
   return output;
 };
 
-},{}],76:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 (function (global){
 /*!
  * @overview es6-promise - a tiny implementation of Promises/A+.
@@ -13010,7 +12828,7 @@ utf8.decode = function(input) {
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],77:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 (function(){
 
     // Copyright (c) 2005  Tom Wu
@@ -14370,7 +14188,7 @@ utf8.decode = function(input) {
 
 }).call(this);
 
-},{}],78:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -14452,7 +14270,7 @@ var assign = createAssigner(function(object, source, customizer) {
 
 module.exports = assign;
 
-},{"lodash._baseassign":79,"lodash._createassigner":81,"lodash.keys":85}],79:[function(require,module,exports){
+},{"lodash._baseassign":77,"lodash._createassigner":79,"lodash.keys":83}],77:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -14481,7 +14299,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"lodash._basecopy":80,"lodash.keys":85}],80:[function(require,module,exports){
+},{"lodash._basecopy":78,"lodash.keys":83}],78:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -14515,7 +14333,7 @@ function baseCopy(source, props, object) {
 
 module.exports = baseCopy;
 
-},{}],81:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -14569,7 +14387,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"lodash._bindcallback":82,"lodash._isiterateecall":83,"lodash.restparam":84}],82:[function(require,module,exports){
+},{"lodash._bindcallback":80,"lodash._isiterateecall":81,"lodash.restparam":82}],80:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -14636,7 +14454,7 @@ function identity(value) {
 
 module.exports = bindCallback;
 
-},{}],83:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 /**
  * lodash 3.0.9 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -14770,7 +14588,7 @@ function isObject(value) {
 
 module.exports = isIterateeCall;
 
-},{}],84:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 /**
  * lodash 3.6.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -14839,7 +14657,7 @@ function restParam(func, start) {
 
 module.exports = restParam;
 
-},{}],85:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -15077,7 +14895,7 @@ function keysIn(object) {
 
 module.exports = keys;
 
-},{"lodash._getnative":86,"lodash.isarguments":87,"lodash.isarray":88}],86:[function(require,module,exports){
+},{"lodash._getnative":84,"lodash.isarguments":85,"lodash.isarray":86}],84:[function(require,module,exports){
 /**
  * lodash 3.9.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -15216,41 +15034,38 @@ function isNative(value) {
 
 module.exports = getNative;
 
-},{}],87:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 /**
- * lodash 3.0.4 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern modularize exports="npm" -o ./`
- * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * lodash 3.0.6 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  * Available under MIT license <https://lodash.com/license>
  */
 
-/**
- * Checks if `value` is object-like.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
 
-/** Used for native method references. */
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]',
+    funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]';
+
+/** Used for built-in method references. */
 var objectProto = Object.prototype;
 
 /** Used to check objects for own properties. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
-/** Native method references. */
-var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
 /**
- * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
- * of an array-like value.
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * of values.
  */
-var MAX_SAFE_INTEGER = 9007199254740991;
+var objectToString = objectProto.toString;
+
+/** Built-in value references. */
+var propertyIsEnumerable = objectProto.propertyIsEnumerable;
 
 /**
  * The base implementation of `_.property` without support for deep paths.
@@ -15278,31 +15093,7 @@ function baseProperty(key) {
 var getLength = baseProperty('length');
 
 /**
- * Checks if `value` is array-like.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
- */
-function isArrayLike(value) {
-  return value != null && isLength(getLength(value));
-}
-
-/**
- * Checks if `value` is a valid array-like length.
- *
- * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
- */
-function isLength(value) {
-  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-}
-
-/**
- * Checks if `value` is classified as an `arguments` object.
+ * Checks if `value` is likely an `arguments` object.
  *
  * @static
  * @memberOf _
@@ -15318,13 +15109,179 @@ function isLength(value) {
  * // => false
  */
 function isArguments(value) {
-  return isObjectLike(value) && isArrayLike(value) &&
-    hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee');
+  // Safari 8.1 incorrectly makes `arguments.callee` enumerable in strict mode.
+  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
+    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
+}
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @type Function
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null &&
+    !(typeof value == 'function' && isFunction(value)) && isLength(getLength(value));
+}
+
+/**
+ * This method is like `_.isArrayLike` except that it also checks if `value`
+ * is an object.
+ *
+ * @static
+ * @memberOf _
+ * @type Function
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array-like object, else `false`.
+ * @example
+ *
+ * _.isArrayLikeObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLikeObject(document.body.children);
+ * // => true
+ *
+ * _.isArrayLikeObject('abc');
+ * // => false
+ *
+ * _.isArrayLikeObject(_.noop);
+ * // => false
+ */
+function isArrayLikeObject(value) {
+  return isObjectLike(value) && isArrayLike(value);
+}
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 8 which returns 'object' for typed array constructors, and
+  // PhantomJS 1.9 which returns 'function' for `NodeList` instances.
+  var tag = isObject(value) ? objectToString.call(value) : '';
+  return tag == funcTag || tag == genTag;
+}
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This function is loosely based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+/**
+ * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+ * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
 }
 
 module.exports = isArguments;
 
-},{}],88:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 /**
  * lodash 3.0.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -15506,7 +15463,7 @@ function isNative(value) {
 
 module.exports = isArray;
 
-},{}],89:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -15586,7 +15543,7 @@ function clone(value, isDeep, customizer, thisArg) {
 
 module.exports = clone;
 
-},{"lodash._baseclone":90,"lodash._bindcallback":100,"lodash._isiterateecall":101}],90:[function(require,module,exports){
+},{"lodash._baseclone":88,"lodash._bindcallback":98,"lodash._isiterateecall":99}],88:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.3.0 (Custom Build) <https://lodash.com/>
@@ -15861,7 +15818,7 @@ function isObject(value) {
 module.exports = baseClone;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._arraycopy":91,"lodash._arrayeach":92,"lodash._baseassign":93,"lodash._basefor":95,"lodash.isarray":96,"lodash.keys":97}],91:[function(require,module,exports){
+},{"lodash._arraycopy":89,"lodash._arrayeach":90,"lodash._baseassign":91,"lodash._basefor":93,"lodash.isarray":94,"lodash.keys":95}],89:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -15892,7 +15849,7 @@ function arrayCopy(source, array) {
 
 module.exports = arrayCopy;
 
-},{}],92:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -15925,17 +15882,17 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],93:[function(require,module,exports){
-arguments[4][79][0].apply(exports,arguments)
-},{"dup":79,"lodash._basecopy":94,"lodash.keys":97}],94:[function(require,module,exports){
-arguments[4][80][0].apply(exports,arguments)
-},{"dup":80}],95:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
+arguments[4][77][0].apply(exports,arguments)
+},{"dup":77,"lodash._basecopy":92,"lodash.keys":95}],92:[function(require,module,exports){
+arguments[4][78][0].apply(exports,arguments)
+},{"dup":78}],93:[function(require,module,exports){
 /**
- * lodash 3.0.2 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern modularize exports="npm" -o ./`
- * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * lodash 3.0.3 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  * Available under MIT license <https://lodash.com/license>
  */
 
@@ -15954,7 +15911,7 @@ arguments[4][80][0].apply(exports,arguments)
 var baseFor = createBaseFor();
 
 /**
- * Creates a base function for `_.forIn` or `_.forInRight`.
+ * Creates a base function for methods like `_.forIn`.
  *
  * @private
  * @param {boolean} [fromRight] Specify iterating from right to left.
@@ -15962,13 +15919,13 @@ var baseFor = createBaseFor();
  */
 function createBaseFor(fromRight) {
   return function(object, iteratee, keysFunc) {
-    var iterable = toObject(object),
+    var index = -1,
+        iterable = Object(object),
         props = keysFunc(object),
-        length = props.length,
-        index = fromRight ? length : -1;
+        length = props.length;
 
-    while ((fromRight ? index-- : ++index < length)) {
-      var key = props[index];
+    while (length--) {
+      var key = props[fromRight ? length : ++index];
       if (iteratee(iterable[key], key, iterable) === false) {
         break;
       }
@@ -15977,68 +15934,104 @@ function createBaseFor(fromRight) {
   };
 }
 
-/**
- * Converts `value` to an object if it's not one.
- *
- * @private
- * @param {*} value The value to process.
- * @returns {Object} Returns the object.
- */
-function toObject(value) {
-  return isObject(value) ? value : Object(value);
-}
-
-/**
- * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
- * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(1);
- * // => false
- */
-function isObject(value) {
-  // Avoid a V8 JIT bug in Chrome 19-20.
-  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
-  var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
-}
-
 module.exports = baseFor;
 
-},{}],96:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"dup":88}],97:[function(require,module,exports){
-arguments[4][85][0].apply(exports,arguments)
-},{"dup":85,"lodash._getnative":98,"lodash.isarguments":99,"lodash.isarray":96}],98:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 arguments[4][86][0].apply(exports,arguments)
-},{"dup":86}],99:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],100:[function(require,module,exports){
-arguments[4][82][0].apply(exports,arguments)
-},{"dup":82}],101:[function(require,module,exports){
+},{"dup":86}],95:[function(require,module,exports){
 arguments[4][83][0].apply(exports,arguments)
-},{"dup":83}],102:[function(require,module,exports){
+},{"dup":83,"lodash._getnative":96,"lodash.isarguments":97,"lodash.isarray":94}],96:[function(require,module,exports){
+arguments[4][84][0].apply(exports,arguments)
+},{"dup":84}],97:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],98:[function(require,module,exports){
+arguments[4][80][0].apply(exports,arguments)
+},{"dup":80}],99:[function(require,module,exports){
+arguments[4][81][0].apply(exports,arguments)
+},{"dup":81}],100:[function(require,module,exports){
 /**
- * lodash 3.2.2 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern modularize exports="npm" -o ./`
- * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * lodash 3.3.1 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  * Available under MIT license <https://lodash.com/license>
  */
-var isIterateeCall = require('lodash._isiterateecall');
+
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0,
+    MAX_SAFE_INTEGER = 9007199254740991,
+    MAX_INTEGER = 1.7976931348623157e+308,
+    NAN = 0 / 0;
+
+/** Used as references for the maximum length and index of an array. */
+var MAX_ARRAY_LENGTH = 4294967295;
+
+/** `Object#toString` result references. */
+var funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]';
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  value = (typeof value == 'number' || reIsUint.test(value)) ? +value : -1;
+  length = length == null ? MAX_SAFE_INTEGER : length;
+  return value > -1 && value % 1 == 0 && value < length;
+}
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/**
+ * The base implementation of `_.clamp` which doesn't coerce arguments to numbers.
+ *
+ * @private
+ * @param {number} number The number to clamp.
+ * @param {number} [lower] The lower bound.
+ * @param {number} upper The upper bound.
+ * @returns {number} Returns the clamped number.
+ */
+function baseClamp(number, lower, upper) {
+  if (number === number) {
+    if (upper !== undefined) {
+      number = number <= upper ? number : upper;
+    }
+    if (lower !== undefined) {
+      number = number >= lower ? number : lower;
+    }
+  }
+  return number;
+}
 
 /**
  * The base implementation of `_.fill` without an iteratee call guard.
@@ -16053,21 +16046,66 @@ var isIterateeCall = require('lodash._isiterateecall');
 function baseFill(array, value, start, end) {
   var length = array.length;
 
-  start = start == null ? 0 : (+start || 0);
+  start = toInteger(start);
   if (start < 0) {
     start = -start > length ? 0 : (length + start);
   }
-  end = (end === undefined || end > length) ? length : (+end || 0);
+  end = (end === undefined || end > length) ? length : toInteger(end);
   if (end < 0) {
     end += length;
   }
-  length = start > end ? 0 : (end >>> 0);
-  start >>>= 0;
-
-  while (start < length) {
+  end = start > end ? 0 : toLength(end);
+  while (start < end) {
     array[start++] = value;
   }
   return array;
+}
+
+/**
+ * The base implementation of `_.property` without support for deep paths.
+ *
+ * @private
+ * @param {string} key The key of the property to get.
+ * @returns {Function} Returns the new function.
+ */
+function baseProperty(key) {
+  return function(object) {
+    return object == null ? undefined : object[key];
+  };
+}
+
+/**
+ * Gets the "length" property value of `object`.
+ *
+ * **Note:** This function is used to avoid a [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792)
+ * that affects Safari on at least iOS 8.1-8.3 ARM64.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {*} Returns the "length" value.
+ */
+var getLength = baseProperty('length');
+
+/**
+ * Checks if the provided arguments are from an iteratee call.
+ *
+ * @private
+ * @param {*} value The potential iteratee value argument.
+ * @param {*} index The potential iteratee index or key argument.
+ * @param {*} object The potential iteratee object argument.
+ * @returns {boolean} Returns `true` if the arguments are from an iteratee call, else `false`.
+ */
+function isIterateeCall(value, index, object) {
+  if (!isObject(object)) {
+    return false;
+  }
+  var type = typeof index;
+  if (type == 'number'
+      ? (isArrayLike(object) && isIndex(index, object.length))
+      : (type == 'string' && index in object)) {
+    return eq(object[index], value);
+  }
+  return false;
 }
 
 /**
@@ -16095,8 +16133,8 @@ function baseFill(array, value, start, end) {
  * _.fill(Array(3), 2);
  * // => [2, 2, 2]
  *
- * _.fill([4, 6, 8], '*', 1, 2);
- * // => [4, '*', 8]
+ * _.fill([4, 6, 8, 10], '*', 1, 3);
+ * // => [4, '*', '*', 10]
  */
 function fill(array, value, start, end) {
   var length = array ? array.length : 0;
@@ -16110,11 +16148,256 @@ function fill(array, value, start, end) {
   return baseFill(array, value, start, end);
 }
 
+/**
+ * Performs a [`SameValueZero`](http://ecma-international.org/ecma-262/6.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'user': 'fred' };
+ * var other = { 'user': 'fred' };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || (value !== value && other !== other);
+}
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @type Function
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null &&
+    !(typeof value == 'function' && isFunction(value)) && isLength(getLength(value));
+}
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 8 which returns 'object' for typed array constructors, and
+  // PhantomJS 1.9 which returns 'function' for `NodeList` instances.
+  var tag = isObject(value) ? objectToString.call(value) : '';
+  return tag == funcTag || tag == genTag;
+}
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This function is loosely based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+/**
+ * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+ * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This function is loosely based on [`ToInteger`](http://www.ecma-international.org/ecma-262/6.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3');
+ * // => 3
+ */
+function toInteger(value) {
+  if (!value) {
+    return value === 0 ? value : 0;
+  }
+  value = toNumber(value);
+  if (value === INFINITY || value === -INFINITY) {
+    var sign = (value < 0 ? -1 : 1);
+    return sign * MAX_INTEGER;
+  }
+  var remainder = value % 1;
+  return value === value ? (remainder ? value - remainder : value) : 0;
+}
+
+/**
+ * Converts `value` to an integer suitable for use as the length of an
+ * array-like object.
+ *
+ * **Note:** This method is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toLength(3);
+ * // => 3
+ *
+ * _.toLength(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toLength(Infinity);
+ * // => 4294967295
+ *
+ * _.toLength('3');
+ * // => 3
+ */
+function toLength(value) {
+  return value ? baseClamp(toInteger(value), 0, MAX_ARRAY_LENGTH) : 0;
+}
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3);
+ * // => 3
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3');
+ * // => 3
+ */
+function toNumber(value) {
+  if (isObject(value)) {
+    var other = isFunction(value.valueOf) ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
 module.exports = fill;
 
-},{"lodash._isiterateecall":103}],103:[function(require,module,exports){
-arguments[4][83][0].apply(exports,arguments)
-},{"dup":83}],104:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -16156,7 +16439,7 @@ function flatten(array, isDeep, guard) {
 
 module.exports = flatten;
 
-},{"lodash._baseflatten":105,"lodash._isiterateecall":108}],105:[function(require,module,exports){
+},{"lodash._baseflatten":102,"lodash._isiterateecall":105}],102:[function(require,module,exports){
 /**
  * lodash 3.1.4 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -16289,13 +16572,13 @@ function isLength(value) {
 
 module.exports = baseFlatten;
 
-},{"lodash.isarguments":106,"lodash.isarray":107}],106:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],107:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"dup":88}],108:[function(require,module,exports){
-arguments[4][83][0].apply(exports,arguments)
-},{"dup":83}],109:[function(require,module,exports){
+},{"lodash.isarguments":103,"lodash.isarray":104}],103:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],104:[function(require,module,exports){
+arguments[4][86][0].apply(exports,arguments)
+},{"dup":86}],105:[function(require,module,exports){
+arguments[4][81][0].apply(exports,arguments)
+},{"dup":81}],106:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -16417,7 +16700,7 @@ var intersection = restParam(function(arrays) {
 
 module.exports = intersection;
 
-},{"lodash._baseindexof":110,"lodash._cacheindexof":111,"lodash._createcache":112,"lodash.restparam":114}],110:[function(require,module,exports){
+},{"lodash._baseindexof":107,"lodash._cacheindexof":108,"lodash._createcache":109,"lodash.restparam":111}],107:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -16476,7 +16759,7 @@ function indexOfNaN(array, fromIndex, fromRight) {
 
 module.exports = baseIndexOf;
 
-},{}],111:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -16531,7 +16814,7 @@ function isObject(value) {
 
 module.exports = cacheIndexOf;
 
-},{}],112:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 (function (global){
 /**
  * lodash 3.1.2 (Custom Build) <https://lodash.com/>
@@ -16626,11 +16909,11 @@ SetCache.prototype.push = cachePush;
 module.exports = createCache;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._getnative":113}],113:[function(require,module,exports){
-arguments[4][86][0].apply(exports,arguments)
-},{"dup":86}],114:[function(require,module,exports){
+},{"lodash._getnative":110}],110:[function(require,module,exports){
 arguments[4][84][0].apply(exports,arguments)
-},{"dup":84}],115:[function(require,module,exports){
+},{"dup":84}],111:[function(require,module,exports){
+arguments[4][82][0].apply(exports,arguments)
+},{"dup":82}],112:[function(require,module,exports){
 /**
  * lodash 3.3.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -16898,25 +17181,25 @@ var merge = createAssigner(baseMerge);
 
 module.exports = merge;
 
-},{"lodash._arraycopy":116,"lodash._arrayeach":117,"lodash._createassigner":118,"lodash.isarguments":123,"lodash.isarray":124,"lodash.isplainobject":125,"lodash.istypedarray":127,"lodash.keys":128,"lodash.toplainobject":130}],116:[function(require,module,exports){
-arguments[4][91][0].apply(exports,arguments)
-},{"dup":91}],117:[function(require,module,exports){
-arguments[4][92][0].apply(exports,arguments)
-},{"dup":92}],118:[function(require,module,exports){
+},{"lodash._arraycopy":113,"lodash._arrayeach":114,"lodash._createassigner":115,"lodash.isarguments":120,"lodash.isarray":121,"lodash.isplainobject":122,"lodash.istypedarray":124,"lodash.keys":125,"lodash.toplainobject":127}],113:[function(require,module,exports){
+arguments[4][89][0].apply(exports,arguments)
+},{"dup":89}],114:[function(require,module,exports){
+arguments[4][90][0].apply(exports,arguments)
+},{"dup":90}],115:[function(require,module,exports){
+arguments[4][79][0].apply(exports,arguments)
+},{"dup":79,"lodash._bindcallback":116,"lodash._isiterateecall":117,"lodash.restparam":118}],116:[function(require,module,exports){
+arguments[4][80][0].apply(exports,arguments)
+},{"dup":80}],117:[function(require,module,exports){
 arguments[4][81][0].apply(exports,arguments)
-},{"dup":81,"lodash._bindcallback":119,"lodash._isiterateecall":120,"lodash.restparam":121}],119:[function(require,module,exports){
+},{"dup":81}],118:[function(require,module,exports){
 arguments[4][82][0].apply(exports,arguments)
-},{"dup":82}],120:[function(require,module,exports){
-arguments[4][83][0].apply(exports,arguments)
-},{"dup":83}],121:[function(require,module,exports){
+},{"dup":82}],119:[function(require,module,exports){
 arguments[4][84][0].apply(exports,arguments)
-},{"dup":84}],122:[function(require,module,exports){
+},{"dup":84}],120:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],121:[function(require,module,exports){
 arguments[4][86][0].apply(exports,arguments)
-},{"dup":86}],123:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],124:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"dup":88}],125:[function(require,module,exports){
+},{"dup":86}],122:[function(require,module,exports){
 /**
  * lodash 3.2.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17021,17 +17304,20 @@ function isPlainObject(value) {
 
 module.exports = isPlainObject;
 
-},{"lodash._basefor":126,"lodash.isarguments":123,"lodash.keysin":129}],126:[function(require,module,exports){
-arguments[4][95][0].apply(exports,arguments)
-},{"dup":95}],127:[function(require,module,exports){
+},{"lodash._basefor":123,"lodash.isarguments":120,"lodash.keysin":126}],123:[function(require,module,exports){
+arguments[4][93][0].apply(exports,arguments)
+},{"dup":93}],124:[function(require,module,exports){
 /**
- * lodash 3.0.2 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern modularize exports="npm" -o ./`
- * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * lodash 3.0.4 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  * Available under MIT license <https://lodash.com/license>
  */
+
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -17074,43 +17360,68 @@ typedArrayTags[numberTag] = typedArrayTags[objectTag] =
 typedArrayTags[regexpTag] = typedArrayTags[setTag] =
 typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
 
-/**
- * Checks if `value` is object-like.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
-
-/** Used for native method references. */
+/** Used for built-in method references. */
 var objectProto = Object.prototype;
 
 /**
- * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
-var objToString = objectProto.toString;
-
-/**
- * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
- * of an array-like value.
- */
-var MAX_SAFE_INTEGER = 9007199254740991;
+var objectToString = objectProto.toString;
 
 /**
  * Checks if `value` is a valid array-like length.
  *
- * **Note:** This function is based on [`ToLength`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength).
+ * **Note:** This function is loosely based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
  *
- * @private
+ * @static
+ * @memberOf _
+ * @category Lang
  * @param {*} value The value to check.
  * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
  */
 function isLength(value) {
   return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
 }
 
 /**
@@ -17130,14 +17441,14 @@ function isLength(value) {
  * // => false
  */
 function isTypedArray(value) {
-  return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[objToString.call(value)];
+  return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[objectToString.call(value)];
 }
 
 module.exports = isTypedArray;
 
-},{}],128:[function(require,module,exports){
-arguments[4][85][0].apply(exports,arguments)
-},{"dup":85,"lodash._getnative":122,"lodash.isarguments":123,"lodash.isarray":124}],129:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
+arguments[4][83][0].apply(exports,arguments)
+},{"dup":83,"lodash._getnative":119,"lodash.isarguments":120,"lodash.isarray":121}],126:[function(require,module,exports){
 /**
  * lodash 3.0.8 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17271,7 +17582,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"lodash.isarguments":123,"lodash.isarray":124}],130:[function(require,module,exports){
+},{"lodash.isarguments":120,"lodash.isarray":121}],127:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17312,9 +17623,9 @@ function toPlainObject(value) {
 
 module.exports = toPlainObject;
 
-},{"lodash._basecopy":131,"lodash.keysin":129}],131:[function(require,module,exports){
-arguments[4][80][0].apply(exports,arguments)
-},{"dup":80}],132:[function(require,module,exports){
+},{"lodash._basecopy":128,"lodash.keysin":126}],128:[function(require,module,exports){
+arguments[4][78][0].apply(exports,arguments)
+},{"dup":78}],129:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17376,7 +17687,7 @@ var omit = restParam(function(object, props) {
 
 module.exports = omit;
 
-},{"lodash._arraymap":133,"lodash._basedifference":134,"lodash._baseflatten":139,"lodash._bindcallback":142,"lodash._pickbyarray":143,"lodash._pickbycallback":144,"lodash.keysin":146,"lodash.restparam":149}],133:[function(require,module,exports){
+},{"lodash._arraymap":130,"lodash._basedifference":131,"lodash._baseflatten":136,"lodash._bindcallback":139,"lodash._pickbyarray":140,"lodash._pickbycallback":141,"lodash.keysin":143,"lodash.restparam":146}],130:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17408,7 +17719,7 @@ function arrayMap(array, iteratee) {
 
 module.exports = arrayMap;
 
-},{}],134:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17473,23 +17784,23 @@ function baseDifference(array, values) {
 
 module.exports = baseDifference;
 
-},{"lodash._baseindexof":135,"lodash._cacheindexof":136,"lodash._createcache":137}],135:[function(require,module,exports){
-arguments[4][110][0].apply(exports,arguments)
-},{"dup":110}],136:[function(require,module,exports){
-arguments[4][111][0].apply(exports,arguments)
-},{"dup":111}],137:[function(require,module,exports){
-arguments[4][112][0].apply(exports,arguments)
-},{"dup":112,"lodash._getnative":138}],138:[function(require,module,exports){
+},{"lodash._baseindexof":132,"lodash._cacheindexof":133,"lodash._createcache":134}],132:[function(require,module,exports){
+arguments[4][107][0].apply(exports,arguments)
+},{"dup":107}],133:[function(require,module,exports){
+arguments[4][108][0].apply(exports,arguments)
+},{"dup":108}],134:[function(require,module,exports){
+arguments[4][109][0].apply(exports,arguments)
+},{"dup":109,"lodash._getnative":135}],135:[function(require,module,exports){
+arguments[4][84][0].apply(exports,arguments)
+},{"dup":84}],136:[function(require,module,exports){
+arguments[4][102][0].apply(exports,arguments)
+},{"dup":102,"lodash.isarguments":137,"lodash.isarray":138}],137:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],138:[function(require,module,exports){
 arguments[4][86][0].apply(exports,arguments)
 },{"dup":86}],139:[function(require,module,exports){
-arguments[4][105][0].apply(exports,arguments)
-},{"dup":105,"lodash.isarguments":140,"lodash.isarray":141}],140:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],141:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"dup":88}],142:[function(require,module,exports){
-arguments[4][82][0].apply(exports,arguments)
-},{"dup":82}],143:[function(require,module,exports){
+arguments[4][80][0].apply(exports,arguments)
+},{"dup":80}],140:[function(require,module,exports){
 /**
  * lodash 3.0.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17564,7 +17875,7 @@ function isObject(value) {
 
 module.exports = pickByArray;
 
-},{}],144:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17610,17 +17921,17 @@ function pickByCallback(object, predicate) {
 
 module.exports = pickByCallback;
 
-},{"lodash._basefor":145,"lodash.keysin":146}],145:[function(require,module,exports){
-arguments[4][95][0].apply(exports,arguments)
-},{"dup":95}],146:[function(require,module,exports){
-arguments[4][129][0].apply(exports,arguments)
-},{"dup":129,"lodash.isarguments":147,"lodash.isarray":148}],147:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],148:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"dup":88}],149:[function(require,module,exports){
-arguments[4][84][0].apply(exports,arguments)
-},{"dup":84}],150:[function(require,module,exports){
+},{"lodash._basefor":142,"lodash.keysin":143}],142:[function(require,module,exports){
+arguments[4][93][0].apply(exports,arguments)
+},{"dup":93}],143:[function(require,module,exports){
+arguments[4][126][0].apply(exports,arguments)
+},{"dup":126,"lodash.isarguments":144,"lodash.isarray":145}],144:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],145:[function(require,module,exports){
+arguments[4][86][0].apply(exports,arguments)
+},{"dup":86}],146:[function(require,module,exports){
+arguments[4][82][0].apply(exports,arguments)
+},{"dup":82}],147:[function(require,module,exports){
 /**
  * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -17689,19 +18000,16 @@ partialRight.placeholder = {};
 
 module.exports = partialRight;
 
-},{"lodash._createwrapper":151,"lodash._replaceholders":154,"lodash.restparam":155}],151:[function(require,module,exports){
-(function (global){
+},{"lodash._createwrapper":148,"lodash._replaceholders":150,"lodash.restparam":151}],148:[function(require,module,exports){
 /**
- * lodash 3.0.7 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern modularize exports="npm" -o ./`
- * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * lodash 3.2.0 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  * Available under MIT license <https://lodash.com/license>
  */
-var arrayCopy = require('lodash._arraycopy'),
-    baseCreate = require('lodash._basecreate'),
-    replaceHolders = require('lodash._replaceholders');
+var root = require('lodash._root');
 
 /** Used to compose bitmasks for wrapper metadata. */
 var BIND_FLAG = 1,
@@ -17711,23 +18019,134 @@ var BIND_FLAG = 1,
     CURRY_RIGHT_FLAG = 16,
     PARTIAL_FLAG = 32,
     PARTIAL_RIGHT_FLAG = 64,
-    ARY_FLAG = 128;
+    ARY_FLAG = 128,
+    FLIP_FLAG = 512;
 
 /** Used as the `TypeError` message for "Functions" methods. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
-/** Used to detect unsigned integer values. */
-var reIsUint = /^\d+$/;
+/** Used as references for various `Number` constants. */
+var INFINITY = 1 / 0,
+    MAX_SAFE_INTEGER = 9007199254740991,
+    MAX_INTEGER = 1.7976931348623157e+308,
+    NAN = 0 / 0;
 
-/* Native method references for those with the same name as other `lodash` methods. */
+/** Used as the internal argument placeholder. */
+var PLACEHOLDER = '__lodash_placeholder__';
+
+/** `Object#toString` result references. */
+var funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]';
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * A faster alternative to `Function#apply`, this function invokes `func`
+ * with the `this` binding of `thisArg` and the arguments of `args`.
+ *
+ * @private
+ * @param {Function} func The function to invoke.
+ * @param {*} thisArg The `this` binding of `func`.
+ * @param {...*} args The arguments to invoke `func` with.
+ * @returns {*} Returns the result of `func`.
+ */
+function apply(func, thisArg, args) {
+  var length = args.length;
+  switch (length) {
+    case 0: return func.call(thisArg);
+    case 1: return func.call(thisArg, args[0]);
+    case 2: return func.call(thisArg, args[0], args[1]);
+    case 3: return func.call(thisArg, args[0], args[1], args[2]);
+  }
+  return func.apply(thisArg, args);
+}
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  value = (typeof value == 'number' || reIsUint.test(value)) ? +value : -1;
+  length = length == null ? MAX_SAFE_INTEGER : length;
+  return value > -1 && value % 1 == 0 && value < length;
+}
+
+/**
+ * Replaces all `placeholder` elements in `array` with an internal placeholder
+ * and returns an array of their indexes.
+ *
+ * @private
+ * @param {Array} array The array to modify.
+ * @param {*} placeholder The placeholder to replace.
+ * @returns {Array} Returns the new array of placeholder indexes.
+ */
+function replaceHolders(array, placeholder) {
+  var index = -1,
+      length = array.length,
+      resIndex = -1,
+      result = [];
+
+  while (++index < length) {
+    if (array[index] === placeholder) {
+      array[index] = PLACEHOLDER;
+      result[++resIndex] = index;
+    }
+  }
+  return result;
+}
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max,
     nativeMin = Math.min;
 
 /**
- * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
- * of an array-like value.
+ * The base implementation of `_.create` without support for assigning
+ * properties to the created object.
+ *
+ * @private
+ * @param {Object} prototype The object to inherit from.
+ * @returns {Object} Returns the new object.
  */
-var MAX_SAFE_INTEGER = 9007199254740991;
+var baseCreate = (function() {
+  function object() {}
+  return function(prototype) {
+    if (isObject(prototype)) {
+      object.prototype = prototype;
+      var result = new object;
+      object.prototype = undefined;
+    }
+    return result || {};
+  };
+}());
 
 /**
  * Creates an array that is the composition of partially applied arguments,
@@ -17792,20 +18211,41 @@ function composeArgsRight(args, partials, holders) {
 }
 
 /**
- * Creates a function that wraps `func` and invokes it with the `this`
+ * Copies the values of `source` to `array`.
+ *
+ * @private
+ * @param {Array} source The array to copy values from.
+ * @param {Array} [array=[]] The array to copy values to.
+ * @returns {Array} Returns `array`.
+ */
+function copyArray(source, array) {
+  var index = -1,
+      length = source.length;
+
+  array || (array = Array(length));
+  while (++index < length) {
+    array[index] = source[index];
+  }
+  return array;
+}
+
+/**
+ * Creates a function that wraps `func` to invoke it with the optional `this`
  * binding of `thisArg`.
  *
  * @private
- * @param {Function} func The function to bind.
+ * @param {Function} func The function to wrap.
+ * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper` for more details.
  * @param {*} [thisArg] The `this` binding of `func`.
- * @returns {Function} Returns the new bound function.
+ * @returns {Function} Returns the new wrapped function.
  */
-function createBindWrapper(func, thisArg) {
-  var Ctor = createCtorWrapper(func);
+function createBaseWrapper(func, bitmask, thisArg) {
+  var isBind = bitmask & BIND_FLAG,
+      Ctor = createCtorWrapper(func);
 
   function wrapper() {
-    var fn = (this && this !== global && this instanceof wrapper) ? Ctor : func;
-    return fn.apply(thisArg, arguments);
+    var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
+    return fn.apply(isBind ? thisArg : this, arguments);
   }
   return wrapper;
 }
@@ -17844,12 +18284,46 @@ function createCtorWrapper(Ctor) {
 }
 
 /**
- * Creates a function that wraps `func` and invokes it with optional `this`
- * binding of, partial application, and currying.
+ * Creates a function that wraps `func` to enable currying.
  *
  * @private
- * @param {Function|string} func The function or method name to reference.
- * @param {number} bitmask The bitmask of flags. See `createWrapper` for more details.
+ * @param {Function} func The function to wrap.
+ * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper` for more details.
+ * @param {number} arity The arity of `func`.
+ * @returns {Function} Returns the new wrapped function.
+ */
+function createCurryWrapper(func, bitmask, arity) {
+  var Ctor = createCtorWrapper(func);
+
+  function wrapper() {
+    var length = arguments.length,
+        index = length,
+        args = Array(length),
+        fn = (this && this !== root && this instanceof wrapper) ? Ctor : func,
+        placeholder = wrapper.placeholder;
+
+    while (index--) {
+      args[index] = arguments[index];
+    }
+    var holders = (length < 3 && args[0] !== placeholder && args[length - 1] !== placeholder)
+      ? []
+      : replaceHolders(args, placeholder);
+
+    length -= holders.length;
+    return length < arity
+      ? createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, undefined, args, holders, undefined, undefined, arity - length)
+      : apply(fn, this, args);
+  }
+  return wrapper;
+}
+
+/**
+ * Creates a function that wraps `func` to invoke it with optional `this`
+ * binding of `thisArg`, partial application, and currying.
+ *
+ * @private
+ * @param {Function|string} func The function or method name to wrap.
+ * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper` for more details.
  * @param {*} [thisArg] The `this` binding of `func`.
  * @param {Array} [partials] The arguments to prepend to those provided to the new function.
  * @param {Array} [holders] The `partials` placeholder indexes.
@@ -17865,13 +18339,11 @@ function createHybridWrapper(func, bitmask, thisArg, partials, holders, partials
       isBind = bitmask & BIND_FLAG,
       isBindKey = bitmask & BIND_KEY_FLAG,
       isCurry = bitmask & CURRY_FLAG,
-      isCurryBound = bitmask & CURRY_BOUND_FLAG,
       isCurryRight = bitmask & CURRY_RIGHT_FLAG,
+      isFlip = bitmask & FLIP_FLAG,
       Ctor = isBindKey ? undefined : createCtorWrapper(func);
 
   function wrapper() {
-    // Avoid `arguments` object use disqualifying optimizations by
-    // converting it to an array before providing it to other functions.
     var length = arguments.length,
         index = length,
         args = Array(length);
@@ -17891,23 +18363,7 @@ function createHybridWrapper(func, bitmask, thisArg, partials, holders, partials
 
       length -= argsHolders.length;
       if (length < arity) {
-        var newArgPos = argPos ? arrayCopy(argPos) : undefined,
-            newArity = nativeMax(arity - length, 0),
-            newsHolders = isCurry ? argsHolders : undefined,
-            newHoldersRight = isCurry ? undefined : argsHolders,
-            newPartials = isCurry ? args : undefined,
-            newPartialsRight = isCurry ? undefined : args;
-
-        bitmask |= (isCurry ? PARTIAL_FLAG : PARTIAL_RIGHT_FLAG);
-        bitmask &= ~(isCurry ? PARTIAL_RIGHT_FLAG : PARTIAL_FLAG);
-
-        if (!isCurryBound) {
-          bitmask &= ~(BIND_FLAG | BIND_KEY_FLAG);
-        }
-        var result = createHybridWrapper(func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight, newHoldersRight, newArgPos, ary, newArity);
-
-        result.placeholder = placeholder;
-        return result;
+        return createRecurryWrapper(func, bitmask, createHybridWrapper, placeholder, thisArg, args, argsHolders, argPos, ary, arity - length);
       }
     }
     var thisBinding = isBind ? thisArg : this,
@@ -17915,12 +18371,14 @@ function createHybridWrapper(func, bitmask, thisArg, partials, holders, partials
 
     if (argPos) {
       args = reorder(args, argPos);
+    } else if (isFlip && args.length > 1) {
+      args.reverse();
     }
     if (isAry && ary < args.length) {
       args.length = ary;
     }
-    if (this && this !== global && this instanceof wrapper) {
-      fn = Ctor || createCtorWrapper(func);
+    if (this && this !== root && this instanceof wrapper) {
+      fn = Ctor || createCtorWrapper(fn);
     }
     return fn.apply(thisBinding, args);
   }
@@ -17928,29 +18386,28 @@ function createHybridWrapper(func, bitmask, thisArg, partials, holders, partials
 }
 
 /**
- * Creates a function that wraps `func` and invokes it with the optional `this`
+ * Creates a function that wraps `func` to invoke it with the optional `this`
  * binding of `thisArg` and the `partials` prepended to those provided to
  * the wrapper.
  *
  * @private
- * @param {Function} func The function to partially apply arguments to.
- * @param {number} bitmask The bitmask of flags. See `createWrapper` for more details.
+ * @param {Function} func The function to wrap.
+ * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper` for more details.
  * @param {*} thisArg The `this` binding of `func`.
  * @param {Array} partials The arguments to prepend to those provided to the new function.
- * @returns {Function} Returns the new bound function.
+ * @returns {Function} Returns the new wrapped function.
  */
 function createPartialWrapper(func, bitmask, thisArg, partials) {
   var isBind = bitmask & BIND_FLAG,
       Ctor = createCtorWrapper(func);
 
   function wrapper() {
-    // Avoid `arguments` object use disqualifying optimizations by
-    // converting it to an array before providing it `func`.
     var argsIndex = -1,
         argsLength = arguments.length,
         leftIndex = -1,
         leftLength = partials.length,
-        args = Array(leftLength + argsLength);
+        args = Array(leftLength + argsLength),
+        fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
 
     while (++leftIndex < leftLength) {
       args[leftIndex] = partials[leftIndex];
@@ -17958,10 +18415,45 @@ function createPartialWrapper(func, bitmask, thisArg, partials) {
     while (argsLength--) {
       args[leftIndex++] = arguments[++argsIndex];
     }
-    var fn = (this && this !== global && this instanceof wrapper) ? Ctor : func;
-    return fn.apply(isBind ? thisArg : this, args);
+    return apply(fn, isBind ? thisArg : this, args);
   }
   return wrapper;
+}
+
+/**
+ * Creates a function that wraps `func` to continue currying.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {number} bitmask The bitmask of wrapper flags. See `createWrapper` for more details.
+ * @param {Function} wrapFunc The function to create the `func` wrapper.
+ * @param {*} placeholder The placeholder to replace.
+ * @param {*} [thisArg] The `this` binding of `func`.
+ * @param {Array} [partials] The arguments to prepend to those provided to the new function.
+ * @param {Array} [holders] The `partials` placeholder indexes.
+ * @param {Array} [argPos] The argument positions of the new function.
+ * @param {number} [ary] The arity cap of `func`.
+ * @param {number} [arity] The arity of `func`.
+ * @returns {Function} Returns the new wrapped function.
+ */
+function createRecurryWrapper(func, bitmask, wrapFunc, placeholder, thisArg, partials, holders, argPos, ary, arity) {
+  var isCurry = bitmask & CURRY_FLAG,
+      newArgPos = argPos ? copyArray(argPos) : undefined,
+      newsHolders = isCurry ? holders : undefined,
+      newHoldersRight = isCurry ? undefined : holders,
+      newPartials = isCurry ? partials : undefined,
+      newPartialsRight = isCurry ? undefined : partials;
+
+  bitmask |= (isCurry ? PARTIAL_FLAG : PARTIAL_RIGHT_FLAG);
+  bitmask &= ~(isCurry ? PARTIAL_RIGHT_FLAG : PARTIAL_FLAG);
+
+  if (!(bitmask & CURRY_BOUND_FLAG)) {
+    bitmask &= ~(BIND_FLAG | BIND_KEY_FLAG);
+  }
+  var result = wrapFunc(func, bitmask, thisArg, newPartials, newsHolders, newPartialsRight, newHoldersRight, newArgPos, ary, arity);
+
+  result.placeholder = placeholder;
+  return result;
 }
 
 /**
@@ -17969,8 +18461,8 @@ function createPartialWrapper(func, bitmask, thisArg, partials) {
  * `this` binding and partially applied arguments.
  *
  * @private
- * @param {Function|string} func The function or method name to reference.
- * @param {number} bitmask The bitmask of flags.
+ * @param {Function|string} func The function or method name to wrap.
+ * @param {number} bitmask The bitmask of wrapper flags.
  *  The bitmask may be composed of the following flags:
  *     1 - `_.bind`
  *     2 - `_.bindKey`
@@ -17999,7 +18491,10 @@ function createWrapper(func, bitmask, thisArg, partials, holders, argPos, ary, a
     bitmask &= ~(PARTIAL_FLAG | PARTIAL_RIGHT_FLAG);
     partials = holders = undefined;
   }
-  length -= (holders ? holders.length : 0);
+  ary = ary === undefined ? ary : nativeMax(toInteger(ary), 0);
+  arity = arity === undefined ? arity : toInteger(arity);
+  length -= holders ? holders.length : 0;
+
   if (bitmask & PARTIAL_RIGHT_FLAG) {
     var partialsRight = partials,
         holdersRight = holders;
@@ -18008,32 +18503,28 @@ function createWrapper(func, bitmask, thisArg, partials, holders, argPos, ary, a
   }
   var newData = [func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity];
 
-  newData[9] = arity == null
+  func = newData[0];
+  bitmask = newData[1];
+  thisArg = newData[2];
+  partials = newData[3];
+  holders = newData[4];
+  arity = newData[9] = newData[9] == null
     ? (isBindKey ? 0 : func.length)
-    : (nativeMax(arity - length, 0) || 0);
+    : nativeMax(newData[9] - length, 0);
 
-  if (bitmask == BIND_FLAG) {
-    var result = createBindWrapper(newData[0], newData[2]);
-  } else if ((bitmask == PARTIAL_FLAG || bitmask == (BIND_FLAG | PARTIAL_FLAG)) && !newData[4].length) {
-    result = createPartialWrapper.apply(undefined, newData);
+  if (!arity && bitmask & (CURRY_FLAG | CURRY_RIGHT_FLAG)) {
+    bitmask &= ~(CURRY_FLAG | CURRY_RIGHT_FLAG);
+  }
+  if (!bitmask || bitmask == BIND_FLAG) {
+    var result = createBaseWrapper(func, bitmask, thisArg);
+  } else if (bitmask == CURRY_FLAG || bitmask == CURRY_RIGHT_FLAG) {
+    result = createCurryWrapper(func, bitmask, arity);
+  } else if ((bitmask == PARTIAL_FLAG || bitmask == (BIND_FLAG | PARTIAL_FLAG)) && !holders.length) {
+    result = createPartialWrapper(func, bitmask, thisArg, partials);
   } else {
     result = createHybridWrapper.apply(undefined, newData);
   }
   return result;
-}
-
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */
-function isIndex(value, length) {
-  value = (typeof value == 'number' || reIsUint.test(value)) ? +value : -1;
-  length = length == null ? MAX_SAFE_INTEGER : length;
-  return value > -1 && value % 1 == 0 && value < length;
 }
 
 /**
@@ -18049,7 +18540,7 @@ function isIndex(value, length) {
 function reorder(array, indexes) {
   var arrLength = array.length,
       length = nativeMin(indexes.length, arrLength),
-      oldArray = arrayCopy(array);
+      oldArray = copyArray(array);
 
   while (length--) {
     var index = indexes[length];
@@ -18059,6 +18550,30 @@ function reorder(array, indexes) {
 }
 
 /**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 8 which returns 'object' for typed array constructors, and
+  // PhantomJS 1.9 which returns 'function' for `NodeList` instances.
+  var tag = isObject(value) ? objectToString.call(value) : '';
+  return tag == funcTag || tag == genTag;
+}
+
+/**
  * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
  * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
  *
@@ -18075,81 +18590,151 @@ function reorder(array, indexes) {
  * _.isObject([1, 2, 3]);
  * // => true
  *
- * _.isObject(1);
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
  * // => false
  */
 function isObject(value) {
-  // Avoid a V8 JIT bug in Chrome 19-20.
-  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
   var type = typeof value;
   return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Converts `value` to an integer.
+ *
+ * **Note:** This function is loosely based on [`ToInteger`](http://www.ecma-international.org/ecma-262/6.0/#sec-tointeger).
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to convert.
+ * @returns {number} Returns the converted integer.
+ * @example
+ *
+ * _.toInteger(3);
+ * // => 3
+ *
+ * _.toInteger(Number.MIN_VALUE);
+ * // => 0
+ *
+ * _.toInteger(Infinity);
+ * // => 1.7976931348623157e+308
+ *
+ * _.toInteger('3');
+ * // => 3
+ */
+function toInteger(value) {
+  if (!value) {
+    return value === 0 ? value : 0;
+  }
+  value = toNumber(value);
+  if (value === INFINITY || value === -INFINITY) {
+    var sign = (value < 0 ? -1 : 1);
+    return sign * MAX_INTEGER;
+  }
+  var remainder = value % 1;
+  return value === value ? (remainder ? value - remainder : value) : 0;
+}
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3);
+ * // => 3
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3');
+ * // => 3
+ */
+function toNumber(value) {
+  if (isObject(value)) {
+    var other = isFunction(value.valueOf) ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
 }
 
 module.exports = createWrapper;
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"lodash._arraycopy":152,"lodash._basecreate":153,"lodash._replaceholders":154}],152:[function(require,module,exports){
-arguments[4][91][0].apply(exports,arguments)
-},{"dup":91}],153:[function(require,module,exports){
+},{"lodash._root":149}],149:[function(require,module,exports){
+(function (global){
 /**
- * lodash 3.0.3 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern modularize exports="npm" -o ./`
- * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * lodash 3.0.0 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  * Available under MIT license <https://lodash.com/license>
  */
 
+/** Used to determine if values are of the language type `Object`. */
+var objectTypes = {
+  'function': true,
+  'object': true
+};
+
+/** Detect free variable `exports`. */
+var freeExports = (objectTypes[typeof exports] && exports && !exports.nodeType) ? exports : null;
+
+/** Detect free variable `module`. */
+var freeModule = (objectTypes[typeof module] && module && !module.nodeType) ? module : null;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = checkGlobal(freeExports && freeModule && typeof global == 'object' && global);
+
+/** Detect free variable `self`. */
+var freeSelf = checkGlobal(objectTypes[typeof self] && self);
+
+/** Detect free variable `window`. */
+var freeWindow = checkGlobal(objectTypes[typeof window] && window);
+
+/** Detect `this` as the global object. */
+var thisGlobal = checkGlobal(objectTypes[typeof this] && this);
+
 /**
- * The base implementation of `_.create` without support for assigning
- * properties to the created object.
+ * Used as a reference to the global object.
+ *
+ * The `this` value is used if it's the global object to avoid Greasemonkey's
+ * restricted `window` object, otherwise the `window` object is used.
+ */
+var root = freeGlobal || ((freeWindow !== (thisGlobal && thisGlobal.window)) && freeWindow) || freeSelf || thisGlobal || Function('return this')();
+
+/**
+ * Checks if `value` is a global object.
  *
  * @private
- * @param {Object} prototype The object to inherit from.
- * @returns {Object} Returns the new object.
- */
-var baseCreate = (function() {
-  function object() {}
-  return function(prototype) {
-    if (isObject(prototype)) {
-      object.prototype = prototype;
-      var result = new object;
-      object.prototype = undefined;
-    }
-    return result || {};
-  };
-}());
-
-/**
- * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
- * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(1);
- * // => false
+ * @returns {null|Object} Returns `value` if it's a global object, else `null`.
  */
-function isObject(value) {
-  // Avoid a V8 JIT bug in Chrome 19-20.
-  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
-  var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
+function checkGlobal(value) {
+  return (value && value.Object === Object) ? value : null;
 }
 
-module.exports = baseCreate;
+module.exports = root;
 
-},{}],154:[function(require,module,exports){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],150:[function(require,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -18188,9 +18773,9 @@ function replaceHolders(array, placeholder) {
 
 module.exports = replaceHolders;
 
-},{}],155:[function(require,module,exports){
-arguments[4][84][0].apply(exports,arguments)
-},{"dup":84}],156:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
+arguments[4][82][0].apply(exports,arguments)
+},{"dup":82}],152:[function(require,module,exports){
 /**
  * lodash 3.1.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -18242,29 +18827,29 @@ var pick = restParam(function(object, props) {
 
 module.exports = pick;
 
-},{"lodash._baseflatten":157,"lodash._bindcallback":160,"lodash._pickbyarray":161,"lodash._pickbycallback":162,"lodash.restparam":167}],157:[function(require,module,exports){
-arguments[4][105][0].apply(exports,arguments)
-},{"dup":105,"lodash.isarguments":158,"lodash.isarray":159}],158:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],159:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"dup":88}],160:[function(require,module,exports){
+},{"lodash._baseflatten":153,"lodash._bindcallback":156,"lodash._pickbyarray":157,"lodash._pickbycallback":158,"lodash.restparam":163}],153:[function(require,module,exports){
+arguments[4][102][0].apply(exports,arguments)
+},{"dup":102,"lodash.isarguments":154,"lodash.isarray":155}],154:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],155:[function(require,module,exports){
+arguments[4][86][0].apply(exports,arguments)
+},{"dup":86}],156:[function(require,module,exports){
+arguments[4][80][0].apply(exports,arguments)
+},{"dup":80}],157:[function(require,module,exports){
+arguments[4][140][0].apply(exports,arguments)
+},{"dup":140}],158:[function(require,module,exports){
+arguments[4][141][0].apply(exports,arguments)
+},{"dup":141,"lodash._basefor":159,"lodash.keysin":160}],159:[function(require,module,exports){
+arguments[4][93][0].apply(exports,arguments)
+},{"dup":93}],160:[function(require,module,exports){
+arguments[4][126][0].apply(exports,arguments)
+},{"dup":126,"lodash.isarguments":161,"lodash.isarray":162}],161:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],162:[function(require,module,exports){
+arguments[4][86][0].apply(exports,arguments)
+},{"dup":86}],163:[function(require,module,exports){
 arguments[4][82][0].apply(exports,arguments)
-},{"dup":82}],161:[function(require,module,exports){
-arguments[4][143][0].apply(exports,arguments)
-},{"dup":143}],162:[function(require,module,exports){
-arguments[4][144][0].apply(exports,arguments)
-},{"dup":144,"lodash._basefor":163,"lodash.keysin":164}],163:[function(require,module,exports){
-arguments[4][95][0].apply(exports,arguments)
-},{"dup":95}],164:[function(require,module,exports){
-arguments[4][129][0].apply(exports,arguments)
-},{"dup":129,"lodash.isarguments":165,"lodash.isarray":166}],165:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],166:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"dup":88}],167:[function(require,module,exports){
-arguments[4][84][0].apply(exports,arguments)
-},{"dup":84}],168:[function(require,module,exports){
+},{"dup":82}],164:[function(require,module,exports){
 /**
  * lodash 3.2.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -18372,7 +18957,7 @@ function uniq(array, isSorted, iteratee, thisArg) {
 
 module.exports = uniq;
 
-},{"lodash._basecallback":169,"lodash._baseuniq":178,"lodash._isiterateecall":183}],169:[function(require,module,exports){
+},{"lodash._basecallback":165,"lodash._baseuniq":174,"lodash._isiterateecall":179}],165:[function(require,module,exports){
 /**
  * lodash 3.3.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -18796,7 +19381,7 @@ function property(path) {
 
 module.exports = baseCallback;
 
-},{"lodash._baseisequal":170,"lodash._bindcallback":174,"lodash.isarray":184,"lodash.pairs":175}],170:[function(require,module,exports){
+},{"lodash._baseisequal":166,"lodash._bindcallback":170,"lodash.isarray":180,"lodash.pairs":171}],166:[function(require,module,exports){
 /**
  * lodash 3.0.7 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -19140,15 +19725,15 @@ function isObject(value) {
 
 module.exports = baseIsEqual;
 
-},{"lodash.isarray":184,"lodash.istypedarray":171,"lodash.keys":172}],171:[function(require,module,exports){
-arguments[4][127][0].apply(exports,arguments)
-},{"dup":127}],172:[function(require,module,exports){
+},{"lodash.isarray":180,"lodash.istypedarray":167,"lodash.keys":168}],167:[function(require,module,exports){
+arguments[4][124][0].apply(exports,arguments)
+},{"dup":124}],168:[function(require,module,exports){
+arguments[4][83][0].apply(exports,arguments)
+},{"dup":83,"lodash._getnative":178,"lodash.isarguments":169,"lodash.isarray":180}],169:[function(require,module,exports){
 arguments[4][85][0].apply(exports,arguments)
-},{"dup":85,"lodash._getnative":182,"lodash.isarguments":173,"lodash.isarray":184}],173:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],174:[function(require,module,exports){
-arguments[4][82][0].apply(exports,arguments)
-},{"dup":82}],175:[function(require,module,exports){
+},{"dup":85}],170:[function(require,module,exports){
+arguments[4][80][0].apply(exports,arguments)
+},{"dup":80}],171:[function(require,module,exports){
 /**
  * lodash 3.0.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -19228,11 +19813,11 @@ function pairs(object) {
 
 module.exports = pairs;
 
-},{"lodash.keys":176}],176:[function(require,module,exports){
+},{"lodash.keys":172}],172:[function(require,module,exports){
+arguments[4][83][0].apply(exports,arguments)
+},{"dup":83,"lodash._getnative":178,"lodash.isarguments":173,"lodash.isarray":180}],173:[function(require,module,exports){
 arguments[4][85][0].apply(exports,arguments)
-},{"dup":85,"lodash._getnative":182,"lodash.isarguments":177,"lodash.isarray":184}],177:[function(require,module,exports){
-arguments[4][87][0].apply(exports,arguments)
-},{"dup":87}],178:[function(require,module,exports){
+},{"dup":85}],174:[function(require,module,exports){
 /**
  * lodash 3.0.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -19302,19 +19887,19 @@ function baseUniq(array, iteratee) {
 
 module.exports = baseUniq;
 
-},{"lodash._baseindexof":179,"lodash._cacheindexof":180,"lodash._createcache":181}],179:[function(require,module,exports){
-arguments[4][110][0].apply(exports,arguments)
-},{"dup":110}],180:[function(require,module,exports){
-arguments[4][111][0].apply(exports,arguments)
-},{"dup":111}],181:[function(require,module,exports){
-arguments[4][112][0].apply(exports,arguments)
-},{"dup":112,"lodash._getnative":182}],182:[function(require,module,exports){
+},{"lodash._baseindexof":175,"lodash._cacheindexof":176,"lodash._createcache":177}],175:[function(require,module,exports){
+arguments[4][107][0].apply(exports,arguments)
+},{"dup":107}],176:[function(require,module,exports){
+arguments[4][108][0].apply(exports,arguments)
+},{"dup":108}],177:[function(require,module,exports){
+arguments[4][109][0].apply(exports,arguments)
+},{"dup":109,"lodash._getnative":178}],178:[function(require,module,exports){
+arguments[4][84][0].apply(exports,arguments)
+},{"dup":84}],179:[function(require,module,exports){
+arguments[4][81][0].apply(exports,arguments)
+},{"dup":81}],180:[function(require,module,exports){
 arguments[4][86][0].apply(exports,arguments)
-},{"dup":86}],183:[function(require,module,exports){
-arguments[4][83][0].apply(exports,arguments)
-},{"dup":83}],184:[function(require,module,exports){
-arguments[4][88][0].apply(exports,arguments)
-},{"dup":88}],185:[function(require,module,exports){
+},{"dup":86}],181:[function(require,module,exports){
 /*
  Copyright 2013 Daniel Wirtz <dcode@dcode.io>
  Copyright 2009 The Closure Library Authors. All Rights Reserved.
@@ -20395,7 +20980,7 @@ arguments[4][88][0].apply(exports,arguments)
     return Long;
 });
 
-},{}],186:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 /**
  * Advanced Encryption Standard (AES) implementation.
  *
@@ -21493,7 +22078,7 @@ function _createCipher(options) {
 
 })();
 
-},{"./cipher":189,"./cipherModes":190,"./util":215}],187:[function(require,module,exports){
+},{"./cipher":185,"./cipherModes":186,"./util":211}],183:[function(require,module,exports){
 /**
  * A Javascript implementation of AES Cipher Suites for TLS.
  *
@@ -21762,7 +22347,7 @@ function decrypt_aes_cbc_sha1(record, s) {
 
 })();
 
-},{"./aes":186,"./cipher":189,"./tls":214,"./util":215}],188:[function(require,module,exports){
+},{"./aes":182,"./cipher":185,"./tls":210,"./util":211}],184:[function(require,module,exports){
 /**
  * Javascript implementation of Abstract Syntax Notation Number One.
  *
@@ -22830,7 +23415,7 @@ asn1.prettyPrint = function(obj, level, indentation) {
 
 })();
 
-},{"./pki":205,"./util":215}],189:[function(require,module,exports){
+},{"./pki":201,"./util":211}],185:[function(require,module,exports){
 /**
  * Cipher base API.
  *
@@ -23068,7 +23653,7 @@ BlockCipher.prototype.finish = function(pad) {
 
 })();
 
-},{"./util":215}],190:[function(require,module,exports){
+},{"./util":211}],186:[function(require,module,exports){
 /**
  * Supported cipher modes.
  *
@@ -23835,7 +24420,7 @@ function from64To32(num) {
 
 })();
 
-},{"./cipher":189,"./util":215}],191:[function(require,module,exports){
+},{"./cipher":185,"./util":211}],187:[function(require,module,exports){
 /**
  * DES (Data Encryption Standard) implementation.
  *
@@ -24337,7 +24922,7 @@ function _createCipher(options) {
 
 })();
 
-},{"./cipher":189,"./cipherModes":190,"./util":215}],192:[function(require,module,exports){
+},{"./cipher":185,"./cipherModes":186,"./util":211}],188:[function(require,module,exports){
 /**
  * Hash-based Message Authentication Code implementation. Requires a message
  * digest object that can be obtained, for example, from forge.md.sha1 or
@@ -24497,7 +25082,7 @@ hmac.create = function() {
 
 })();
 
-},{"./md":194,"./md5":195,"./sha1":211,"./util":215}],193:[function(require,module,exports){
+},{"./md":190,"./md5":191,"./sha1":207,"./util":211}],189:[function(require,module,exports){
 /**
  * Wrapper for JSBN
  *
@@ -24510,7 +25095,7 @@ hmac.create = function() {
   exports.BigInteger = require("jsbn").BigInteger;
 })();
 
-},{"jsbn":217}],194:[function(require,module,exports){
+},{"jsbn":213}],190:[function(require,module,exports){
 /**
  * Node.js module for Forge message digests.
  *
@@ -24528,7 +25113,7 @@ forge.md.algorithms = {};
 
 })();
 
-},{}],195:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 /**
  * Message Digest Algorithm 5 with 128-bit digest (MD5) implementation.
  *
@@ -24802,7 +25387,7 @@ function _update(s, w, bytes) {
 }
 })();
 
-},{"./md":194,"./util":215}],196:[function(require,module,exports){
+},{"./md":190,"./util":211}],192:[function(require,module,exports){
 /**
  * Node.js module for Forge mask generation functions.
  *
@@ -24820,7 +25405,7 @@ forge.mgf.mgf1 = require("./mgf1");
 
 })();
 
-},{"./mgf1":197}],197:[function(require,module,exports){
+},{"./mgf1":193}],193:[function(require,module,exports){
 /**
  * Javascript implementation of mask generation function MGF1.
  *
@@ -24884,7 +25469,7 @@ mgf1.create = function(md) {
 
 })();
 
-},{"./mgf":196,"./util":215}],198:[function(require,module,exports){
+},{"./mgf":192,"./util":211}],194:[function(require,module,exports){
 /**
  * Object IDs for ASN.1.
  *
@@ -25105,7 +25690,7 @@ oids['timeStamping'] = '1.3.6.1.5.5.7.3.8';
 
 })();
 
-},{"./pki":205}],199:[function(require,module,exports){
+},{"./pki":201}],195:[function(require,module,exports){
 /**
  * Password-Based Key-Derivation Function #2 implementation.
  *
@@ -25277,7 +25862,7 @@ module.exports = forge.pbkdf2 = pkcs5.pbkdf2 = function(p, s, c, dkLen, md, call
 
 })();
 
-},{"./hmac":192,"./md":194,"./pkcs5":202,"./sha1":211,"./util":215}],200:[function(require,module,exports){
+},{"./hmac":188,"./md":190,"./pkcs5":198,"./sha1":207,"./util":211}],196:[function(require,module,exports){
 /**
  * Javascript implementation of basic PEM (Privacy Enhanced Mail) algorithms.
  *
@@ -25515,7 +26100,7 @@ function ltrim(str) {
 
 })();
 
-},{"./util":215}],201:[function(require,module,exports){
+},{"./util":211}],197:[function(require,module,exports){
 /**
  * Partial implementation of PKCS#1 v2.2: RSA-OEAP
  *
@@ -25802,7 +26387,7 @@ function rsa_mgf1(seed, maskLength, hash) {
 
 })();
 
-},{"./md":194,"./random":209,"./sha1":211,"./util":215}],202:[function(require,module,exports){
+},{"./md":190,"./random":205,"./sha1":207,"./util":211}],198:[function(require,module,exports){
 /**
  * Password-Based Key-Derivation Function #2 implementation.
  *
@@ -25822,7 +26407,7 @@ forge.pkcs5 = require("./pbkdf2");
 
 })();
 
-},{"./pbkdf2":199}],203:[function(require,module,exports){
+},{"./pbkdf2":195}],199:[function(require,module,exports){
 /**
  * Javascript implementation of PKCS#7 v1.5. Currently only certain parts of
  * PKCS#7 are implemented, especially the enveloped-data content type.
@@ -26617,7 +27202,7 @@ p7.createEnvelopedData = function() {
 
 })();
 
-},{"./aes":186,"./asn1":188,"./des":191,"./pem":200,"./pkcs7asn1":204,"./random":209,"./util":215,"./x509":216}],204:[function(require,module,exports){
+},{"./aes":182,"./asn1":184,"./des":187,"./pem":196,"./pkcs7asn1":200,"./random":205,"./util":211,"./x509":212}],200:[function(require,module,exports){
 /**
  * Javascript implementation of PKCS#7 v1.5.  Currently only certain parts of
  * PKCS#7 are implemented, especially the enveloped-data content type.
@@ -26969,7 +27554,7 @@ p7v.recipientInfoValidator = {
 
 })();
 
-},{"./asn1":188,"./pkcs7":203,"./util":215}],205:[function(require,module,exports){
+},{"./asn1":184,"./pkcs7":199,"./util":211}],201:[function(require,module,exports){
 /**
  * Javascript implementation of a basic Public Key Infrastructure, including
  * support for RSA public and private keys.
@@ -27075,7 +27660,7 @@ pki.privateKeyInfoToPem = function(pki, maxline) {
 
 })();
 
-},{"./asn1":188,"./oids":198,"./pem":200,"./util":215}],206:[function(require,module,exports){
+},{"./asn1":184,"./oids":194,"./pem":196,"./util":211}],202:[function(require,module,exports){
 /**
  * Prime number generation API.
  *
@@ -27361,7 +27946,7 @@ function getMillerRabinTests(bits) {
 
 })();
 
-},{"./jsbn":193,"./random":209,"./util":215}],207:[function(require,module,exports){
+},{"./jsbn":189,"./random":205,"./util":211}],203:[function(require,module,exports){
 /**
  * A javascript implementation of a cryptographically-secure
  * Pseudo Random Number Generator (PRNG). The Fortuna algorithm is followed
@@ -27771,7 +28356,7 @@ prng.create = function(plugin) {
 
 })();
 
-},{"./util":215,"crypto":undefined}],208:[function(require,module,exports){
+},{"./util":211,"crypto":undefined}],204:[function(require,module,exports){
 /**
  * Javascript implementation of PKCS#1 PSS signature padding.
  *
@@ -28020,7 +28605,7 @@ pss.create = function(options) {
 
 })();
 
-},{"./random":209,"./util":215}],209:[function(require,module,exports){
+},{"./random":205,"./util":211}],205:[function(require,module,exports){
 /**
  * An API for getting cryptographically-secure random bytes. The bytes are
  * generated using the Fortuna algorithm devised by Bruce Schneier and
@@ -28203,7 +28788,7 @@ forge.random.createInstance = spawnPrng;
 
 })();
 
-},{"./aes":186,"./md":194,"./prng":207,"./sha256":212,"./util":215}],210:[function(require,module,exports){
+},{"./aes":182,"./md":190,"./prng":203,"./sha256":208,"./util":211}],206:[function(require,module,exports){
 /**
  * Javascript implementation of basic RSA algorithms.
  *
@@ -29863,7 +30448,7 @@ function _getMillerRabinTests(bits) {
 
 })();
 
-},{"./asn1":188,"./jsbn":193,"./pkcs1":201,"./pki":205,"./prime":206,"./random":209,"./util":215}],211:[function(require,module,exports){
+},{"./asn1":184,"./jsbn":189,"./pkcs1":197,"./pki":201,"./prime":202,"./random":205,"./util":211}],207:[function(require,module,exports){
 /**
  * Secure Hash Algorithm with 160-bit digest (SHA-1) implementation.
  *
@@ -30157,7 +30742,7 @@ function _update(s, w, bytes) {
 }
 })();
 
-},{"./md":194,"./util":215}],212:[function(require,module,exports){
+},{"./md":190,"./util":211}],208:[function(require,module,exports){
 /**
  * Secure Hash Algorithm with 256-bit digest (SHA-256) implementation.
  *
@@ -30462,7 +31047,7 @@ function _update(s, w, bytes) {
 
 })();
 
-},{"./md":194,"./util":215}],213:[function(require,module,exports){
+},{"./md":190,"./util":211}],209:[function(require,module,exports){
 /**
  * Secure Hash Algorithm with a 1024-bit block size implementation.
  *
@@ -31014,7 +31599,7 @@ function _update(s, w, bytes) {
 
 })();
 
-},{"./md":194,"./util":215}],214:[function(require,module,exports){
+},{"./md":190,"./util":211}],210:[function(require,module,exports){
 /**
  * A Javascript implementation of Transport Layer Security (TLS).
  *
@@ -35294,7 +35879,7 @@ forge.tls.createConnection = tls.createConnection;
 
 })();
 
-},{"./asn1":188,"./hmac":192,"./md":194,"./md5":195,"./pem":200,"./random":209,"./sha1":211,"./util":215,"./x509":216}],215:[function(require,module,exports){
+},{"./asn1":184,"./hmac":188,"./md":190,"./md5":191,"./pem":196,"./random":205,"./sha1":207,"./util":211,"./x509":212}],211:[function(require,module,exports){
 /**
  * Utility functions for web applications.
  *
@@ -38195,7 +38780,7 @@ util.estimateCores = function(options, callback) {
 
 })();
 
-},{}],216:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 /**
  * Javascript implementation of X.509 and related components (such as
  * Certification Signing Requests) of a Public Key Infrastructure.
@@ -41326,12 +41911,12 @@ pki.verifyCertificateChain = function(caStore, chain, verify) {
 
 })();
 
-},{"./asn1":188,"./md":194,"./md5":195,"./mgf":196,"./pem":200,"./pki":205,"./pss":208,"./rsa":210,"./sha1":211,"./sha256":212,"./util":215}],217:[function(require,module,exports){
-arguments[4][77][0].apply(exports,arguments)
-},{"dup":77}],218:[function(require,module,exports){
+},{"./asn1":184,"./md":190,"./md5":191,"./mgf":192,"./pem":196,"./pki":201,"./pss":204,"./rsa":206,"./sha1":207,"./sha256":208,"./util":211}],213:[function(require,module,exports){
+arguments[4][75][0].apply(exports,arguments)
+},{"dup":75}],214:[function(require,module,exports){
 
 module.exports = require('./lib/urlsafe-base64');
-},{"./lib/urlsafe-base64":219}],219:[function(require,module,exports){
+},{"./lib/urlsafe-base64":215}],215:[function(require,module,exports){
 (function (Buffer){
 /*!
  * urlsafe-base64
@@ -41420,13 +42005,13 @@ exports.validate = function validate(base64) {
 };
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":undefined}],220:[function(require,module,exports){
+},{"buffer":undefined}],216:[function(require,module,exports){
 var rb = require('crypto').randomBytes;
 module.exports = function() {
   return rb(16);
 };
 
-},{"crypto":undefined}],221:[function(require,module,exports){
+},{"crypto":undefined}],217:[function(require,module,exports){
 //     uuid.js
 //
 //     Copyright (c) 2010-2012 Robert Kieffer
@@ -41611,7 +42196,574 @@ uuid.unparse = unparse;
 
 module.exports = uuid;
 
-},{"./rng":220}],222:[function(require,module,exports){
+},{"./rng":216}],218:[function(require,module,exports){
+/**!
+ * lib/keyobject.js -- KMS Key Representation
+ *
+ * Copyright (c) 2015 Cisco Systems, Inc. See LICENSE file.
+ */
+ "use strict";
+
+var jose = require("node-jose"),
+    uuid = require("uuid");
+
+var KMS = {
+  KeyObject: require("./keyobject")
+};
+
+function KMSContext() {
+  var sharedKey = null,
+      clientInfo = {},
+      serverInfo = {};
+
+  Object.defineProperty(this, "ephemeralKey", {
+    get: function() {
+      // TODO: honor expiration
+      return sharedKey;
+    },
+    set: function(key) {
+      sharedKey = key ?
+                  KMS.KeyObject.fromObject(key) :
+                  null;
+    },
+    enumerable: true
+  });
+  Object.defineProperty(this, "clientInfo", {
+    get: function() { return clientInfo; },
+    set: function(info) {
+      // TODO: validate client info
+      clientInfo = info || {};
+    },
+    enumerable: true
+  });
+  Object.defineProperty(this, "serverInfo", {
+    get: function() { return serverInfo; },
+    set: function(info) {
+      // TODO: validate server info
+      serverInfo = info || {};
+    },
+    enumerable: true
+  });
+
+  Object.defineProperty(this, "requestId", {
+    value: function() {
+      return uuid();
+    }
+  });
+}
+
+KMSContext.prototype.createECDHKey = function() {
+  var clientInfo = this.clientInfo;
+  var ks = jose.JWK.createKeyStore();
+
+  // TODO: make this more configurable
+  var keyType = "EC",
+      keyOrder = "P-256",
+      expiresIn = 3600000;
+  var promise = ks.generate(keyType, keyOrder);
+  promise = promise.then(function(k) {
+    var ts = new Date();
+    var rep = {
+     uri: "-internal/" + k.kid,
+     jwk: k.toJSON(true),
+     userId: (clientInfo && clientInfo.credential && clientInfo.credential.userId) ||
+             "",
+     clientId: (clientInfo && clientInfo.clientId) ||
+               "",
+     createDate: ts,
+     expirationDate: new Date(ts.getTime() + expiresIn)
+    };
+
+    return new KMS.KeyObject(rep);
+  });
+  return promise;
+};
+
+KMSContext.prototype.deriveEphemeralKey = function(remote) {
+  var local = this.ephemeralKey;
+  if (!local || !local.jwk || "EC" !== local.jwk.kty) {
+    return Promise.reject(new Error("invalid local ECDH key"));
+  }
+  remote = KMS.KeyObject.fromObject(remote);
+
+  var promise;
+  promise = Promise.all([local.asKey(), remote.asKey()]);
+  promise = promise.then(function(keys) {
+    var lkey = keys[0],
+        rkey = keys[1];
+    var props = {
+      public: rkey.toObject()
+    };
+    var k = lkey.toObject(true);
+    return jose.JWA.derive("ECDH-HKDF", k, props);
+  });
+  promise = promise.then(function(result) {
+    var uri = remote.uri,
+        created = remote.createDate,
+        expires = remote.expirationDate;
+    var shared = {
+      uri: uri,
+      createDate: created,
+      expirationDate: expires,
+      jwk: {
+        kty: "oct",
+        kid: uri,
+        alg: "A256GCM",
+        k: jose.util.base64url.encode(result)
+      }
+    };
+    return new KMS.KeyObject(shared);
+  });
+  return promise;
+};
+
+module.exports = KMSContext;
+
+},{"./keyobject":220,"node-jose":47,"uuid":249}],219:[function(require,module,exports){
+/**!
+ * lib/index.js -- KMS Entry Point
+ *
+ * Copyright (c) 2015 Cisco Systems, Inc. See LICENSE file.
+ */
+ "use strict";
+
+module.exports = {
+  KeyObject: require("./keyobject"),
+  Context: require("./context"),
+  Request: require("./request"),
+  Response: require("./response")
+};
+
+},{"./context":218,"./keyobject":220,"./request":221,"./response":222}],220:[function(require,module,exports){
+/**!
+ * lib/keyobject.js -- KMS Key Representation
+ *
+ * Copyright (c) 2015 Cisco Systems, Inc. See LICENSE file.
+ */
+ "use strict";
+
+var cloneDeep = require("lodash.clonedeep"),
+    jose = require("node-jose");
+
+function KMSKeyObject(rep) {
+  rep = cloneDeep(rep || {});
+  // coerce date fields
+  ["createDate", "expirationDate", "bindDate"].forEach(function(f) {
+    if (f in rep && rep[f]) {
+      rep[f] = "string" === typeof rep[f] ?
+               new Date(Date.parse(rep[f])) :
+               rep[f];
+    }
+  });
+
+  Object.defineProperty(this, "uri", {
+    get: function() { return rep.uri || ""; },
+    enumerable: true
+  });
+  Object.defineProperty(this, "jwk", {
+    get: function() { return rep.jwk || undefined; },
+    enumerable: true
+  });
+  Object.defineProperty(this, "userId", {
+    get: function() { return rep.userId || ""; },
+    enumerable: true
+  });
+  Object.defineProperty(this, "clientId", {
+    get: function() { return rep.clientId || ""; },
+    enumerable: true
+  });
+  Object.defineProperty(this, "createDate", {
+    get: function() { return rep.createDate || undefined; },
+    enumerable: true
+  });
+  Object.defineProperty(this, "expirationDate", {
+    get: function() { return rep.expirationDate || undefined; },
+    enumerable: true
+  });
+  Object.defineProperty(this, "bindDate", {
+    get: function() { return rep.bindDate || undefined; },
+    enumerable: true
+  });
+  Object.defineProperty(this, "resourceUri", {
+    get: function() { return rep.resourceUri || ""; },
+    enumerable: true
+  });
+}
+
+// ### Instance Methods ###
+KMSKeyObject.prototype.asKey = function() {
+  if (!this.jwk) {
+    return Promise.reject(new Error("'jwk' not set"));
+  }
+  return jose.JWK.asKey(this.jwk);
+};
+
+KMSKeyObject.prototype.toJSON = function() {
+  var self = this,
+      json = {};
+  Object.keys(this).forEach(function(f) {
+    var v = self[f];
+    if ("function" === typeof v || "undefined" === typeof v) {
+      return;
+    }
+    if (v instanceof Date) {
+      v = v.toISOString();
+    }
+    json[f] = cloneDeep(v);
+  });
+
+  return json;
+};
+
+// ### Class Functions ###
+KMSKeyObject.fromObject = function(rep) {
+  if (!rep) {
+    throw new TypeError("representation required");
+  }
+  if (rep instanceof KMSKeyObject) {
+    return rep;
+  }
+  return new KMSKeyObject(rep);
+};
+
+module.exports = KMSKeyObject;
+
+},{"lodash.clonedeep":236,"node-jose":47}],221:[function(require,module,exports){
+/**!
+ * lib/request.js -- KMS (Generic) Request
+ *
+ * Copyright (c) 2015 Cisco Systems, Inc. See LICENSE file.
+ */
+ "use strict";
+
+var clone = require("lodash.clone"),
+    jose = require("node-jose");
+
+function KMSRequest(body) {
+  var wrapped = "";
+  body = (body && clone(body)) || {};
+
+  Object.defineProperty(this, "wrapped", {
+    get: function() { return wrapped; },
+    set: function(w) { wrapped = String(w || ""); },
+    enumerable: true
+  });
+  Object.defineProperty(this, "body", {
+    get: function() { return body; },
+    set: function(b) {
+      b = (b && clone(b)) || {};
+
+      // carry forward requestId
+      if ("requestId" in body) {
+        b.requestId = body.requestId;
+      }
+      // carry forward uri
+      if ("uri" in body) {
+        b.uri = body.uri;
+      }
+      // carry forward method
+      if ("method" in body) {
+        b.method = body.method;
+      }
+      // clear any wrapped, then save
+      wrapped = "";
+      body = b;
+    },
+    enumerable: true
+  });
+
+  Object.defineProperty(this, "requestId", {
+    get: function() { return body.requestId || ""; },
+    set: function(id) {
+      if (!id) {
+        delete body.requestId;
+      } else {
+        body.requestId = id;
+      }
+    },
+    enumerable: true
+  });
+  Object.defineProperty(this, "uri", {
+    get: function() { return body.uri || ""; },
+    set: function(uri) {
+      if (!uri) {
+        delete body.uri;
+      } else {
+        body.uri = uri;
+      }
+    },
+    enumerable: true
+  });
+  Object.defineProperty(this, "method", {
+    get: function() { return body.method || ""; },
+    set: function(method) {
+      if (!method) {
+        delete body.method;
+      } else {
+        body.method = method;
+      }
+    },
+    enumerable: true
+  });
+}
+
+KMSRequest.prototype.wrap = function(ctx, opts) {
+  opts = opts || {};
+
+  // TODO: make this more configurable
+  var self = this,
+      promise;
+
+  // set the requestId if not already set
+  if (!this.requestId || opts.requestId) {
+    this.requestId = opts.requestId || ctx.requestId();
+  }
+
+  var body = this.body;
+  body.client = ctx.clientInfo;
+
+  // prepare the key
+  if (opts.serverKey) {
+    promise = jose.JWK.asKey(ctx.serverInfo.key);
+  } else {
+    promise = ctx.ephemeralKey.asKey();
+  }
+  promise = promise.then(function(jwk) {
+    var key = jwk;
+    var cfg = {
+      compact: true,
+      contentAlg: opts.contentAlg || "A256GCM"
+    };
+    var jwe = jose.JWE.createEncrypt(cfg, key);
+    return jwe.final(JSON.stringify(self.body), "utf8");
+  });
+  promise = promise.then(function(result) {
+    // save wrapped
+    self.wrapped = result;
+    return result;
+  });
+  return promise;
+};
+
+module.exports = KMSRequest;
+
+},{"lodash.clone":223,"node-jose":47}],222:[function(require,module,exports){
+/**!
+ * lib/response.js -- KMS (Generic) Response
+ *
+ * Copyright (c) 2015 Cisco Systems, Inc. See LICENSE file.
+ */
+ "use strict";
+
+var clone = require("lodash.clone"),
+    jose = require("node-jose");
+
+function KMSResponse(wrapped) {
+  wrapped = wrapped || "";
+  var body = {};
+
+  Object.defineProperty(this, "wrapped", {
+    get: function() { return wrapped; },
+    set: function(w) {
+      // clear existing body before saving wrapped
+      body = {};
+      wrapped = String(w || "");
+    },
+    enumerable: true
+  });
+  Object.defineProperty(this, "body", {
+    get: function() { return body; },
+    set: function(b) { body = (b && clone(b)) || {}; },
+    enumerable: true
+  });
+
+  Object.defineProperty(this, "status", {
+    get: function() { return body.status || 0; },
+    set: function(s) {
+      s = parseInt(s);
+      if (!isNaN(s)) {
+        body.status = s;
+      }
+    },
+    enumerable: true
+  });
+  Object.defineProperty(this, "reason", {
+    get: function() { return body.reason || ""; },
+    set: function(r) { body.reason = String(r || ""); },
+    enumerable: true
+  });
+  Object.defineProperty(this, "requestId", {
+    get: function() { return body.requestId || ""; },
+    set: function(id) { body.requestId = String(id || ""); },
+    enumerable: true
+  });
+}
+
+KMSResponse.prototype.unwrap = function(ctx, opts) {
+  opts = opts || {};
+
+  var keystore = jose.JWK.createKeyStore(),
+      waiting = [],
+      key;
+
+  // add ephemeral key (if any)
+  key = ctx.ephemeralKey && ctx.ephemeralKey.jwk;
+  if (key) {
+    waiting.push(keystore.add(key));
+  }
+  // add server key (if any)
+  key = ctx.serverInfo && ctx.serverInfo.key;
+  if (key) {
+    waiting.push(keystore.add(key));
+  }
+
+  var self = this;
+  var promise = Promise.all(waiting);
+  promise = promise.then(function() {
+    var wrapped = self.wrapped;
+    // count the dots
+    switch ((wrapped.match(/\./g) || []).length) {
+      case 2:   // signed
+        return jose.JWS.createVerify(keystore).
+               verify(wrapped);
+      case 4:   // encrypted
+        return jose.JWE.createDecrypt(keystore).
+               decrypt(wrapped);
+      default:  // bogus
+        return Promise.reject(new Error("invalid wrapped"));
+    }
+  });
+  promise = promise.then(function(result) {
+    // parse result to JSON
+    result = (result.plaintext || result.payload).toString("utf8");
+    result = JSON.parse(result);
+    // save it before returning it
+    self.body = result;
+    return result;
+  });
+  return promise;
+};
+
+module.exports = KMSResponse;
+
+},{"lodash.clone":223,"node-jose":47}],223:[function(require,module,exports){
+arguments[4][87][0].apply(exports,arguments)
+},{"dup":87,"lodash._baseclone":224,"lodash._bindcallback":234,"lodash._isiterateecall":235}],224:[function(require,module,exports){
+arguments[4][88][0].apply(exports,arguments)
+},{"dup":88,"lodash._arraycopy":225,"lodash._arrayeach":226,"lodash._baseassign":227,"lodash._basefor":229,"lodash.isarray":230,"lodash.keys":231}],225:[function(require,module,exports){
+arguments[4][89][0].apply(exports,arguments)
+},{"dup":89}],226:[function(require,module,exports){
+arguments[4][90][0].apply(exports,arguments)
+},{"dup":90}],227:[function(require,module,exports){
+arguments[4][77][0].apply(exports,arguments)
+},{"dup":77,"lodash._basecopy":228,"lodash.keys":231}],228:[function(require,module,exports){
+arguments[4][78][0].apply(exports,arguments)
+},{"dup":78}],229:[function(require,module,exports){
+arguments[4][93][0].apply(exports,arguments)
+},{"dup":93}],230:[function(require,module,exports){
+arguments[4][86][0].apply(exports,arguments)
+},{"dup":86}],231:[function(require,module,exports){
+arguments[4][83][0].apply(exports,arguments)
+},{"dup":83,"lodash._getnative":232,"lodash.isarguments":233,"lodash.isarray":230}],232:[function(require,module,exports){
+arguments[4][84][0].apply(exports,arguments)
+},{"dup":84}],233:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],234:[function(require,module,exports){
+arguments[4][80][0].apply(exports,arguments)
+},{"dup":80}],235:[function(require,module,exports){
+arguments[4][81][0].apply(exports,arguments)
+},{"dup":81}],236:[function(require,module,exports){
+/**
+ * lodash 3.0.2 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modern modularize exports="npm" -o ./`
+ * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Available under MIT license <https://lodash.com/license>
+ */
+var baseClone = require('lodash._baseclone'),
+    bindCallback = require('lodash._bindcallback');
+
+/**
+ * Creates a deep clone of `value`. If `customizer` is provided it's invoked
+ * to produce the cloned values. If `customizer` returns `undefined` cloning
+ * is handled by the method instead. The `customizer` is bound to `thisArg`
+ * and invoked with up to three argument; (value [, index|key, object]).
+ *
+ * **Note:** This method is loosely based on the
+ * [structured clone algorithm](http://www.w3.org/TR/html5/infrastructure.html#internal-structured-cloning-algorithm).
+ * The enumerable properties of `arguments` objects and objects created by
+ * constructors other than `Object` are cloned to plain `Object` objects. An
+ * empty object is returned for uncloneable values such as functions, DOM nodes,
+ * Maps, Sets, and WeakMaps.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to deep clone.
+ * @param {Function} [customizer] The function to customize cloning values.
+ * @param {*} [thisArg] The `this` binding of `customizer`.
+ * @returns {*} Returns the deep cloned value.
+ * @example
+ *
+ * var users = [
+ *   { 'user': 'barney' },
+ *   { 'user': 'fred' }
+ * ];
+ *
+ * var deep = _.cloneDeep(users);
+ * deep[0] === users[0];
+ * // => false
+ *
+ * // using a customizer callback
+ * var el = _.cloneDeep(document.body, function(value) {
+ *   if (_.isElement(value)) {
+ *     return value.cloneNode(true);
+ *   }
+ * });
+ *
+ * el === document.body
+ * // => false
+ * el.nodeName
+ * // => BODY
+ * el.childNodes.length;
+ * // => 20
+ */
+function cloneDeep(value, customizer, thisArg) {
+  return typeof customizer == 'function'
+    ? baseClone(value, true, bindCallback(customizer, thisArg, 3))
+    : baseClone(value, true);
+}
+
+module.exports = cloneDeep;
+
+},{"lodash._baseclone":237,"lodash._bindcallback":247}],237:[function(require,module,exports){
+arguments[4][88][0].apply(exports,arguments)
+},{"dup":88,"lodash._arraycopy":238,"lodash._arrayeach":239,"lodash._baseassign":240,"lodash._basefor":242,"lodash.isarray":243,"lodash.keys":244}],238:[function(require,module,exports){
+arguments[4][89][0].apply(exports,arguments)
+},{"dup":89}],239:[function(require,module,exports){
+arguments[4][90][0].apply(exports,arguments)
+},{"dup":90}],240:[function(require,module,exports){
+arguments[4][77][0].apply(exports,arguments)
+},{"dup":77,"lodash._basecopy":241,"lodash.keys":244}],241:[function(require,module,exports){
+arguments[4][78][0].apply(exports,arguments)
+},{"dup":78}],242:[function(require,module,exports){
+arguments[4][93][0].apply(exports,arguments)
+},{"dup":93}],243:[function(require,module,exports){
+arguments[4][86][0].apply(exports,arguments)
+},{"dup":86}],244:[function(require,module,exports){
+arguments[4][83][0].apply(exports,arguments)
+},{"dup":83,"lodash._getnative":245,"lodash.isarguments":246,"lodash.isarray":243}],245:[function(require,module,exports){
+arguments[4][84][0].apply(exports,arguments)
+},{"dup":84}],246:[function(require,module,exports){
+arguments[4][85][0].apply(exports,arguments)
+},{"dup":85}],247:[function(require,module,exports){
+arguments[4][80][0].apply(exports,arguments)
+},{"dup":80}],248:[function(require,module,exports){
+arguments[4][216][0].apply(exports,arguments)
+},{"crypto":undefined,"dup":216}],249:[function(require,module,exports){
+arguments[4][217][0].apply(exports,arguments)
+},{"./rng":248,"dup":217}],250:[function(require,module,exports){
 /**
  * A module representing the main, top-level SDK.
  * @module ContextService
@@ -41629,6 +42781,7 @@ module.exports = (function () {
 	var request = require('./request');
 	var utils = require('./utils');
 	var dictionary = require('./dictionary');
+	var log = require('./log');
 
 	function badEntity (input) {
 		return new Error('invalid Entity', input);
@@ -41649,7 +42802,11 @@ module.exports = (function () {
 	function decryptEntity (object) {
 		var entity = utils.entities.construct(this);
 		var unmarshal = entity.unmarshal.bind(entity);
-		return crypto.decrypt.call(entity, object).then(unmarshal);
+		return crypto.decrypt.call(entity, object).then(unmarshal,
+			function (err) {
+				log.error('Error decrypting entity. Id: ' + object.id, err);
+				return Promise.reject(err);
+			});
 	}
 
 	function enumerationObject () {
@@ -41773,7 +42930,7 @@ module.exports = (function () {
 			return query(type, parameters, operation).then(function (params) {
 				return client.eventually.search(entity, params);
 			}).then(function decryptEntitiesFromREST (response) {
-				return promise.all(response.data.map(decryptEntity, type));
+				return promise.allResolved(response.data.map(decryptEntity, type));
 			});
 		},
 
@@ -41792,23 +42949,33 @@ module.exports = (function () {
 		/**
 		 * Provides a simple mechanism that (re-)initializes the SDK's internals
 		 * N.B. This returns a Promise that needs to resolve before using the SDK.
-		 * (currently, you must provide both a token:String and discovery:String)
+		 * (currently, you must provide both a token:String, discovery:String, clientId:String, and clientSecret:String)
 		 *
-		 * For example:
+		 *  For example:
 		 *
-		 *  var discovery = 'https://...'; // URL or, discovery = { host:String }
-		 *  var token = 'eyJhbGciOiJSUzI1NiJ9...'; // acquired via identity broker
-		 *  ContextService.init({ discovery: discovery, token: token }).then(...)
+		 *		var discovery = 'https://...';
 		 *
-		 * In addition, ContextService.init:Function takes a 2nd (optional:Object) argument:
+		 *		var token = 'eyJhbGciOiJSUzI1NiJ9...'; // acquired via identity broker
 		 *
-		 *  var required = { discovery: { host: '...' }, token: token };
-		 *  var optional = { LOGGER: function logger (level, message) { ... } };
-		 *  // the logger:Function will intercept all levels of log message:String
-		 *  optional.LAB_MODE = true; // permits delete operations (for testing)
-		 *  optional.REQUEST_TIMEOUT = 15000; // in milliseconds (e.g. 15s limit)
-		 *  optional.DISABLE_CACHE = true; // defaults to false. set to true to disable cache in dictionary
-		 *  ContextService.init(required, optional); // Promise<services:Object>
+		 *		var clientId = '123456789';
+		 *
+		 *		var clientSecret = '987654321';
+		 *
+		 *		ContextService.init({ discovery: discovery, token: token, clientId: clientId, clientSecret: clientSecret }).then(...);
+		 *
+		 *  In addition, ContextService.init:Function takes a 2nd (optional:Object) argument:
+		 *
+		 *		var optional = {};
+		 *
+		 *		optional = { LOGGER: function logger (level, message) { ... } }; // the logger:Function will intercept all levels of log message:String
+		 *
+		 *		optional.LAB_MODE = true; // permits delete operations (for testing)
+		 *
+		 *		optional.REQUEST_TIMEOUT = 15000; // in milliseconds (e.g. 15s limit)
+		 *
+		 *		optional.DISABLE_TIMERS = true; // defaults to false. set to true to disable cache in dictionary and rotation timers in kms
+		 *
+		 *		ContextService.init(required, optional); // Promise<services:Object>
 		 *
 		 * @returns {Promise} resolved to discovered services:Object, or rejected
 		 * @function
@@ -41836,143 +43003,7 @@ module.exports = (function () {
 
 })();
 
-},{"./client":224,"./crypto.JOSE":226,"./customer":227,"./dictionary":228,"./pod":233,"./promises":234,"./query":235,"./request":236,"./utils":241}],223:[function(require,module,exports){
-module.exports = (function () {
-	'use strict';
-	// Load required modules
-	var promise = require('./promises');
-	var	utils = require('./utils');
-
-
-
-	// FIXME (tohagema): this might be needed later, but could go in config
-	//var scope = [config.defaults.scopes.read, config.defaults.scopes.write].join();
-
-	var authorizeProvider = function defaultAuthorizationProvider (options) {
-
-		if (!utils.isString(options.token)) throw new Error('provide token:String');
-
-		var Authorization = ['Bearer', options.token].join(' ');
-		return function authorizeStandaloneClientWithStaticToken () {
-			return promise.when(Authorization); // doesn't fall-back
-		};
-
-		/*
-		// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-		var request = {
-			data: utils.queryString({
-				grant_type: 'client_credentials',
-				scope: scope
-			}),
-			headers: {
-				Authorization: [Basic: options.credentials }),
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			method: 'POST',
-			url: options.broker.url
-		};
-		// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
-
-		// YAGNI (tohagema): could specify different entitlements (optional)
-		return function authorizeBasicStandaloneClient (entitlements) {
-			return promise.fetch.response(request).then(function (response) {
-				// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-				var Authorization = ['Bearer', response.data.access_token || ''].join(' ');
-				// jscs:enable requireCamelCaseOrUpperCaseIdentifiers
-				log.debug('[NETWORK] setting header, Authorization:', Authorization);
-				return promise.fetch.header('Authorization', Authorization);
-			}).catch(function decorateWithRetryFunction (reason) {
-				reason.retry = authorizeBasicStandaloneClient;
-				return promise.reject(reason);
-			});
-		};
-		*/
-
-		/*
-		// construct whatever options-parameterized requests are needed for flow
-		// use options.broker.{authorize,url} (in that order) how to call revoke?
-		return function authorizeSAMLStandaloneClient (entitlements) {
-			// perform Promise-chain for acquiring/exchanging assertion/code
-			// then(setAuthorizationHeader).catch(decorateWithRetryFunction)
-			return promise.reject(new Error('not yet implemented'));
-		};
-		*/
-
-	};
-
-	/*
-	(function authorizeProviderOverrides (finesse, gadgets) {
-
-		// TODO (tohagema): wrap the rest of this in Hub.onConnect
-		// set up client services, once OpenAJAX Hub has connected
-		// also, configure log facilities to use the Finesse logger
-		// also, check ahead-of-time for Finesse v11+ (or just return)
-		if (!utils.isObject(finesse) || !utils.isObject(gadgets)) return;
-
-		try {
-
-			var url = (function (object) {
-				if (!utils.isObject(object)) return ''; // inspect properties?
-				var protocol = object.scheme; // browser URL protocol (HTTPS)
-				var host = object.host;       // browser URL hostname (side A/B)
-				var port = object.hostPort;   // browser URL port (usually default)
-				var endpoint = ['finesse-auth', 'api', 'Authorization'].join('/');
-				return [protocol, '://', host, ':', port, '/', endpoint].join('');
-			})(finesse.gadget.Config || {});
-
-			var query = { serviceType: 'ContextService', scope: scope };
-			var headers = { Accept: 'application/json', CONTENT_TYPE: 'JSON' };
-			var credentials = finesse.utilities.Utilities.getUserAuthString();
-			if (credentials) headers.Authorization = 'Basic ' + credentials;
-			else throw new Error('Utilities.getUserAuthString() failed');
-			log.debug('[NETWORK] Authorization will occur via Finesse:', url);
-
-			// N.B. finesseAuthorizationProvider ignores client configuration options
-			authorizeProvider = function finesseAuthorizationProvider (options) {
-				// YAGNI (tohagema): could specify different entitlements (optional)
-				return function authorizeFinesseAgent (entitlements) {
-					return promise.create(function (resolve, reject) {
-						var endpoint = [url, utils.queryString(query)].join('?');
-						// makeRequest: f(URL:String, callback:Function, params:Object)
-						gadgets.io.makeRequest(endpoint, function (response) {
-							if (!utils.isObject(response)) response = {}; // any alternative?
-							var data = JSON.parse(response.text || '{}'); // to this garbage?
-							if (utils.isString(data.accessToken)) resolve(data.accessToken);
-							else reject(new Error('no access token provided in response'));
-						}, { HEADERS: headers, METHOD: 'GET' }); // sent via Finesse
-						// FIXME (tohagema): use gadgets.io.* constants for opt_params
-					}).then(function setAuthorizationHeader (Authorization) {
-						log.debug('[NETWORK] setting header, Authorization:', Authorization);
-						return promise.fetch.header('Authorization', Authorization);
-					}).catch(function decorateWithRetryFunction (reason) {
-						reason.retry = authorizeFinesseAgent;
-						return promise.reject(reason);
-					});
-				};
-			}; // end finesseAuthorizationProvider
-
-		} catch (error) {
-			log.error('[NETWORK] Authorization falling-back due to error:', error);
-		}
-
-	})(window.finesse, window.gadgets); // end authorizeProviderOverrides
-	*/
-
-	return function decorateCopyOf (options) {
-		if (!utils.isObject(options)) options = {};
-		var copy = utils.copy(options); // Object
-		if (utils.isFunction(options.authorize)) {
-			copy.authorize = options.authorize;
-		} else {
-			copy.authorize = authorizeProvider(copy);
-		}
-		return copy;
-	};
-
-})();
-
-
-},{"./promises":234,"./utils":241}],224:[function(require,module,exports){
+},{"./client":251,"./crypto.JOSE":253,"./customer":254,"./dictionary":255,"./log":259,"./pod":261,"./promises":262,"./query":264,"./request":265,"./utils":270}],251:[function(require,module,exports){
 module.exports = (function () {
 
 	'use strict';
@@ -41983,8 +43014,10 @@ module.exports = (function () {
 	var utils = require('./utils');
 	var network = require('./network');
 	var exceptions = require('./exceptions');
-
-	var base64 = { decodeString: require('atob'), encodeString: require('btoa') };
+	var properties = require('./properties');
+	var kms = require('./kms');
+	var services = require('./services');
+	var strings = require('./strings');
 
 	var defaults = { // falls back on default options provided by config module
 		broker: config.defaults.broker, // CIS URL Strings: authorize, revoke, etc.
@@ -41993,12 +43026,10 @@ module.exports = (function () {
 	};
 
 	var sdkClient = null; // will be Promise<client:Harness>
-	// this is cisco's default org id. the org id is extracted from the token and
-	// set during init. will default back to cisco's token if unable to extract
-	// org id from token
-	var sdkOrganization = 'ba08ee57-1fe2-4250-9ee3-0dbe2ea92024';
+	// the org id will be retrieved from the management/user table during init
+	var sdkOrganization = null; // 'ba08ee57-1fe2-4250-9ee3-0dbe2ea92024';
 	var sdkWorkgroup = 'production'; // current default (@see LAB_MODE)
-	var disableCache = false; // current default (@see DISABLE_CACHE)
+	var disableTimers = false; // current default (@see DISABLE_TIMERS)
 
 	// Always returns a (new) valid (sanitized) options Object.
 	// The argument (options) may take one of the following forms:
@@ -42011,16 +43042,6 @@ module.exports = (function () {
 
 		if (!utils.isObject(required)) { // assumed connection:String
 			throw new IE('init:Function options required:Object', required);
-			/*
-			try {
-				required = JSON.parse(base64.decodeString(required));
-				// now just use required:Object (or decrypt w/e)
-				// there is another story for supporting this
-			} catch (error) {
-				log.error('[CLIENT] failed to parse options:', error);
-				throw new IE('valid connection:String', required);
-			}
-			*/
 		}
 
 		if (utils.isString(required.discovery) && required.discovery) {
@@ -42035,19 +43056,14 @@ module.exports = (function () {
 			throw new IE('token:String (non-empty option)', required.token);
 		}
 
-		// N.B. base64.decodeString("eyJhbGciOiJSUzI1NiJ9.") === "{"alg":"RS256"}"
-		// The second field of the token (decoded plaintext) has a cis_uuid:String
-		if (required.token.indexOf('eyJhbGciOiJSUzI1NiJ9.', 0) === 0) {
-			try {
-				var encoded = base64.decodeString(required.token.split('.')[1]);
-				sdkOrganization = JSON.parse(encoded).cis_uuid; // otherwise, default
-			} catch (error) {
-				log.error('[CLIENT] failed to parse token:', error);
-				throw new IE('valid token:String (from CIS)', required.token);
-			}
+		if (utils.isString(required.clientId) && utils.isString(required.clientSecret) && required.clientId && required.clientSecret) {
+			sanitized.clientId = required.clientId.slice();
+			sanitized.clientSecret = required.clientSecret.slice();
+		} else {
+			log.warn(strings.MISSING_CLIENT_ID_AND_SECRET);
 		}
 
-		// Support: optional parameters (LAB_MODE, LOGGER, REQUEST_TIMEOUT)
+		// Support: optional parameters (LAB_MODE, LOGGER, REQUEST_TIMEOUT, DISABLE_TIMERS)
 		if (utils.isObject(optional)) {
 			if (utils.isBoolean(optional.LAB_MODE)) {
 				sdkWorkgroup = (optional.LAB_MODE) ? 'lab' : 'production';
@@ -42055,8 +43071,8 @@ module.exports = (function () {
 			if (utils.isFunction(optional.LOGGER)) {
 				log.setLogFunction(optional.LOGGER);
 			}
-			if (utils.isBoolean(optional.DISABLE_CACHE)) {
-				disableCache = (optional.DISABLE_CACHE);
+			if (utils.isBoolean(optional.DISABLE_TIMERS)) {
+				disableTimers = (optional.DISABLE_TIMERS);
 			}
 			if (utils.isNumber(optional.REQUEST_TIMEOUT)) {
 				promise.fetch.defaults.timeout = optional.REQUEST_TIMEOUT;
@@ -42064,6 +43080,27 @@ module.exports = (function () {
 		}
 
 		return sanitized;
+	}
+
+	function initPropertiesAndKms (harness, token) {
+		// get features flags first then check if kms is toggled on
+		return properties.init(harness, getSdkWorkgroup()).then(function () {
+			if (properties.isFeatureEnabled('KMS_ENCRYPTION_KEY')) {
+				return harness.services.raw.User.get().then(function (response) {
+					sdkOrganization = response.data.orgId;
+					return kms.init(token, response.data.id, getDisableTimers(), getSdkOrganization());
+				});
+			}
+		});
+	}
+
+	function reduceTokenIfNecessary (options, harness) {
+		if (options.clientId && options.clientSecret) return harness.services.reduceTokenScope(options);
+		// set the same token for all three services if clientId/clientSecret was not passed in
+		Object.keys(config.defaults.scopes).forEach(function (service) {
+			services.raw.registerAuthorization(service, options.token);
+		});
+		return promise.resolve();
 	}
 
 	function createHarnessAndDiscover (required, optional) {
@@ -42080,12 +43117,15 @@ module.exports = (function () {
 		// 3) Optionally: OAuth2 scope(s) (e.g. 'contact-center-context:pod_read')
 		// 4) Optionally: ID broker URL (e.g. CIS/Finesse authorization endpoint)
 		var harness = network.createHarness(sanitizedOptions); // ordinary Object
-
-		return harness.services.discover().then(function (services) {
-			log.debug('[CLIENT] discovered services:', services);
-			return harness; // provides CRU(D)S Functions (and services Object)
+		return reduceTokenIfNecessary(sanitizedOptions, harness).then(function () {
+			return harness.services.discover().then(function (endpoints) {
+				log.debug('[CLIENT] discovered services:', endpoints);
+				return initPropertiesAndKms(harness, services.raw.getAuthorizationForType('kmsMessaging')).then(function () {
+					log.info('Successfully Initialized');
+					return harness; // provides CRU(D)S Functions (and services Object)
+				});
+			});
 		});
-
 	}
 
 	function existingOrNewConnection (required, optional) {
@@ -42106,8 +43146,8 @@ module.exports = (function () {
 		return sdkWorkgroup;
 	}
 
-	function getDisableCache () {
-		return disableCache;
+	function getDisableTimers () {
+		return disableTimers;
 	}
 
 	var clientOperations = ['create', 'read', 'update', 'search', 'delete'];
@@ -42130,13 +43170,13 @@ module.exports = (function () {
 		promise: existingOrNewConnection,
 		getOrganization: getSdkOrganization,
 		getWorkgroup: getSdkWorkgroup,
-		getDisableCache: getDisableCache,
+		getDisableTimers: getDisableTimers,
 		version: config.version // String
 	};
 
 })();
 
-},{"./config":225,"./exceptions":230,"./log":231,"./network":232,"./promises":234,"./utils":241,"atob":2,"btoa":19}],225:[function(require,module,exports){
+},{"./config":252,"./exceptions":257,"./kms":258,"./log":259,"./network":260,"./promises":262,"./properties":263,"./services":267,"./strings":268,"./utils":270}],252:[function(require,module,exports){
 (function () {
 
 	'use strict';
@@ -42149,40 +43189,41 @@ module.exports = (function () {
 
 	var discovery = { host: 'discovery.rciad.ciscoccservice.com' }; // prod
 
-	// scopes: { `${permission}`: `${namespace}:${prefix}_${permission}` } }
-	var scopes = { permissions: ['read', 'write'], prefix: 'pod' };
-
-	scopes.all = { /* `${namespace}`: [...] */ };
-	scopes.namespace = 'contact-center-context';
-	scopes.permissions.forEach(function (permission) {
-		var left = scopes.namespace; // constant:String(s)
-		var right = [scopes.prefix, permission].join('_');
-		scopes[permission] = [left, right].join(':');
-		if (Array.isArray(scopes.all[left])) {
-			scopes.all[left].push(right);
-		} else {
-			scopes.all[left] = [right];
-		}
-	});
+	var scopes = {
+		contextService: 'contact-center-context:pod_read contact-center-context:pod_write',
+		encryptionService: 'webex-squared:kms_read webex-squared:kms_write webex-squared:kms_bind',
+		kmsMessaging: 'spark:kms'
+	};
 
 	this.exports.defaults = { broker: broker, discovery: discovery, scopes: scopes };
 	this.exports.version = "1.0.5"; // eslint-disable-line no-undef, quotes
 
+	function getFunction (value) {
+		return function () {
+			return value;
+		};
+	}
+	// all of these exports contants but are actually expored as functions
+	// so they can be overridden by sinon
+	this.exports.FAILURE_RETRY_INTERVAL = getFunction(60000 * 1); 				// 1 minute
+	this.exports.KMS_KEY_ROTATION_INTERVAL = getFunction(60000 * 60 * 24);		// 24 hours in milliseconds
+	this.exports.KMS_KEY_ROTATION_STATIC_BACKOFF = getFunction(60000 * 15); 		// 15 minutes in milliseconds
+	this.exports.KMS_KEY_ROTATION_RANDOM_BACKOFF = getFunction(60000 * 30); 		// 30 minutes in milliseconds
+
 }).call(module);
 
-},{}],226:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 (function () {
 
 	'use strict';
 
 	var crypto = require('crypto');
 	var JOSE = require('node-jose');
-	//JOSE.SCR = require('node-scr');
-	var MEMO = require('lodash.memoize');
-
-	var log = require('./log'); // for debug
+	var property = require('./properties');
 	var promise = require('./promises');
 	var types = require('./types');
+	var dictionary = require('./dictionary');
+	var kms = require('./kms');
 	var utils = require('./utils');
 
 	function getEntityType (entity) {
@@ -42218,99 +43259,111 @@ module.exports = (function () {
 	var defaults = { key: { bytes: 256, type: 'oct', use: 'enc' } };
 	defaults.algorithms = { enc: 'A256GCM', hash: 'SHA-256' };
 
-	function asJWK (SCR) {
+	function asJWK (object) {
 		return JOSE.JWK.asKey({
 			alg: defaults.algorithms.enc,
-			k: SCR.key, // base64:String
+			k: object.key ? object.key : object.k,
+			kid: object.kid,
 			kty: defaults.key.type,
 			use: defaults.key.use
 		});
 	}
 
-	var KMS = (function () { // TODO (tohagema): synchronous calls to KMS
+	// ============ temporary while sdk is still supporting static kms key ============
+	// should be removed when sdk is done supporting static kms key
+	var STATIC_KEY = { kty: defaults.key.type, use: defaults.key.use };
+	STATIC_KEY.alg = defaults.algorithms.enc; // alg is key property? wat.
+	STATIC_KEY.k = 'sy6B3dN4IO6hhMRx-bCcl1A4PwK6kfcfWh36gNQsqQc';
+	STATIC_KEY.kid = 'e55c255a-4eb3-44df-a5a9-b53de84e2fc4';
+	var STATIC_SALT = 'DSA-x_K7VnSPkw8LhCkmXEnN0nM1wR2JhO0dbd4-1YM';
 
-		var STATIC_KEY = { kty: defaults.key.type, use: defaults.key.use };
-		STATIC_KEY.alg = defaults.algorithms.enc; // alg is key property? wat.
-		STATIC_KEY.k = 'sy6B3dN4IO6hhMRx-bCcl1A4PwK6kfcfWh36gNQsqQc';
-		STATIC_KEY.kid = 'e55c255a-4eb3-44df-a5a9-b53de84e2fc4';
-		var STATIC_SALT = 'DSA-x_K7VnSPkw8LhCkmXEnN0nM1wR2JhO0dbd4-1YM';
+	var getJWK = function getJWKfromKMS (keyId) {
 
-		var generateEncryptionKey = (function generateEncryptionKey (UUID) {
-			var parameters = { alg: defaults.algorithms.enc, use: defaults.key.use };
-			if (UUID) parameters.kty = UUID; // kty:String used as index by keystore
-			return this.generate(defaults.key.type, defaults.key.bytes, parameters);
-		}).bind(JOSE.JWK.createKeyStore());
+		if (keyId === STATIC_KEY.kid || !property.isFeatureEnabled('KMS_ENCRYPTION_KEY'))
+			return asJWK(STATIC_KEY);
 
-		var getJWK = MEMO(function getJWKfromKMS (UUID) {
-			// TODO (tohagema): replace this with fetched key (might need unwrap)
-			if (UUID !== STATIC_KEY.kid) log.warn('unknown KMS key UUID:', UUID);
-			return JOSE.JWK.asKey(STATIC_KEY); // hard-coded key as JWK
+		return kms.getKmsKey(keyId).then(function (key) {
+			return asJWK(key.jwk);
 		});
+	};
 
-		var hashString = MEMO(function saltedSHA256 (string) {
-			return promise.create(function (resolve) {
-				var hmac = crypto.createHmac('sha256', STATIC_SALT);
-				resolve(hmac.update(string,'utf8').digest('hex'));
+	function getJwkForUpdate () {
+		if (!property.isFeatureEnabled('KMS_ENCRYPTION_KEY'))
+			return asJWK(STATIC_KEY);
+
+		return kms.getLatestKmsKey().then(function (key) {
+			return asJWK(key.jwk);
+		});
+	}
+	// ====================================================================================
+
+	var generateEncryptionKey = (function generateEncryptionKey (UUID) {
+		var parameters = { alg: defaults.algorithms.enc, use: defaults.key.use };
+		if (UUID) parameters.kty = UUID; // kty:String used as index by keystore
+		return this.generate(defaults.key.type, defaults.key.bytes, parameters);
+	}).bind(JOSE.JWK.createKeyStore());
+
+	// removing MEMO for now
+	var hashString = function saltedSHA256 (string) {
+
+		var saltPromise = property.isFeatureEnabled('KMS_ENCRYPTION_KEY') ? kms.getHashingSalt() : promise.resolve(STATIC_SALT);
+
+		return saltPromise.then(function (salt) {
+			var hmac = crypto.createHmac('sha256', salt);
+			return hmac.update(string.toLowerCase().trim(),'utf8').digest('hex');
+		});
+	};
+
+	// like the Java SDK, we don't use "real" SCRs (no aad/iv/tag)
+	function newContextServiceSCR (loc) { // String
+		return generateEncryptionKey().then(function (cek) {
+			return { enc: cek.alg, key: cek.toJSON(true).k, loc: loc };
+		}).then(function toContextServiceFormat (decryptedSCR) {
+			return getJwkForUpdate().then(function (jwk) {
+				return { decryptedSCR: decryptedSCR, keyId: jwk.kid };
 			});
 		});
+	}
 
-		// like the Java SDK, we don't use "real" SCRs (no aad/iv/tag)
-		function newContextServiceSCR (loc) { // String
-			return generateEncryptionKey().then(function (cek) {
-				return { enc: cek.alg, key: cek.toJSON(true).k, loc: loc };
+	function decryptSCRs (encryptedSCRs) {
+		return promise.all(encryptedSCRs.map(function (object) {
+			var encryptedSCR = object.encryptedSCR, keyId = object.keyId;
+			return getJWK(object.keyId).then(function (JWK) {
+				return decryptingJWE(JWK, encryptedSCR);
 			}).then(function toContextServiceFormat (decryptedSCR) {
-				return { decryptedSCR: decryptedSCR, keyId: STATIC_KEY.kid };
+				return { decryptedSCR: decryptedSCR, keyId: keyId };
 			});
-		}
+		})).then(function (objects) {
+			return objects.reduce(function (map, object) {
+				map[object.decryptedSCR.loc] = object;
+				return map;
+			}, {});
+		});
+	}
 
-		function decryptSCRs (encryptedSCRs) {
-			return promise.all(encryptedSCRs.map(function (object) {
-				var encryptedSCR = object.encryptedSCR, keyId = object.keyId;
-				return getJWK(object.keyId).then(function (JWK) {
-					return decryptingJWE(JWK, encryptedSCR);
-				}).then(function toContextServiceFormat (decryptedSCR) {
-					return { decryptedSCR: decryptedSCR, keyId: keyId };
-				});
-			})).then(function (objects) {
-				return objects.reduce(function (map, object) {
-					map[object.decryptedSCR.loc] = object;
-					return map;
-				}, {});
+	function encryptSCRs (decryptedSCRs) {
+		return promise.all(Object.keys(decryptedSCRs).map(function (loc) {
+			var object = decryptedSCRs[loc]; // has SCR for loc:String
+			var decryptedSCR = object.decryptedSCR, keyId = object.keyId;
+			return getJwkForUpdate().then(function (jwk) {
+				return encryptingJWE(jwk, decryptedSCR);
+			}).then(function (encryptedSCR) {
+				return { encryptedSCR: encryptedSCR, keyId: keyId };
 			});
-		}
-
-		function encryptSCRs (decryptedSCRs) {
-			return promise.all(Object.keys(decryptedSCRs).map(function (loc) {
-				var object = decryptedSCRs[loc]; // has SCR for loc:String
-				var decryptedSCR = object.decryptedSCR, keyId = object.keyId;
-				return getJWK(keyId).then(function (JWK) {
-					return encryptingJWE(JWK, decryptedSCR);
-				}).then(function (encryptedSCR) {
-					return { encryptedSCR: encryptedSCR, keyId: keyId };
-				});
-			}));
-		}
-
-		return {
-			decryptSCRs: decryptSCRs, // mutates workgroups:Object
-			encryptSCRs: encryptSCRs, // mutates workgroups:Object
-			hashString: hashString, // memo-ized (to minimize actual work)
-			raw: { getJWK: getJWK, newSCR: newContextServiceSCR }
-		};
-
-	})();
+		}));
+	}
 
 	function decryptEntity (marshaled) { // demands Entity is bound (this)
 		var type = getEntityType(this); // used to identify SCRs (loc:String)
 		var workgroupString = Object.keys(marshaled.workgroups)[0];
 		var workgroups = marshaled.workgroups[workgroupString];
-		return KMS.decryptSCRs(workgroups).then(function (decryptedSCRs) {
+		return decryptSCRs(workgroups).then(function (decryptedSCRs) {
 			var decryptedData = {}; // will map property name to JSON (Object)
 			propertyNames.forEach(function (propertyName) {
 				if (!(propertyName in marshaled)) return; // no ciphertext
 				var loc = [type, propertyName].join('.'); // same as Java SDK
 				decryptedData[propertyName] = promise.when(decryptedSCRs[loc])
-						.then(function getJWK (existing) {
+						.then(function (existing) {
 							if (existing) return asJWK(existing.decryptedSCR);
 							throw new Error('cannot decrypt:', propertyName);
 						})
@@ -42331,15 +43384,15 @@ module.exports = (function () {
 		var type = getEntityType(this); // used to identify SCRs (loc:String)
 		var workgroupString = Object.keys(marshaled.workgroups)[0];
 		var workgroups = marshaled.workgroups[workgroupString];
-		return KMS.decryptSCRs(workgroups).then(function (decryptedSCRs) {
+		return decryptSCRs(workgroups).then(function (decryptedSCRs) {
 			var encryptedData = {}; // will map property name to encrypted JWE
 			propertyNames.forEach(function encryptDatum (propertyName) {
 				if (!(propertyName in marshaled)) return; // no ciphertext necessary
 				var loc = [type, propertyName].join('.'); // same as Java SDK
 				encryptedData[propertyName] = promise.when(decryptedSCRs[loc])
-						.then(function getJWK (existing) {
+						.then(function (existing) {
 							if (existing) return asJWK(existing.decryptedSCR);
-							return KMS.raw.newSCR(loc).then(function (object) {
+							return newContextServiceSCR(loc).then(function (object) {
 								decryptedSCRs[loc] = object;
 								return asJWK(object.decryptedSCR);
 							});
@@ -42347,46 +43400,84 @@ module.exports = (function () {
 							return encryptingJWE(JWK, marshaled[propertyName]);
 						});
 			});
-			return promise.all(encryptedData).then(function (ciphertexts) {
-				return KMS.encryptSCRs(decryptedSCRs).then(function (encryptedSCRs) {
-					var dataElements = []; propertyNames.forEach(function (key) {
-						Array.prototype.push.apply(dataElements, marshaled[key] || []);
-					});
-					return hash(dataElements).then(function (hashes) {
-						marshaled.hashes = hashes; // piiHash:Array<String>
-						marshaled.workgroups[workgroupString] = encryptedSCRs;
-						Object.keys(ciphertexts).forEach(function (propertyName) {
-							marshaled[propertyName] = ciphertexts[propertyName];
-						});
-						return marshaled;
-					});
+			return hashEverything(marshaled).then(function (resolvedHashes) {
+				marshaled.unencryptedHashes = resolvedHashes.dataElements;
+				marshaled.encryptedHashes = resolvedHashes.dataEnc;
+				marshaled.piiHashes = resolvedHashes.piiDataEnc;
+				return promise.all(encryptedData);
+			}).then(function (ciphertexts) {
+				Object.keys(ciphertexts).forEach(function (propertyName) {
+					marshaled[propertyName] = ciphertexts[propertyName];
 				});
+				return encryptSCRs(decryptedSCRs);
+			}).then(function (encryptedSCRs) {
+				marshaled.workgroups[workgroupString] = encryptedSCRs;
+				return marshaled;
 			});
 		});
 	}
 
-	function hash (dataElements) {
-		if (utils.isArray(dataElements)) {
-			return promise.all(dataElements.map(function (dataElement) {
-				var keys = Object.keys(dataElement) // ignores type:String
-						.filter(function (key) { return (key !== 'type'); });
-				return KMS.hashString([keys[0], dataElement[keys[0]]].join(':'));
-			}));
-		}
-		return KMS.hashString(dataElements);
+	function hashEverything (marshaled) {
+		var dataTypes = ['dataElements', 'dataEnc', 'piiDataEnc'];
+		// initialize hashes to an object of empty arrays
+		var hashes = {};
+		dataTypes.forEach(function (dataType) { hashes[dataType] = []; });
+
+		var IDs = [];
+		dataTypes.forEach(function (dataType) {
+			if (utils.isArray(marshaled[dataType])) {
+				// map over each field object {key:value, type:value} for dataType
+				hashes[dataType] = marshaled[dataType].map(function (fieldObject) {
+					// ignores type:String
+					var keys = Object.keys(fieldObject).filter(function (key) { return (key !== 'type'); });
+					// need a list of all field names to send to dictionary
+					IDs.push(keys[0]);
+					// and set each array as a list of objects that contain just the dataElements key and value
+					return { key: keys[0], value: fieldObject[keys[0]] };
+				});
+			}
+		});
+
+		// now get field definitions from dictionary
+		return dictionary.raw.fields(IDs).then(function (fieldDefs) {
+			dataTypes.forEach(function (dataType) {
+				hashes[dataType] = hashes[dataType].filter(function (fieldObject) {
+					// strip out all fields that aren't searchable
+					return utils.isSearchable(fieldDefs[fieldObject.key]);
+				}).map(function (fieldObject) {
+					// then convert into an array of promises
+					return hashString(fieldObject.value);
+				});
+			});
+
+			// state, mediaType, and tags are added separately to the list of unencryptedHashes
+			if (marshaled.state) hashes.dataElements.push(hashString(marshaled.state));
+			if (marshaled.mediaType) hashes.dataElements.push(hashString(marshaled.mediaType));
+			if (utils.isArray(marshaled.tags) && marshaled.tags.length > 0)
+				Array.prototype.push.apply(hashes.dataElements, marshaled.tags.map(hashString));
+
+			return promise.all(hashes);
+		});
 	}
 
 	module.exports.decrypt = decryptEntity; // marshaled:Entity (from API)
 	module.exports.encrypt = encryptEntity; // marshaled:Entity (from SDK)
-	module.exports.hash = hash; // dataElements:{String|Array<String>}
-	module.exports.raw = { KMS: KMS, propertyNames: propertyNames };
-	module.exports.raw.decrypt = decryptingJWE; // returns Object
-	module.exports.raw.encrypt = encryptingJWE; // acts on Object
+	module.exports.hash = hashString; // dataElements:{String|Array<String>}
+	module.exports.raw = {
+		propertyNames: propertyNames,
+		getJWK: getJWK,
+		getJwkForUpdate: getJwkForUpdate,
+		decryptingJWE: decryptingJWE,
+		encryptingJWE: encryptingJWE,
+		newSCR: newContextServiceSCR,
+		decryptSCRs: decryptSCRs,
+		encryptSCRs: encryptSCRs,
+		hashEverything: hashEverything
+	};
 
 }).call(this);
 
-},{"./log":231,"./promises":234,"./types":240,"./utils":241,"crypto":undefined,"lodash.memoize":21,"node-jose":49}],227:[function(require,module,exports){
-
+},{"./dictionary":255,"./kms":258,"./promises":262,"./properties":263,"./types":269,"./utils":270,"crypto":undefined,"node-jose":47}],254:[function(require,module,exports){
 module.exports = (function () {
 	'use strict';
 	// Load required modules
@@ -42470,7 +43561,7 @@ module.exports = (function () {
 
 })();
 
-},{"./entities":229,"./exceptions":230,"./promises":234,"./strings":239,"./types":240}],228:[function(require,module,exports){
+},{"./entities":256,"./exceptions":257,"./promises":262,"./strings":268,"./types":269}],255:[function(require,module,exports){
 module.exports = (function () {
 
 	'use strict';
@@ -42484,7 +43575,7 @@ module.exports = (function () {
 	cached.milliseconds = 1000 * 60 * 30; // for setTimeout
 
 	function cacheObject (newObject) {
-		if (!client.getDisableCache()) {
+		if (!client.getDisableTimers()) {
 			var cache = Object(this); // bound with cached.fields or cached.fieldsets
 			var oldObject = Object(cache[newObject.id]); // null, Field or Fieldset
 			if ('expire' in oldObject) oldObject.expire(newObject);
@@ -42634,7 +43725,7 @@ module.exports = (function () {
 
 }).call(this);
 
-},{"./client":224,"./exceptions":230,"./strings":239}],229:[function(require,module,exports){
+},{"./client":251,"./exceptions":257,"./strings":268}],256:[function(require,module,exports){
 
 module.exports = (function () {
 	'use strict';
@@ -42931,7 +44022,7 @@ module.exports = (function () {
 
 })();
 
-},{"./client":224,"./dictionary":228,"./exceptions":230,"./promises":234,"./strings":239,"./types":240,"./utils":241}],230:[function(require,module,exports){
+},{"./client":251,"./dictionary":255,"./exceptions":257,"./promises":262,"./strings":268,"./types":269,"./utils":270}],257:[function(require,module,exports){
 module.exports = (function () {
 
 	'use strict';
@@ -42956,6 +44047,12 @@ module.exports = (function () {
 		this.message = [expected, provided].join(' ');
 	}
 
+	// Used for requests to kms return success = false
+	function KmsException (message) {
+		this.name = 'KmsException';
+		this.message = message;
+	}
+
 	// Used when internal errors happen in the SDK (related to the SDK implementation itself.)
 	// Only useful for SDK developers; this exception should not be exposed to users of the SDK.
 	function InternalException (message) {
@@ -42967,6 +44064,7 @@ module.exports = (function () {
 		EntityTypeUnknownException: EntityTypeUnknownException,
 		EntityValidationException:  EntityValidationException,
 		InitializationException:    InitializationException,
+		KmsException:               KmsException,
 		InternalException:          InternalException
 	};
 
@@ -42980,7 +44078,350 @@ module.exports = (function () {
 
 })();
 
-},{}],231:[function(require,module,exports){
+},{}],258:[function(require,module,exports){
+module.exports = (function () {
+	'use strict';
+
+	var promises = require('./promises');
+	var KMS = require('node-kms');
+	var exceptions = require('./exceptions');
+	var strings = require('./strings');
+	var API = require('./rest.v1');
+	var JOSE = require('node-jose');
+	var config = require('./config');
+	var log = require('./log');
+	var properties = require('./properties');
+
+	var ephemeralId = null;
+	var encryptionId = null;
+
+	var kmsContext = null;
+
+	// cache to store KMS keys
+	// maps kms keys id -> kms key
+	var keyCache = {};
+
+	// static salt that will be used for hashing/search
+	var staticSalt = null;
+
+	var generateUUID = (function () { // eslint-disable-line
+		// var parameters = { alg: defaults.algorithms.enc, use: defaults.key.use };
+		// if (UUID) parameters.kty = UUID; // kty:String used as index by keystore
+		return this.generate('oct', '256').then(function (result) {
+			return result.kid;
+		});
+	}).bind(JOSE.JWK.createKeyStore());
+
+	var orgId = null;
+	var disableTimers = false;
+	// performs all initialization functions that should be completed during sdk initialization
+	// 1. schedules ephemeral rotation
+	// 2. schedules encryption key rotation
+	// 3. retrieves hashing salt
+	function init (token, accountId, disableTimersParam, orgIdParam) {
+		disableTimers = disableTimersParam;
+		orgId = orgIdParam;
+		return scheduleEphemeralKeyRotation(token, accountId).then(function () {
+			return promises.all([scheduleKmsKeyRotation(), getHashingSalt()]);
+		});
+	}
+
+
+	// accepts an kms request will encrypt the request and then send it off to kms
+	// returns a promise that will resolve to the unwrapped response from kms
+	// serverKey: true when creating ephemeralKey, false otherwise
+	function transmitRequest (kmsRequest, serverKey, internalKmsContext) {
+		if (!serverKey) serverKey = false;
+		if (!internalKmsContext) internalKmsContext = kmsContext;
+		return kmsRequest.wrap(internalKmsContext, { serverKey: serverKey })
+			.then(function (encryptedRequest) {
+
+				return API.Kms.post(encryptedRequest).then(function (kmsResponse) {
+					var theResponse = new KMS.Response(kmsResponse.data.kmsMessages[0]);
+					// KMS APIs ARE STUPID!!! almost always return a 200 and force you to check
+					// the value of success in reponse body to see if request was successful
+					return theResponse.unwrap(internalKmsContext).then(function (unwrapped) {
+						if (kmsResponse.data.success) return unwrapped;
+						throw new exceptions.KmsException(unwrapped.reason);
+					});
+				});
+			});
+	}
+
+	var rotatingEphemeralKey = null;
+	function waitForRotation () {
+		return promises.when(rotatingEphemeralKey, function () {
+			rotatingEphemeralKey = null;
+		}, function () {
+			rotatingEphemeralKey = null;
+		});
+	}
+
+	function scheduleEphemeralKeyRotation (token, accountId) {
+
+		if (kmsContext == null) {
+			// first call, create the ephemeralKey, save, and return
+			return createEphemeralKey(token, accountId).then(function (context) {
+				// save the context and return it
+				kmsContext = context;
+				// schedule next rotation
+				var rotationTime = calculateEphemeralRotationTime(context.ephemeralKey.expirationDate, context.ephemeralKey.createDate);
+				if (!disableTimers) ephemeralId = setTimeout(scheduleEphemeralKeyRotation.bind(this, token, accountId), rotationTime);
+				// mostly for unit testing
+				return kmsContext.ephemeralKey;
+			});
+		} else {
+
+			rotatingEphemeralKey = new Promise(function (resolve, reject) {
+				createEphemeralKey(token, accountId).then(function (newContext) {
+					// save new ephemeralKey into kms context
+					kmsContext.ephemeralKey = newContext.ephemeralKey;
+					// resolve the promise with the new ephemeralKey (mostly for unit testing)
+					resolve(kmsContext.ephemeralKey);
+				}).catch(function (err) {
+					reject(err);
+				});
+			});
+
+			return promises.when(rotatingEphemeralKey, function (newEphemeralKey) {
+				log.log('Ephemeral key successfully rotated');
+				// schedule next rotation
+				var rotationTime = calculateEphemeralRotationTime(newEphemeralKey.expirationDate, newEphemeralKey.createDate);
+				if (!disableTimers) ephemeralId = setTimeout(scheduleEphemeralKeyRotation.bind(this, token, accountId), rotationTime);
+				return newEphemeralKey;
+			}, function (err) {
+				log.error('Ephemeral key rotation failed. Will retry in one minute.', err);
+				if (!disableTimers) ephemeralId = setTimeout(scheduleEphemeralKeyRotation.bind(this, token, accountId), config.FAILURE_RETRY_INTERVAL());
+			});
+		}
+	}
+
+	function calculateEphemeralRotationTime (expire, create) {
+
+		var expireDate = new Date(expire);
+		var createData = new Date(create);
+
+		return (expireDate - createData) * 0.95;
+	}
+
+	// accountId: id of the machine account used to generate the token
+	function createEphemeralKey (token, accountId) {
+
+		return generateUUID().then(function (uuid) {
+			//start by getting the public key
+			return API.Kms.get(uuid).then(function (response) { // response contains the public key
+
+				// create the KMS context that will be used encrypt calls to kms
+				var internalKmsContext = new KMS.Context();
+				internalKmsContext.clientInfo = {
+					clientId: uuid,
+					credential: { userId: accountId, bearer: token }
+				};
+				internalKmsContext.serverInfo = {
+					key: response.data.rsaPublicKey
+				};
+
+				// now create a local key to encrypt the kms call
+				return internalKmsContext.createECDHKey().then(function (localECDH) {
+
+					internalKmsContext.ephemeralKey = localECDH;
+
+					// now create the CREATE EPHEMERAL KEY request
+					var kmsReq = new KMS.Request({
+						uri: '/ecdhe',
+						method: 'create',
+						jwk: localECDH.jwk
+					});
+
+					// kmsContext has not been saved yet, so we need to pass it to transmitRequest
+					return transmitRequest(kmsReq, true, internalKmsContext).then(function (unwrapped) {
+						// now we can finally get the ephemeral key
+						return internalKmsContext.deriveEphemeralKey(unwrapped.key).then(function (ephemeralKey) {
+							// save the ephemeralKey
+							internalKmsContext.ephemeralKey = ephemeralKey;
+							return internalKmsContext;
+						});
+					});
+				});
+			});
+		});
+	}
+
+	function retrieveKey (keyId) {
+		// create the kms request to get a key by id
+		var kmsReq = new KMS.Request({
+			uri: keyId,
+			method: 'retrieve'
+		});
+		return transmitRequest(kmsReq);
+	}
+
+	function getKmsKey (keyId) {
+
+		// first check the cache
+		if (keyCache[keyId]) return promises.resolve(keyCache[keyId]);
+
+		// wait for any key rotation to finish before attempting to retrieve encryption key
+		return waitForRotation().then(function () {
+
+			if (!kmsContext) throw new exceptions.KmsException(strings.KMS_SECURE_CHANNEL);
+
+			return retrieveKey(keyId).then(function (result) {
+				keyCache[keyId] = result.key;
+				return result.key;
+			});
+		});
+	}
+
+	function getLatestKmsKey () {
+
+		return getKmsKey(properties.getLatestKmsKeyId());
+	}
+
+	function createKmsKey () {
+		var kmsReq = new KMS.Request({
+			uri: '/keys',
+			method: 'create',
+			count: '1'
+		});
+
+		return transmitRequest(kmsReq).then(function (result) {
+			var key = result.keys[0];
+			keyCache[key.uri] = key;
+			return key;
+		});
+	}
+
+	// keyId: keyId should be the full url of the key
+	function bindKmsKey (keyId) {
+		var resourceId = properties.getResourceId();
+		var kmsReq = new KMS.Request({
+			uri: keyId,
+			method: 'update',
+			resourceUri: resourceId
+		});
+
+		return transmitRequest(kmsReq);
+	}
+
+	function createAndBindKmsKey () {
+		return waitForRotation().then(function () {
+			if (!kmsContext) throw new exceptions.KmsException(strings.KMS_SECURE_CHANNEL);
+			return createKmsKey().then(function (newKey) {
+				return bindKmsKey(newKey.uri).then(function () {
+					return newKey;
+				});
+			});
+		});
+	}
+
+	function calculateKmsRotationTime () {
+
+		return config.KMS_KEY_ROTATION_INTERVAL() -
+			config.KMS_KEY_ROTATION_STATIC_BACKOFF() -
+			(Math.floor(Math.random() * config.KMS_KEY_ROTATION_RANDOM_BACKOFF()) + 1);
+	}
+
+	function scheduleKmsKeyRotation () {
+
+		// get the most recent key id
+		return properties.forceUpdate('latestKmsKeyId')
+			.catch(function (err) {
+				if (err.status !== 404) { throw err; }
+				// if the latest kms key hasn't been created yet, it needs to be created
+				// return this fake data object which will force a new key to be created
+				// new Date(null) == Wed Dec 31 1969 19:00:00 GMT-0500 (EST)
+				return { lastUpdated: null };
+			}).then(function (data) {
+				var elapsed = new Date() - new Date(data.lastUpdated);	// in milliseconds
+				if (elapsed < config.KMS_KEY_ROTATION_INTERVAL()) {
+					// key was created less then 24 hours ago, we can use it
+					return getKmsKey(data.value).then(function (key) {
+
+						// 24 hours - 15 minutes - random amount of time between 0 and 30 minutes
+						var timeToRotation = calculateKmsRotationTime();
+						// schedule next rotation
+						if (!disableTimers) encryptionId = setTimeout(scheduleKmsKeyRotation, timeToRotation);
+						log.log('Encryption key successfully rotated');
+						return key;
+
+					}).catch(function (err) {
+						log.error('Encryption key rotation failed. Will retry in one minute.', err);
+						if (!disableTimers) encryptionId = setTimeout(scheduleKmsKeyRotation, config.FAILURE_RETRY_INTERVAL());
+					});
+
+				} else {
+					// key is old, need a new one
+					return createAndBindKmsKey().then(function (newKey) {
+						// and now save the updated encryption key id in the property table
+						return API.Property.post(properties.getLatestKmsKeyPropName(), orgId, newKey.uri).then(function () {
+							// and need to update properties cache with new encryption key
+							return properties.forceUpdate('latestKmsKeyId').then(function () {
+								// schedule next rotation
+								if (!disableTimers) encryptionId = setTimeout(scheduleKmsKeyRotation, config.KMS_KEY_ROTATION_INTERVAL());
+								log.log('Encryption key successfully rotated');
+								return newKey;
+							});
+						});
+					}).catch(function (err) {
+						log.error('Encryption key rotation failed. Will retry in one minute.', err);
+						if (!disableTimers) encryptionId = setTimeout(scheduleKmsKeyRotation, config.FAILURE_RETRY_INTERVAL());
+					});
+				}
+			});
+	}
+
+	function getHashingSalt () {
+
+		if (staticSalt) return promises.resolve(staticSalt.jwk.k);
+
+		return waitForRotation().then(function () {
+
+			if (!kmsContext) throw new exceptions.KmsException(strings.KMS_SECURE_CHANNEL);
+
+			// now we can get the salt from kms
+			return retrieveKey(properties.getHashingSaltId()).then(function (result) {
+				staticSalt = result.key;
+				return result.key.jwk.k;
+			});
+		});
+	}
+
+	function clear () {
+		keyCache = {};
+		staticSalt = null;
+		kmsContext = null;
+		if (ephemeralId != null) clearTimeout(ephemeralId);
+		if (encryptionId != null) clearTimeout(encryptionId);
+	}
+
+	return {
+		init: init,
+		scheduleEphemeralKeyRotation: scheduleEphemeralKeyRotation,
+		scheduleKmsKeyRotation: scheduleKmsKeyRotation,
+		getKmsKey: getKmsKey,
+		getHashingSalt: getHashingSalt,
+		clear: clear,
+		getLatestKmsKey: getLatestKmsKey,
+
+		raw: {
+			calculateEphemeralRotationTime: calculateEphemeralRotationTime,
+			calculateKmsRotationTime: calculateKmsRotationTime,
+			createAndBindKmsKey: createAndBindKmsKey,
+			createEphemeralKey: createEphemeralKey,
+			waitForRotation: waitForRotation,
+			createKmsKey: createKmsKey,
+			bindKmsKey: bindKmsKey,
+
+			// used for unit testing
+			setKmsContext: function (context) { kmsContext = context; },
+			getKmsContext: function () { return kmsContext; },
+			setDisableTimers: function (disable) { disableTimers = disable; }
+		}
+	};
+})();
+
+},{"./config":252,"./exceptions":257,"./log":259,"./promises":262,"./properties":263,"./rest.v1":266,"./strings":268,"node-jose":47,"node-kms":219}],259:[function(require,module,exports){
 (function () {
 
 	'use strict';
@@ -43023,18 +44464,18 @@ module.exports = (function () {
 
 })();
 
-},{}],232:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 
 module.exports = (function () {
 	'use strict';
 	// Load required modules
-	var authorization = require('./auth.token');
 	var	exceptions = require('./exceptions');
 	var	log = require('./log');
 	var	promise = require('./promises');
 	var	v1 = require('./rest.v1');
 	var	utils = require('./utils');
 	var	types = require('./types');
+	var	config = require('./config');
 
 	var APIs = { v1: v1 }; // all supported versions
 
@@ -43048,13 +44489,6 @@ module.exports = (function () {
 			}
 		}
 		throw new exceptions.EntityTypeUnknownException(entity);
-	}
-
-	function networkHarnessAuthorization () {
-		return promise.when(this.authorize(), function (newAuthorization) {
-			promise.fetch.defaults.headers.common.Authorization = newAuthorization;
-			return newAuthorization; // TODO (tohagema): auto-revoke?
-		});
 	}
 
 	// network module brokers instances of this Harness Object (as a factory)
@@ -43074,14 +44508,14 @@ module.exports = (function () {
 			throw new IE('no REST API for version (optional String)', options.version);
 		}
 
-		if (!utils.isFunction(options.authorize)) {
-			throw new IE('invalid "authorize" (mandatory Function)', options.authorize);
+		if (!utils.isString(options.token)) {
+			throw new IE('invalid "token" (mandatory String)', options.token);
 		}
 
 		if (!utils.isString(options.discovery)) {
 			throw new IE('invalid "discovery" (mandatory String)', options.discovery);
 		}
-		this.authorize = options.authorize.bind(this); // assumes unbound
+
 		this.discovery = { host: utils.copy(options.discovery), retries: 2 };
 
 		return {
@@ -43092,6 +44526,7 @@ module.exports = (function () {
 			search: networkHarnessFunction.bind(this.API, 'search'),
 			services: {
 				discover: Harness.prototype.discover.bind(this),
+				reduceTokenScope: Harness.prototype.reduceTokenScope.bind(this),
 				raw: this.API, // Object (provides FIELDSET, etc.)
 				ready: Harness.prototype.ready.bind(this)
 			}
@@ -43109,30 +44544,41 @@ module.exports = (function () {
 		var discoveryOptions = utils.copy(this.discovery); // Object
 		if (!utils.isString(host)) host = discoveryOptions.host;
 		var discoveryFunction = this.API.Discovery.get.bind(this.API, host);
-		var cachedAuthorization = networkHarnessAuthorization.bind(this);
 		this.discoveredServices.splice(0, this.discoveredServices.length);
-		return cachedAuthorization().then(discoveryFunction)
-				.then(function networkHarnessDiscoveredServices (object) {
-					Array.prototype.push.apply(this.discoveredServices, Object.keys(object));
-					return object; // pass-through to discoverServices caller
-				}.bind(this))
-				.catch(function networkHarnessDiscoverFailed (reason) {
-					log.error('[NETWORK] discovery @ "' + host + '" failed:', reason);
-					discoveryOptions.retries -= 1; // this isn't a great mechanism
-					if (discoveryOptions.retries === 0) return promise.reject(reason);
-					return cachedAuthorization().then(discoveryFunction);
-				});
+		return discoveryFunction()
+			.then(function networkHarnessDiscoveredServices (object) {
+				Array.prototype.push.apply(this.discoveredServices, Object.keys(object));
+				return object; // pass-through to discoverServices caller
+			}.bind(this))
+			.catch(function networkHarnessDiscoverFailed (reason) {
+				log.error('[NETWORK] discovery @ "' + host + '" failed:', reason);
+				discoveryOptions.retries -= 1; // this isn't a great mechanism
+				if (discoveryOptions.retries === 0) return promise.reject(reason);
+				return discoveryFunction();
+			});
+	};
+
+	Harness.prototype.reduceTokenScope = function networkHarnessReduceTokenScope (options) {
+		var promises = [];
+		var reduceFunction = this.API.CommonIdentity.postReduceToken;
+		Object.keys(config.defaults.scopes).forEach(function (service) {
+			var scopes = config.defaults.scopes[service];
+			promises.push(
+				reduceFunction(options, service, scopes)
+			);
+		});
+		return promise.all(promises);
 	};
 
 	function networkHarnessFactory (configuration) {
-		return new Harness(authorization(configuration));
+		return new Harness(configuration);
 	}
 
 	return { Harness: Harness, createHarness: networkHarnessFactory, networkHarnessFunction: networkHarnessFunction };
 
 })();
 
-},{"./auth.token":223,"./exceptions":230,"./log":231,"./promises":234,"./rest.v1":237,"./types":240,"./utils":241}],233:[function(require,module,exports){
+},{"./config":252,"./exceptions":257,"./log":259,"./promises":262,"./rest.v1":266,"./types":269,"./utils":270}],261:[function(require,module,exports){
 
 module.exports = (function () {
 	'use strict';
@@ -43258,24 +44704,28 @@ module.exports = (function () {
 				enumerable: true,
 				get: function () { return this._contributors; },
 				set: function (contributors) {
-					if (!utils.isArray(contributors)) {
-						throw new exceptions.EntityValidationException(strings.CONTRIBUTORS_ARRAY_ERR_MSG, contributors);
-					} else if (contributors.length !== 0) {
-						if (contributors.length > 1) {
-							throw new exceptions.EntityValidationException(strings.CONTRIBUTORS_ARRAY_LENGTH_ERR_MSG, contributors);
-						}
-						if (contributors[0] && typeof (contributors[0]) !== 'object') {
-							throw new exceptions.EntityValidationException(strings.CONTRIBUTORS_TYPE_ERR_MSG, contributors);
-						}
-						if (!contributorPropsEnumVals.every(Object.prototype.hasOwnProperty, contributors[0])) {
-							throw new exceptions.EntityValidationException(strings.CONTRIBUTORS_ALLOWED_PROPS_ERR_MSG, contributors);
-						}
-						if (!values(contributors[0]).every(utils.isString)) {
-							throw new exceptions.EntityValidationException(strings.CONTRIBUTORS_PROP_VALUES_MUST_BE_A_STRING, contributors);
-						}
-						// FIXME (mgrudino): do you need to validate (contributors[0] is singleton w/ 'id'), etc. ?
+					throw new exceptions.EntityValidationException(strings.CANNOT_SET_CONTRIBUTORS_MSG, contributors);
+				}
+			},
+			/**
+			 * new Contributor for this update
+			 * @type {module:sdk.podContributorProps}
+			 */
+			newContributor: {
+				configurable: false,
+				enumerable: true,
+				get: function () { return this._newContributor; },
+				set: function (contributor) {
+					if (typeof (contributor) !== 'object') {
+						throw new exceptions.EntityValidationException(strings.CONTRIBUTORS_TYPE_ERR_MSG, contributor);
 					}
-					this._contributors = contributors;
+					if (!contributorPropsEnumVals.every(Object.prototype.hasOwnProperty, contributor)) {
+						throw new exceptions.EntityValidationException(strings.CONTRIBUTORS_ALLOWED_PROPS_ERR_MSG, contributor);
+					}
+					if (!values(contributor).every(utils.isString)) {
+						throw new exceptions.EntityValidationException(strings.CONTRIBUTORS_PROP_VALUES_MUST_BE_A_STRING, contributor);
+					}
+					this._newContributor = contributor;
 				}
 			}
 		},
@@ -43292,12 +44742,13 @@ module.exports = (function () {
 			// First, marshal the parent class's fields:
 			return marshalBaseEntity.call(pod).then(function (marshaledPod) {
 				// eslint-disable no-multi-spaces
-				if (pod._contributors) marshaledPod.contributors = pod._contributors;
-				if (pod._customerId)   marshaledPod.customerId   = pod._customerId;
-				if (pod._mediaType)    marshaledPod.mediaType    = pod._mediaType;
-				if (pod._requestId)    marshaledPod.requestId    = pod._requestId;
-				if (pod._state)        marshaledPod.state        = pod._state;
-				if (pod._tags)         marshaledPod.tags         = pod._tags;
+				if (pod._newContributor) marshaledPod.newContributor = pod._newContributor;
+				if (pod._contributors)   marshaledPod.contributors   = pod._contributors;
+				if (pod._customerId)     marshaledPod.customerId     = pod._customerId;
+				if (pod._mediaType)      marshaledPod.mediaType      = pod._mediaType;
+				if (pod._requestId)      marshaledPod.requestId      = pod._requestId;
+				if (pod._state)          marshaledPod.state          = pod._state;
+				if (pod._tags)           marshaledPod.tags           = pod._tags;
 				// eslint-enable no-multi-spaces
 				// need to tell the api what type of object this is
 				marshaledPod.type = 'pod';
@@ -43310,12 +44761,13 @@ module.exports = (function () {
 			// First, unmarshal the parent class's fields:
 			return unmarshalBaseEntity.call(this, marshaled).then(function (pod) {
 				return promise.when(marshaled, function (marshaledPod) {
-					if (marshaledPod.contributors) pod._contributors = marshaledPod.contributors;
-					if (marshaledPod.customerId)   pod._customerId   = marshaledPod.customerId;
-					if (marshaledPod.mediaType)    pod._mediaType    = marshaledPod.mediaType;
-					if (marshaledPod.requestId)    pod._requestId    = marshaledPod.requestId;
-					if (marshaledPod.state)        pod._state        = marshaledPod.state;
-					if (marshaledPod.tags)         pod._tags         = marshaledPod.tags;
+					if (marshaledPod.newContributor) pod._newContributor = marshaledPod.newContributor;
+					if (marshaledPod.contributors)   pod._contributors   = marshaledPod.contributors;
+					if (marshaledPod.customerId)     pod._customerId     = marshaledPod.customerId;
+					if (marshaledPod.mediaType)      pod._mediaType      = marshaledPod.mediaType;
+					if (marshaledPod.requestId)      pod._requestId      = marshaledPod.requestId;
+					if (marshaledPod.state)          pod._state          = marshaledPod.state;
+					if (marshaledPod.tags)           pod._tags           = marshaledPod.tags;
 					return pod;
 				});
 			});
@@ -43333,7 +44785,7 @@ module.exports = (function () {
 
 })();
 
-},{"./entities":229,"./exceptions":230,"./promises":234,"./strings":239,"./types":240,"./utils":241}],234:[function(require,module,exports){
+},{"./entities":256,"./exceptions":257,"./promises":262,"./strings":268,"./types":269,"./utils":270}],262:[function(require,module,exports){
 (function () {
 
 	'use strict';
@@ -43358,7 +44810,11 @@ module.exports = (function () {
 
 	function allPromisesObject (promises) {
 		var object = {}, keys = Object.keys(promises);
-		var values = keys.map(function (key) { return promises[key]; });
+		var values = keys.map(function (key) {
+			if (Array.isArray(promises[key])) return Promise.all(promises[key]);
+			return promises[key];
+		});
+
 		return Promise.all(values).then(function (resolved) {
 			resolved.forEach(function (promise, index) {
 				object[keys[index]] = promise;
@@ -43378,6 +44834,28 @@ module.exports = (function () {
 	}
 
 	/*
+	 *  Like "all" except ignores rejected promises and returns resolved promises.
+	 *  Does not log -- expects the reject method to handle the logging.
+	 *  Functionaly only defined for an array of promises, else defaults to "all"
+	 *  behavior.
+	 */
+	function allResolvedPromises (iterable) {
+		if (!Array.isArray(iterable)) {
+			return allPromises(iterable);
+		}
+		var settled = iterable.map(function convertRejectToNull (promise) {
+			return promise.catch(function nullReplace ()
+				{ return null; });
+		});
+
+		return Promise.all(settled).then(function filterOutNulls (array) {
+			return array.filter(function nullRemove (e) {
+				return (e != null);
+			});
+		});
+	}
+
+	/*
 	// useful for debugging requests:
 	function axiosLogger (request) {
 		console.log(JSON.stringify(request, null, 2));
@@ -43390,6 +44868,7 @@ module.exports = (function () {
 
 	module.exports = {
 		all: allPromises,
+		allResolved: allResolvedPromises,
 		create: newPromise,
 		fetch: {
 			defaults: axios.defaults,
@@ -43402,7 +44881,132 @@ module.exports = (function () {
 
 })();
 
-},{"axios":3}],235:[function(require,module,exports){
+},{"axios":2}],263:[function(require,module,exports){
+module.exports = (function () {
+
+	'use strict';
+	var log = require('./log');
+	var promises = require('./promises');
+
+	var propertyMap = {
+		feature: 'feature',
+		hashingSalt: 'org.search.hash.salt',
+		resourceId: ['workgroup.', '.scr.encryption.keys'],
+		latestKmsKeyId: ['workgroup.', '.scr.encryption.latest.key']
+	};
+
+	// keys: keys of propertyMap
+	// values: data returned from getting property from management app
+	var properties = {};
+
+	// will inject workgroup into property names
+	function createPropertyMap (workgroup) {
+		Object.keys(propertyMap).forEach(function (key) {
+			if (Array.isArray(propertyMap[key])) {
+				propertyMap[key] = propertyMap[key].join(workgroup);
+			}
+		});
+	}
+
+	function init (harness, workgroup) {
+		// save off the harness
+		this.harness = harness;
+
+		createPropertyMap(workgroup);
+
+		// first get the feature flags, because whether we need to get everything else
+		// depends on if KMS_ENCRYPTION_KEY feature is enabled
+		return harness.services.raw.Property.get('feature')
+			.catch(function (error) {
+				if (error.status === 404) {
+					log.info('No features were found');
+				}
+			}).then(function (response) {
+				// response will be undefined if no features were found
+				if (response && response.data) properties.feature = response.data;
+				// if features were returned, check to see if kms encryption is enabled
+				if (isFeatureEnabled('KMS_ENCRYPTION_KEY')) {
+					// if it is, we can move on and retrieve required properties
+					// and let it throw an error if a required property is not found
+					var promiseList = [];
+					Object.keys(propertyMap).forEach(function (key) {
+						promiseList.push(
+							harness.services.raw.Property.get(propertyMap[key])
+								.then(function (response) {
+									properties[key] = response.data;
+								}).catch(function (error) {
+									// if the latest kms key hasn't been created yet, that's ok
+									// it will be created during encryption key rotation
+									// just eat the error, but for any other properties,
+									// re-throw the error
+									if (error.status !== 404 || key !== 'latestKmsKeyId') throw error;
+								}));
+					});
+					return promises.all(promiseList);
+				}
+			});
+	}
+
+	function isFeatureEnabled (feat) {
+		return 	properties.feature && properties.feature.value ?
+				properties.feature.value.indexOf(feat) > -1 : false;
+	}
+
+	function getResourceId () {
+		return properties.resourceId ? properties.resourceId.value : null;
+	}
+
+	function getLatestKmsKeyId () {
+		return properties.latestKmsKeyId ? properties.latestKmsKeyId.value : null;
+	}
+
+	function getLatestKmsKeyPropName () {
+		return propertyMap.latestKmsKeyId;
+	}
+
+	function getHashingSaltId () {
+		return properties.hashingSalt ? properties.hashingSalt.value : null;
+	}
+
+	// property: should be a key in the propertyMap
+	function forceUpdate (property) {
+		var propertyName = propertyMap[property];
+		return this.harness.services.raw.Property.get(propertyName).then(function (result) {
+			properties[property] = result.data;
+			return result.data;
+		});
+	}
+
+	// used in tests only
+	function clear () {
+		properties = {};
+	}
+
+	return {
+		clear: clear,
+		init: init,
+		isFeatureEnabled: isFeatureEnabled,
+		getResourceId: getResourceId,
+		getLatestKmsKeyId: getLatestKmsKeyId,
+		getLatestKmsKeyPropName: getLatestKmsKeyPropName,
+		getHashingSaltId: getHashingSaltId,
+		forceUpdate: forceUpdate,
+
+		raw: {
+			createPropertyMap: createPropertyMap,
+
+			// for unit testing
+			getProperties: function getProperties () { return properties; },
+			setProperties: function setProperties (newProps) { properties = newProps; },
+			getPropertyMap: function getPropertyMap () { return propertyMap; },
+			setPropertyMap: function setPropertyMap (newMap) { propertyMap = newMap; }
+		}
+
+	};
+
+})();
+
+},{"./log":259,"./promises":262}],264:[function(require,module,exports){
 (function () {
 
 	'use strict';
@@ -43413,11 +45017,6 @@ module.exports = (function () {
 	var promises = require('./promises');
 	var types = require('./types');
 	var utils = require('./utils');
-
-	function hashPromise (valueString) {
-		var keyString = String(this); // to enable use w/ map
-		return crypto.hash([keyString, valueString].join(':'));
-	}
 
 	function typeString () {
 		switch (Object(this).type) {
@@ -43445,6 +45044,8 @@ module.exports = (function () {
 		if (!utils.isObject(operation)) operation = { string: operation };
 		return paramsPromise(type, operation).then(function (params) {
 			var IDs = Object.keys(parameters).filter(function (key) {
+				// uses filters to filter out anything (tag, state, mediaType...)
+				// that should not be hashed but just added as a query param
 				var filter = utils.defaults.filters[key], value = parameters[key];
 				if (!utils.isFunction(filter)) return true; // Field id:String?
 				params[key] = promises.create(function (resolve) {
@@ -43453,26 +45054,26 @@ module.exports = (function () {
 				});
 			});
 			return dictionary.raw.fields(IDs).then(function (fields) {
-				var hashes = []; // Array<Promise<hex:String>>
+				var hashes = {};
+				var classifications = ['UNENCRYPTED', 'ENCRYPTED', 'PII'];
+				classifications.forEach( function (type) { hashes[type] = []; });	// Object{Array<Promise<hex:String>>}
+
 				Object.keys(fields).forEach(function (key) {
 					var value = parameters[key]; // T or Array<T>
-					switch (fields[key].classification) {
-					case 'ENCRYPTED':
-					case 'PII':
-						if (!utils.isArray(value)) hashes.push(hashPromise.call(key, value));
-						else Array.prototype.push.apply(hashes, value.map(hashPromise, key));
-						break;
-					case 'UNENCRYPTED':
-						params[key] = parameters[key];
-						break;
-					default:
+					var hashList = hashes[fields[key].classification];
+					if (hashList) {
+						if (!utils.isArray(value)) hashList.push(crypto.hash(value));
+						else Array.prototype.push.apply(hashList, value.map(crypto.hash));
+					} else {
 						throw new Error('invalid field parameter:', key);
 					}
 				});
 				return promises.all(hashes);
 			}).then(function (hashes) {
 				// mandatory query params:
-				params.hashes = hashes;
+				params.unencryptedHashes = hashes.UNENCRYPTED;
+				params.encryptedHashes = hashes.ENCRYPTED;
+				params.piiHashes = hashes.PII;
 				return promises.all(params);
 			});
 		});
@@ -43481,7 +45082,7 @@ module.exports = (function () {
 
 })();
 
-},{"./client":224,"./crypto.JOSE":226,"./dictionary":228,"./promises":234,"./types":240,"./utils":241}],236:[function(require,module,exports){
+},{"./client":251,"./crypto.JOSE":253,"./dictionary":255,"./promises":262,"./types":269,"./utils":270}],265:[function(require,module,exports){
 
 module.exports = (function () {
 	'use strict';
@@ -43574,7 +45175,7 @@ module.exports = (function () {
 
 })();
 
-},{"./entities":229,"./exceptions":230,"./pod":233,"./promises":234,"./strings":239,"./types":240}],237:[function(require,module,exports){
+},{"./entities":256,"./exceptions":257,"./pod":261,"./promises":262,"./strings":268,"./types":269}],266:[function(require,module,exports){
 module.exports = (function () {
 
 	'use strict';
@@ -43582,6 +45183,8 @@ module.exports = (function () {
 	var promises = require('./promises');
 	var services = require('./services');
 	var utils = require('./utils');
+	var btoa = require('btoa');
+	var config = require('./config');
 
 	var prefix = { // URL prefix lookup map, by API:
 		context:    ['context',    'context',    'v1'].join('/'),
@@ -43589,8 +45192,8 @@ module.exports = (function () {
 		field:      ['dictionary', 'field',      'v1'].join('/'),
 		fieldset:   ['dictionary', 'fieldset',   'v1'].join('/'),
 		property:   ['management', 'property',   'v1'].join('/'),
-		user:       ['management', 'user',       'v1'].join('/')
-		// TODO (tohagema): could use a single prefix-trie for these
+		user:       ['management', 'user',       'v1'].join('/'),
+		kms:        ['encryption', 'api',        'v1', 'kms'].join('/')
 	};
 
 	function pushEncodedString (key, value) {
@@ -43704,8 +45307,20 @@ module.exports = (function () {
 		Property: {
 
 			get: function readPropertyAPIv1 (name) {
-				var endpoint = [prefix.property, 'propertyName', name].join('/');
+				var endpoint = [prefix.property, 'user' ,'propertyName', name].join('/');
 				return services.management({ endpoint: endpoint, method: 'GET' });
+			},
+
+			post: function postPropertyAPIv1 (name, orgId, value) {
+				var dataName = [name, 'org', orgId].join('.');
+				return services.management({
+					endpoint: prefix.property,
+					method: 'POST',
+					data: {
+						name: dataName,
+						value: value
+					}
+				});
 			}
 
 		},
@@ -43726,13 +45341,58 @@ module.exports = (function () {
 				return services.management({ endpoint: prefix.user, method: 'GET' });
 			}
 
+		},
+
+		Kms: {
+
+			get: function getKmsV1 (clientId) {
+				var endpoint = clientId ? [prefix.kms, clientId].join('/') : prefix.kms;
+				return services.kms({
+					endpoint: endpoint,
+					method: 'get',
+					skipSdkVersionHeader: true,
+					tokenType: 'encryptionService'
+				});
+			},
+
+			post: function postKmsV1 (request) {
+				var endpoint = [prefix.kms, 'messages'].join('/');
+				return services.kms({
+					endpoint: endpoint,
+					method: 'post',
+					params: { synchronous: true },
+					data: { 'kmsMessages': [request.toString()] },
+					skipSdkVersionHeader: true,
+					tokenType: 'encryptionService'
+				});
+			}
+		},
+
+		CommonIdentity: {
+
+			postReduceToken: function postCommonIdentityV1 (options, service, scopes) {
+				var client = btoa([options.clientId, options.clientSecret].join(':'));
+				return services.commonIdentity({
+					url: config.defaults.broker.url,
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+						'Authorization': ['Basic', client].join(' ')
+					},
+					params: {
+						'grant_type': 'urn:cisco:oauth:grant-type:scope-reduction',
+						'token': options.token,
+						'scope': scopes
+					}
+				}, service);
+			}
 		}
 
 	}; // end Context Service (v1) definitions
 
 }).call(this);
 
-},{"./promises":234,"./services":238,"./utils":241}],238:[function(require,module,exports){
+},{"./config":252,"./promises":262,"./services":267,"./utils":270,"btoa":18}],267:[function(require,module,exports){
 module.exports = (function () {
 
 	'use strict';
@@ -43742,8 +45402,19 @@ module.exports = (function () {
 	var utils = require('./utils');
 	var config = require('./config');
 
-
 	var registry = {}; // maps service:String to Array<service:Object>
+
+	var authorizations = {};
+
+	function registerAuthorization (service, token) {
+		authorizations[service] = ['Bearer', token].join(' ');
+	}
+
+	function reduceTokenScope (request, service) {
+		return promise.fetch.response(request).then(function (response) {
+			registerAuthorization(service, response.data.access_token);
+		});
+	}
 
 	function replaceRegisteredServices (array) {
 		if (!utils.isArray(array)) array = [];
@@ -43763,11 +45434,22 @@ module.exports = (function () {
 	}
 
 	function decorateWithVersionHeaderAndURL (options, baseUrl) {
-
+		// if no options were passed in, return right away without doing anything
+		if (!options) return;
 		var headers = utils.isObject(options.headers) ? options.headers : {};
-		headers['x-cisco-js-sdk-version'] = config.version;
+		// certain request can't have this header. pass skipSdkVersionHeader:true in
+		// the request to prevent having this header added
+		if (!options.skipSdkVersionHeader) headers['x-cisco-js-sdk-version'] = config.version;
+		delete options.skipSdkVersionHeader;
+		// By default, the context service token will be used for each request unless
+		// tokenType is specified. In that case, the token for the tokenType will be used
+		if (options.tokenType) headers.Authorization = authorizations[options.tokenType];
+		else headers.Authorization = authorizations['contextService'];
+		delete options.tokenType;
+
 		options.headers = headers;
-		options.url = [baseUrl, options.endpoint].join('/');
+
+		if (!options.url) options.url = [baseUrl, options.endpoint].join('/');
 		return options;
 	}
 
@@ -43798,6 +45480,7 @@ module.exports = (function () {
 	};
 
 	var registerServices = function networkServicesRegistryReplace (request) {
+		decorateWithVersionHeaderAndURL(request);
 		return promise.fetch.response(request).then(function (response) {
 			var data = utils.isArray(response.data) ? response.data : [];
 			return replaceRegisteredServices(data); // returns copy of registry
@@ -43805,16 +45488,25 @@ module.exports = (function () {
 	};
 
 	return {
+		commonIdentity: reduceTokenScope,
 		context:    multiplexRequest.bind(registry, 'context'),
 		dictionary: multiplexRequest.bind(registry, 'dictionary'),
 		discovery:  registerServices.bind(registry), // replaces registry
 		management: multiplexRequest.bind(registry, 'management'),
-		raw: { replace: replaceRegisteredServices } // exposed for testing
+		kms: multiplexRequest.bind(registry, 'kms'),
+		raw: {
+			replace: replaceRegisteredServices,
+			registerAuthorization: registerAuthorization,
+			getAuthorizationForType: function (type) { return authorizations[type]; },
+			getAuthorizations: function () { return authorizations; },
+			clearAuthorizations: function () { authorizations = {}; },
+			decorateWithVersionHeaderAndURL: decorateWithVersionHeaderAndURL
+		}
 	};
 
 })();
 
-},{"./config":225,"./log":231,"./promises":234,"./utils":241}],239:[function(require,module,exports){
+},{"./config":252,"./log":259,"./promises":262,"./utils":270}],268:[function(require,module,exports){
 module.exports = (function () {
 
 	'use strict';
@@ -43871,11 +45563,10 @@ module.exports = (function () {
 		ALL_VALUES_IN_WORKGROUPS_MUST_BE_ARRAYS_ERR_MSG: 'All values by key in workgroups must be arrays.',
 		BASE_ENTITY_CANNOT_BE_EXPLICTLY_CONSTRUCTED: 'BaseEntity cannot be explicitly constructed.',
 		CANNOT_SET_PODS_FOR_REQUEST_ERR_MSG: 'Cannot set Pods for Request.',
-		CONTRIBUTORS_ARRAY_ERR_MSG: 'contributors must be an array.',
-		CONTRIBUTORS_ARRAY_LENGTH_ERR_MSG: 'contributors array must contain only one contributor',
+		CANNOT_SET_CONTRIBUTORS_MSG: 'Cannot modify contributors directly. Please set newContributor.',
 		CONTRIBUTORS_ALLOWED_PROPS_ERR_MSG: 'one or more of the Contributor properties does not match the enum properties',
 		CONTRIBUTORS_PROP_VALUES_MUST_BE_A_STRING: 'all contributor prop values must be strings',
-		CONTRIBUTORS_TYPE_ERR_MSG: 'The contributor must be JSON object within the array.',
+		CONTRIBUTORS_TYPE_ERR_MSG: 'The contributor must be JSON object.',
 		CREATED_MUST_BE_A_DATE_ERR_MSG: 'created must be a Date object.',
 		CUSTOMERID_TYPE_ERR_MSG: 'customerId must be a string.',
 		DATA_ELEMENT_VALUES_MUST_BE_STRINGS_NUMBERS_OR_BOOLEAN_ERR_MSG: 'All values in dataElements must be strings, numbers, or booleans.',
@@ -43883,16 +45574,18 @@ module.exports = (function () {
 		DATA_ENC_MUST_BE_AN_OBJECT_ERR_MSG: 'dataEnc must be an object.',
 		ENCRYPTED_SCR_IN_ARRAY_POSITION: ' encryptedScr in array position ',
 		FIELDSETS_MUST_BE_AN_ARRAY_ERR_MSG: 'fieldsets must be an array.',
-		PODS_MUST_BE_AN_ARRAY_ERR_MSG: 'pods must be an array.',
 		ID_MUST_BE_A_STRING: 'ID must be a string.',
 		KEYID_IN_ARRAY_POSITION: ' keyId in array position ',
+		KMS_SECURE_CHANNEL: 'A secure channel has not been established with kms',
 		LAST_UPDATED_MUST_BE_A_DATE_ERR_MSG: 'lastUpdated must be a Date object.',
 		MEDIA_TYPE_ERR_MSG: 'mediaType must be a string.',
 		MEDIA_TYPE_NON_ENUM_ERR_MSG: 'mediaType value does not match any of the enum media type values.',
+		MISSING_CLIENT_ID_AND_SECRET: 'Initialization without clientId and clientSecret will no longer be supported. Please include clientId and clientSecret during initialization.',
 		MUST_HAVE_A_KEYID: ' must have a keyId',
 		MUST_HAVE_A_VALUE: ' must have a value.',
 		PII_DATA_ENC_MUST_BE_AN_OBJECT_ERR_MSG: 'piiDataEnc must be a plain object.',
 		PII_HASH_MUST_BE_AN_ARRAY_ERR_MSG: 'piiHash must be an array.',
+		PODS_MUST_BE_AN_ARRAY_ERR_MSG: 'pods must be an array.',
 		POD_CONTRIBUTOR_PROPS: POD_CONTRIBUTOR_PROPS,
 		POD_MEDIA_TYPE: POD_MEDIA_TYPE,
 		POD_STATE: POD_STATE,
@@ -43911,7 +45604,7 @@ module.exports = (function () {
 
 })();
 
-},{}],240:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 module.exports = (function () {
 
 	'use strict';
@@ -43968,7 +45661,7 @@ module.exports = (function () {
 
 })();
 
-},{}],241:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 module.exports = (function () {
 
 	'use strict';
@@ -44099,6 +45792,13 @@ module.exports = (function () {
 		return Math.min(Math.max(1, isNaN(number) ? 50 : number), 200).toFixed(0);
 	};
 
+	// dictionary utilities
+	function isSearchable (fieldDef) {
+		return fieldDef.searchable === undefined ||
+			fieldDef.searchable === null ||
+			fieldDef.searchable.trim().toLowerCase() === 'true';
+	}
+
 	return {
 
 		// Date-specific:
@@ -44120,6 +45820,9 @@ module.exports = (function () {
 		isObject:   isObject,
 		isString:   isString,
 
+		// dictionary utilities
+		isSearchable:	isSearchable,
+
 		// Generic/single-purpose functions:
 		copy: function copyViaJSON (jsonValue) {
 			if (typeof jsonValue !== 'undefined') {
@@ -44139,5 +45842,5 @@ module.exports = (function () {
 
 })();
 
-},{"./promises":234}]},{},[1])(1)
+},{"./promises":262}]},{},[1])(1)
 });

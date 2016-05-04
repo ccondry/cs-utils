@@ -3,6 +3,7 @@
 var sdk = require("../sdk/ContextService.js"),
 	help = require("./help.js"),
 	chalk = require("chalk"),
+	client = require('./client.js'),
 	argv = require('minimist')(process.argv.slice(2));
 if(argv.help ){
 	help.showHelp('cs-customer-update',{id:true,fieldset:true,field:true});
@@ -48,7 +49,7 @@ allFields.forEach(function(value){
 	}
 });
 
-sdk.init({token: argv.token, discovery:discovery},{ LAB_MODE: !argv.prod, DISABLE_CACHE: true  })
+sdk.init({token: argv.token, discovery:discovery, clientId: client.id, clientSecret: client.secret},{ LAB_MODE: !argv.prod, DISABLE_CACHE: true  })
 .then(function(){
 	return sdk.get(sdk.ENTITY_TYPES.CUSTOMER, argv.id);
 })

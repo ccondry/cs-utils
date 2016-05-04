@@ -3,6 +3,7 @@
 var sdk = require("../sdk/ContextService.js"),
 	help = require("./help.js"),
 	chalk = require("chalk"),
+	client = require('./client.js'),
 	argv = require('minimist')(process.argv.slice(2));
 if(argv.help ){
 	help.showHelp('cs-pod-get',{id:true});
@@ -23,7 +24,7 @@ if(typeof argv.discovery === 'string'){
 	discovery = argv.discovery;
 }
 
-sdk.init({token: argv.token, discovery:discovery},{ LAB_MODE: !argv.prod, DISABLE_CACHE: true  })
+sdk.init({token: argv.token, discovery:discovery, clientId: client.id, clientSecret: client.secret},{ LAB_MODE: !argv.prod, DISABLE_CACHE: true  })
 .then(function(){
 	return sdk.get(sdk.ENTITY_TYPES.POD, argv.id);
 })
