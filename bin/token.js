@@ -5,7 +5,7 @@ var auth = require("../index.js").Auth,
 	argv = require('minimist')(process.argv.slice(2));
 
 if(argv.help ){
-	console.log(chalk.yellow("Usage: cs-token [--user] [--password] [--orgid] [--includeKmsScopes] [--help]"));
+	console.log(chalk.yellow("Usage: cs-token [--user] [--password] [--orgid] [--kms] [--help]"));
 	return;
 }
 
