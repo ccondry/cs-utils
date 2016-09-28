@@ -22,6 +22,6 @@ property.updateProperty(argv.discoveryUrl, argv.orgId, argv.propertyName, argv.p
 })
 .catch(function(e){
 	//console.error("Cannot get token for user : ", || "TEST USER"," for org :",argv.orgid||"TEST ORG");
-	console.error("Error occured",e.data? e.data.error: e);
+	console.error("Error occured", e);
 
 });
