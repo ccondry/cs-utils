@@ -6,7 +6,7 @@
   "main": "index.js",
   "bin": {
     "cs-token": "./bin/token.js",
-	"cs-admin-token": "./bin/admintoken.js",
+    "cs-admin-token": "./bin/admintoken.js",
     "cs-pod-create": "./bin/pod.create.js",
     "cs-pod-get": "./bin/pod.get.js",
     "cs-pod-delete": "./bin/pod.delete.js",
@@ -32,6 +32,7 @@
     "chalk": "^1.1.1",
     "es6-promise": "3.0.2",
     "minimist": "^1.2.0",
+    "request-promise": "^4.1.1",
     "xml2js": "^0.4.17"
   }
 }
