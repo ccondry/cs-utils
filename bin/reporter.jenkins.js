@@ -17,7 +17,12 @@ var processTestSuite = function (obj,name){
 		suite['$'].name = packageName;
 		var childTestSuites = processTestSuite(suite,packageName);
 		if(childTestSuites)
-			suite.testsuite=childTestSuites
+			suite.testsuite=childTestSuites;
+		if(suite.testcase)
+			suite.testcase.forEach(function(testcase){
+				if(testcase['$'] && testcase['$'].classname)
+					delete testcase['$'].classname;
+			});
 		processedTestSuites.push(suite);
 	});
 	return processedTestSuites;
