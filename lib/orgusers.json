@@ -1,0 +1,17 @@
+{
+  "orgId": "1e4f05d1-ccbb-4717-8cb0-efa251455979",
+  "adminUser": "testorg@cisco.testorg.com",
+  "adminPassword": "C1sco123==",
+  "machineAccountPassword": "eeFF12$49d61fbc-6b6d-4bcc-9546-902fe1abfb07",
+  "machineAccounts": [
+    {
+      "id": "2052dc03-848a-4929-839f-6df2b83664b2",
+      "name": "fusion-mgmnt-71a56cf2-b919-4047-8f8d-b9f6b70737ef"
+    },
+    {
+      "id": "1ebf9ad3-bbab-4b6b-b250-d5f2f2ce2e59",
+      "name": "fusion-mgmnt-617e7f75-a498-4ee3-96d5-a2d743118dd7"
+    }
+  ],
+  "lastUpdated": "2016-10-11T21:30:06.941Z"
+}
