@@ -17,7 +17,12 @@ var processTestSuite = function (obj,name){
 		suite['$'].name = packageName;
 		var childTestSuites = processTestSuite(suite,packageName);
 		if(childTestSuites)
-			suite.testsuite=childTestSuites
+			suite.testsuite=childTestSuites;
+		if(suite.testcase)
+			suite.testcase.forEach(function(testcase){
+				if(testcase['$'] && testcase['$'].classname)
+					delete testcase['$'].classname;
+			});
 		processedTestSuites.push(suite);
 	});
 	return processedTestSuites;
@@ -35,7 +40,8 @@ fs.readFile(sourceFile,'utf8', (err, xml) => {
 	xml2js.parseString(xml, function (err, xml) {
 		if (err) throw err;
 		var result = {testsuites:{}};
-		result.testsuites["testsuite"] = processTestSuite(xml.testsuites);
+		var testsuitesName = xml.testsuites["$"] ? xml.testsuites["$"].name : undefined;
+		result.testsuites["testsuite"] = processTestSuite(xml.testsuites,testsuitesName);
 		var builder = new xml2js.Builder();
 		var processedXml = builder.buildObject(result);
 		fs.writeFile(destFile, processedXml, function(err) {
