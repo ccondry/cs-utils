@@ -1,0 +1,20 @@
+{
+  "orgId": "fa208925-5f32-48b2-a21f-c355d638d74e",
+  "adminUser": "saurabh.svit@hotmail.com",
+  "adminPassword": "C1sco123-",
+  "users": [
+    {
+      "id": "56792594-bcd0-4ad2-938a-5525ccd22ae3",
+      "userName": "hudoke@hostcalls.com",
+      "password": "UXIJ.adfu.34.QTIM.axhk.14.RVGY.rqtv.0456"
+    }
+  ],
+  "machineAccounts": [
+    {
+      "id": "8292cec6-e8ef-4e7a-946d-d29d513024d9",
+      "name": "testMachine",
+      "password": "eeFF12$2d892a94-d29e-42b4-bb3c-667b3d29670e"
+    }
+  ],
+  "lastUpdated": "2016-10-12T13:49:55.974Z"
+}
