@@ -1,6 +1,6 @@
 {
   "name": "cs-js-test-utils",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "private": true,
   "description": "test utilities for Context Service JS Tests",
   "main": "index.js",
