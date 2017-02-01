@@ -15,7 +15,8 @@
     "cs-customer-get": "./bin/customer.get.js",
     "cs-customer-delete": "./bin/customer.delete.js",
     "cs-customer-update": "./bin/customer.update.js",
-    "cs-reporter-jenkins": "./bin/reporter.jenkins.js"
+    "cs-reporter-jenkins": "./bin/reporter.jenkins.js",
+	"cs-jsorg-feature": "./bin/feature.js"
   },
   "repository": {
     "type": "git",
