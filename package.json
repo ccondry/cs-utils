@@ -15,7 +15,8 @@
     "cs-customer-get": "./bin/customer.get.js",
     "cs-customer-delete": "./bin/customer.delete.js",
     "cs-customer-update": "./bin/customer.update.js",
-    "cs-reporter-jenkins": "./bin/reporter.jenkins.js"
+    "cs-reporter-jenkins": "./bin/reporter.jenkins.js",
+	"cs-jsorg-feature": "./bin/feature.js"
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,10 @@
     "chalk": "^1.1.1",
     "es6-promise": "3.0.2",
     "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "request": "^2.78.0",
     "request-promise": "^4.1.1",
+    "rimraf": "^2.5.4",
     "xml2js": "^0.4.17"
   }
 }
