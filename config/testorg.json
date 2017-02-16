@@ -1,20 +1,25 @@
 {
-  "orgId": "fa208925-5f32-48b2-a21f-c355d638d74e",
-  "adminUser": "saurabh.svit@hotmail.com",
-  "adminPassword": "C1sco123-",
+  "orgId": "4d9a33f5-0883-49ea-967c-41ce62d80fba",
+  "adminUser": "jucistopop@housat.com",
+  "adminPassword": "C1sco123=",
   "users": [
     {
-      "id": "56792594-bcd0-4ad2-938a-5525ccd22ae3",
-      "userName": "hudoke@hostcalls.com",
-      "password": "UXIJ.adfu.34.QTIM.axhk.14.RVGY.rqtv.0456"
+      "id": "39dd0912-fede-4e44-8abc-97508b4da28e",
+      "userName": "pacecrotru@housat.com",
+      "password": "C1sco123="
     }
   ],
   "machineAccounts": [
     {
-      "id": "8292cec6-e8ef-4e7a-946d-d29d513024d9",
-      "name": "testMachine",
-      "password": "eeFF12$8ca9c766-ee18-4b18-a520-9e85182c5eb2"
+      "id": "e610939d-8d55-46e9-984f-74fa16267e8a",
+      "name": "fusion-mgmnt-d4d35f1c-5068-4de8-8cf7-c4c1857d8d9b",
+      "password": "eeFF12$b9d4b827-3012-4dad-a823-195f872fd70f"
+    },
+    {
+      "id": "cbbf8a00-7c46-4658-a213-d8eca89aeefe",
+      "name": "fusion-mgmnt-5957f9f5-2321-4f07-8275-80318d276eec",
+      "password": "eeFF12$3b8e7f38-b236-4dc1-abd3-a911bf557bfe"
     }
   ],
-  "lastUpdated": "2016-10-14T19:36:16.650Z"
+  "lastUpdated": "2017-02-16T19:01:10.427Z"
 }
