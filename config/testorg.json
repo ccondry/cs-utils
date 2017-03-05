@@ -12,18 +12,18 @@
 	"machineAccounts": {
 		"active": [
 			{
-				"id": "cbbf8a00-7c46-4658-a213-d8eca89aeefe",
-				"name": "fusion-mgmnt-5957f9f5-2321-4f07-8275-80318d276eec",
-				"password": "eeFF12$4acd72f7-b3dc-4724-8bf9-e3f2407562f0"
+				"id": "e610939d-8d55-46e9-984f-74fa16267e8a",
+				"name": "fusion-mgmnt-d4d35f1c-5068-4de8-8cf7-c4c1857d8d9b",
+				"password": "eeFF12$0d091c3c-7518-4506-8386-4b50c309bbd2"
 			}
 		],
 		"inactive": [
 			{
-				"id": "e610939d-8d55-46e9-984f-74fa16267e8a",
-				"name": "fusion-mgmnt-d4d35f1c-5068-4de8-8cf7-c4c1857d8d9b",
-				"password": "eeFF12$c8acef05-1185-4377-bf7a-b56d86de3025"
+				"id": "cbbf8a00-7c46-4658-a213-d8eca89aeefe",
+				"name": "fusion-mgmnt-5957f9f5-2321-4f07-8275-80318d276eec",
+				"password": "eeFF12$4acd72f7-b3dc-4724-8bf9-e3f2407562f0"
 			}
 		]
 	},
-	"lastUpdated": "2017-03-05T00:01:55.608Z"
+	"lastUpdated": "2017-03-05T00:14:44.991Z"
 }
