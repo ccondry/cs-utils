@@ -1,6 +1,6 @@
 {
   "name": "cs-js-test-utils",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "private": true,
   "description": "test utilities for Context Service JS Tests",
   "main": "index.js",
@@ -16,7 +16,7 @@
     "cs-customer-delete": "./bin/customer.delete.js",
     "cs-customer-update": "./bin/customer.update.js",
     "cs-reporter-jenkins": "./bin/reporter.jenkins.js",
-	"cs-jsorg-feature": "./bin/feature.js"
+    "cs-jsorg-feature": "./bin/feature.js"
   },
   "repository": {
     "type": "git",
