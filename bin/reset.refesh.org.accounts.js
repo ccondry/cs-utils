@@ -149,6 +149,7 @@ var setUserPassword  = function(accessToken,orgId,userId,password,counter){
 				"schemas": ["urn:scim:schemas:core:1.0", "urn:scim:schemas:extension:cisco:commonidentity:1.0"],
 				"password": newPassword
 			};
+			console.log(chalk.dim("Setting password",newPassword));
 		return request(url,
 				{
 					method: 'patch',
