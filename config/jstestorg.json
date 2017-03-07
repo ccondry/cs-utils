@@ -1,0 +1,62 @@
+{
+	"orgId": "4f9178e2-8b6f-4db3-a00f-a723c3b709e9",
+	"adminUser": "javascript@cstest.org",
+	"adminPassword": "C1sco123==",
+	"machineAccounts": {
+		"active": [
+			{
+				"id": "eb78631c-3ed7-43b4-a2bc-aec5d803014d",
+				"name": "fusion-mgmnt-530fbcbb-0fe6-46d8-b85b-bbf1b63c0d5a",
+				"password": "eeFF12$507f26ab-cba4-43cd-b31a-45ec2782dae1"
+			},
+			{
+				"id": "20aa7bb4-c112-4477-8c8e-3d9c5e64ea13",
+				"name": "fusion-mgmnt-0d9c0353-cd94-4db1-b5d6-7d3e60466865",
+				"password": "eeFF12$2eb4b759-4831-4039-a7d4-fa4c29dedb74"
+			},
+			{
+				"id": "f526a08e-330e-4a4d-a09c-8701f454fe9e",
+				"name": "fusion-mgmnt-c1f0fff5-a44e-4b04-809f-50cc852c54b8",
+				"password": "eeFF12$6ae41431-fa3a-4426-8735-a53569faa1d8"
+			},
+			{
+				"id": "7dfd2dce-2b51-49c9-a9cf-be3fcda1abcf",
+				"name": "fusion-mgmnt-2ab9299d-c088-4443-9cd8-5cb80ac63889",
+				"password": "eeFF12$dc8b310e-7192-4413-a301-0ec660a627d6"
+			},
+			{
+				"id": "bb07dc44-fccf-4b1a-baf5-029a081880b2",
+				"name": "fusion-mgmnt-e2dea6da-c4ec-4df3-a47d-3eab6a8c9b79",
+				"password": "eeFF12$eea5383d-ac65-452b-9f73-0784a6edcedc"
+			}
+		],
+		"inactive": [
+			{
+				"id": "a5daa38d-bcae-4c6c-a910-6b21185fc007",
+				"name": "fusion-mgmnt-b48d5cee-99ad-42cd-a2b2-832e5dec77d2",
+				"password": "eeFF12$1833652a-2dd8-49d1-a59b-00d5e53b7d5f"
+			},
+			{
+				"id": "7f49dc29-ae82-4e2e-bd6e-fd02c56d5a94",
+				"name": "fusion-mgmnt-bbeae8f0-0d36-47df-a186-8d4aa4c67235",
+				"password": "eeFF12$fe1d0bb3-b330-4fc5-8acf-aad3d9f4f16a"
+			},
+			{
+				"id": "3bf0bd90-ee5b-4c3a-b660-180b945a2c58",
+				"name": "fusion-mgmnt-c1285869-0a1e-4815-8a45-672bd857f2e0",
+				"password": "eeFF12$2379a260-c27a-4c0c-8222-bca705858bb4"
+			},
+			{
+				"id": "730dc77f-b257-4eb8-837b-75d964791a33",
+				"name": "fusion-mgmnt-c8f07d5a-3b07-48da-91d2-c4d8eababc71",
+				"password": "eeFF12$d5863403-d315-4834-9c32-8c774415ab0e"
+			},
+			{
+				"id": "88c21097-4139-44f5-be05-72ced65a19aa",
+				"name": "fusion-mgmnt-d0e07627-7809-41f7-ad52-350573b9421f",
+				"password": "eeFF12$8d1928a2-1b4a-42ef-b2ed-a09bc9f3dc09"
+			}
+		]
+	},
+	"lastUpdated": "2017-02-24T20:04:01.473Z"
+}
