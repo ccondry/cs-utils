@@ -18,6 +18,9 @@
     "cs-reporter-jenkins": "./bin/reporter.jenkins.js",
     "cs-jsorg-feature": "./bin/feature.js"
   },
+  "scripts": {
+    "package": "mv `npm pack` cs-js-test-utils.tgz"
+  },
   "repository": {
     "type": "git",
     "url": "git@sqbu-github.cisco.com:CBABU/cs-js-test-utils.git"
