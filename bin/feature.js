@@ -21,7 +21,8 @@ if(argv.clear){
 	.catch(function(e){
 		console.error(chalk.red("Error clearing features "),  chalk.bold(argv.id),(e.data? e.data.error: e)||'');
 	});
-}else if( argv._ &&  argv._.length>1) {
+}else if( argv._ &&  argv._.length>0) {
+
 	property.createProperty(discovery,argv._.join(),null,DEFAULT_JS_TEST_ORG)
 	.then(function(){
 		console.log(chalk.green("Successfully set features for JS Test Org on " + discovery) );
