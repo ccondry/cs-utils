@@ -19,12 +19,12 @@ if(!argv.id ){
 	help.showHelp('cs-customer-delete',{id:true});
 	return;
 }
-var discovery = 'https://discovery.rciad.ciscoccservice.com/';
+var discovery = 'https://discovery.produs1.ciscoccservice.com/';
 if(typeof argv.discovery === 'string'){
 	discovery = argv.discovery;
 }
 
-sdk.init({token: argv.token, discovery:discovery, clientId: client.id, clientSecret: client.secret},{ LAB_MODE: !argv.prod, DISABLE_CACHE: true  })
+sdk.init({token: argv.token, discovery:discovery, clientId: client.id, clientSecret: client.secret},{ LAB_MODE: !argv.prod, DISABLE_TIMERS: true, SERVICE_NAME:"jstestutils"  })
 .then(function(){
 	var customer = sdk.constructCustomer();
 	customer.id= argv.id;
