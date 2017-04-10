@@ -52,7 +52,7 @@ var pod = sdk.constructPod();
 pod.fieldsets = fieldsets;
 pod.customerId = customerId;
 pod.dataElements = dataElements;
-sdk.init({token: argv.token, discovery:discovery, clientId: client.id, clientSecret: client.secret},{ LAB_MODE: !argv.prod, DISABLE_CACHE: true  })
+sdk.init({token: argv.token, discovery:discovery, clientId: client.id, clientSecret: client.secret},{ LAB_MODE: !argv.prod, DISABLE_TIMERS: true, SERVICE_NAME:"jstestutils"  })
 .then(function(){
 	return sdk.create(pod);
 })
