@@ -14,7 +14,7 @@ if(!argv.token ){
 	help.showHelp('cs-customer-create',{fieldset:true,field:true});
 	return;
 }
-var discovery = 'https://discovery.rciad.ciscoccservice.com/';
+var discovery = 'https://discovery.produs1.ciscoccservice.com/';
 if(typeof argv.discovery === 'string'){
 	discovery = argv.discovery;
 }
