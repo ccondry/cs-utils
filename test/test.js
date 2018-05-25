@@ -1,6 +1,10 @@
 const auth = require("../index").Auth
+const config = require('./config')
 
-const connectionData = ``
+const connectionDataString = config.connectionDataString
+const orgEmail = config.orgEmail
+const orgPassword = config.orgPassword
+const orgId = config.orgId
 const labMode = true
 const kmsScopes = true
 
