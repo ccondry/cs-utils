@@ -13,9 +13,10 @@ var kmsScopes = argv.kms || argv.kms === 'true';
 
 auth.getToken(argv.user,argv.password,argv.orgid,kmsScopes)
 .then(function(token){
-	console.log(chalk.gray("************************ ACCESS TOKEN ************************"));
-	console.log(chalk.green(token.access_token))
-	console.log(chalk.gray("**************************************************************"));
+	// console.log(chalk.gray("************************ ACCESS TOKEN ************************"));
+	// console.log(chalk.green(token.access_token))
+	// console.log(chalk.gray("**************************************************************"));
+	console.log(token)
 })
 .catch(function(e){
 	console.error("Cannot get token for user : ",argv.user || "TEST USER"," for org :",argv.orgid||"TEST ORG");
