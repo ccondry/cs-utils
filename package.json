@@ -20,6 +20,7 @@
     "cs-jsorg-feature": "./bin/feature.js"
   },
   "scripts": {
+    "test": "mocha test",
     "package": "mv `npm pack` cs-js-test-utils.tgz"
   },
   "repository": {
@@ -38,6 +39,7 @@
     "es6-promise": "3.0.2",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
+    "querystring": "^0.2.0",
     "request": "^2.78.0",
     "request-promise": "^4.1.1",
     "rimraf": "^2.5.4",
