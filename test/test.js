@@ -21,9 +21,9 @@ describe('auth.getOrgAdminToken(username, password, orgId, scopes)', function ()
 describe('lib.machineAccount.list()', function () {
   it('should list Context Service machine accounts', function (done) {
     // decode the connection data string into JSON
-    const connectionData = auth.decodeConnectionData(config.connectionDataString)
+    const connectionData = lib.utils.decodeConnectionData(config.connectionDataString)
     // get credentials
-    const credentials = auth.getCredentials(connectionData, config.labMode)
+    const credentials = lib.utils.getCredentials(connectionData, config.labMode)
     // get customer
     lib.machineAccount.list({
       orgId: config.orgId,
@@ -44,9 +44,9 @@ describe('lib.machineAccount.list()', function () {
 describe('lib.machineAccount.get()', function () {
   it('should list Context Service machine accounts', function (done) {
     // decode the connection data string into JSON
-    const connectionData = auth.decodeConnectionData(config.connectionDataString)
+    const connectionData = lib.utils.decodeConnectionData(config.connectionDataString)
     // get credentials
-    const credentials = auth.getCredentials(connectionData, config.labMode)
+    const credentials = lib.utils.getCredentials(connectionData, config.labMode)
     // get customer
     lib.machineAccount.get({
       orgId: config.orgId,
