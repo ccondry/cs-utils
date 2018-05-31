@@ -11,7 +11,7 @@ if(argv.help ){
 
 var kmsScopes = argv.kms || argv.kms === 'true';
 
-auth.getToken(argv.user,argv.password,argv.orgid,kmsScopes)
+auth.getToken(argv.user, argv.password, argv.orgid, kmsScopes)
 .then(function(token){
 	// console.log(chalk.gray("************************ ACCESS TOKEN ************************"));
 	// console.log(chalk.green(token.access_token))
