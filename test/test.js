@@ -1,5 +1,4 @@
 const lib = require('../lib')
-const sdk = require('../sdk')
 const config = require('./config')
 
 const cache = {}
