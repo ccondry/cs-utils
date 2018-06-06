@@ -137,25 +137,25 @@ describe('lib.tokens.getAccessToken()', function () {
     })
   })
 })
-
-describe('lib.customer.get()', function () {
-  it('should get customer from CS', function (done) {
-    this.timeout(8000)
-    lib.customer.get({
-      orgId: cache.credentials.orgId,
-      bearer: cache.accessToken.access_token,
-      q: 'Context_First_Name:Coty'
-    })
-    .then(rsp => {
-      console.log(rsp)
-      done()
-    })
-    .catch(e => {
-      // console.error(e)
-      done(e)
-    })
-  })
-})
+//
+// describe('lib.customer.get()', function () {
+//   it('should get customer from CS', function (done) {
+//     this.timeout(8000)
+//     lib.customer.get({
+//       orgId: cache.credentials.orgId,
+//       bearer: cache.accessToken.access_token,
+//       q: 'Context_First_Name:Coty'
+//     })
+//     .then(rsp => {
+//       console.log(rsp)
+//       done()
+//     })
+//     .catch(e => {
+//       // console.error(e)
+//       done(e)
+//     })
+//   })
+// })
 
 
 // describe('sdk.init()', function () {
@@ -184,12 +184,17 @@ describe('lib.customer.get()', function () {
 // describe('refresh access token', function () {
 //   it('should refresh the access token received in the previous test', function (done) {
 //     // auth.refreshToken(cache.credentials, cache.token)
-//     auth.refreshAccessToken(config.connectionDataString, true, cache.accessToken)
+//     cache.accessToken = {
+//       refresh_token: 'YTMyYWZhYjYtYmRhZC00YmFlLTgxMmEtMjMzMTI5OTZiNDQ4NjM2Y2EzNDQtYjky'
+//     }
+//     lib.tokens.refreshAccessToken(config.connectionDataString, true, cache.accessToken)
 //     .then(rsp => {
 //       console.log('refreshed access token:', rsp)
+//       cache.accessToken = rsp
 //       done()
 //     })
 //     .catch(e => {
+//       console.error(e)
 //       done(e)
 //     })
 //   })
@@ -203,7 +208,7 @@ describe('lib.customer.get()', function () {
 //     const credentials = auth.getCredentials(connectionData, config.labMode)
 //     // get customer
 //     customer.get({
-//       config.customerId,
+//       // config.customerId,
 //       token: cache.accessToken,
 //       clientId: cache.credentials.clientId,
 //       clientSecret: cache.credentials.clientSecret

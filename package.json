@@ -3,7 +3,7 @@
   "version": "1.6.3",
   "private": true,
   "description": "test utilities for Context Service JS Tests",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
     "cs-token": "./bin/token.js",
     "cs-admin-token": "./bin/admintoken.js",
