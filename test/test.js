@@ -7,29 +7,31 @@ const cache = {
   labMode: config.labMode,
   clientId: config.clientId,
   clientSecret: config.clientSecret,
-  adminBearer: config.adminBearer
+  // adminBearer: config.adminBearer,
+  adminClientId: config.adminClientId,
+  adminClientSecret: config.adminClientSecret
 }
 
-// describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', function () {
-//   it('should get org admin token', function (done) {
-//     this.timeout(4000)
-//     lib.tokens.getOrgAdminToken({
-//       username: cache.orgEmail,
-//       password: cache.orgPassword,
-//       clientId: cache.clientId,
-//       clientSecret: cache.clientSecret,
-//       orgId: cache.orgId
-//     })
-//     .then(response => {
-//       // console.log('getOrgAdminToken', response)
-//       cache.adminBearer = response.access_token
-//       done()
-//     })
-//     .catch(e => {
-//       done(e)
-//     })
-//   })
-// })
+describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', function () {
+  it('should get org admin token', function (done) {
+    this.timeout(4000)
+    lib.org.getAdminAccessToken({
+      username: cache.orgEmail,
+      password: cache.orgPassword,
+      clientId: cache.adminClientId,
+      clientSecret: cache.adminClientSecret,
+      orgId: cache.orgId
+    })
+    .then(response => {
+      // console.log('getOrgAdminToken', response)
+      cache.adminBearer = response.access_token
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
 
 // describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', function () {
 //   it('should get org admin token', function (done) {
