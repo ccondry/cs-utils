@@ -198,7 +198,7 @@ describe('lib.machineAccount.getBearerToken()', function () {
       orgId: cache.orgId
     })
     .then(rsp => {
-      // console.log('got bearer token:', rsp)
+      // console.log('got bearer token:', rsp.BearerToken)
       cache.machineBearer = rsp.BearerToken
       done()
     })
