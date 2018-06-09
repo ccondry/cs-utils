@@ -4,23 +4,23 @@ const config = require('./config')
 // get initial config for tests
 const cache = {
   orgId: config.orgId,
+  orgUsername: config.orgUsername,
+  orgPassword: config.orgPassword,
   labMode: config.labMode,
   clientId: config.clientId,
-  clientSecret: config.clientSecret,
-  // adminBearer: config.adminBearer,
-  adminClientId: config.adminClientId,
-  adminClientSecret: config.adminClientSecret
+  clientSecret: config.clientSecret
+  // adminBearer: config.adminBearer
 }
 
 describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', function () {
   it('should get org admin token', function (done) {
     this.timeout(4000)
     lib.org.getAdminAccessToken({
-      username: cache.orgEmail,
+      username: cache.orgUsername,
       password: cache.orgPassword,
-      clientId: cache.adminClientId,
-      clientSecret: cache.adminClientSecret,
-      orgId: cache.orgId
+      orgId: cache.orgId,
+      clientId: cache.clientId,
+      clientSecret: cache.clientSecret,
     })
     .then(response => {
       // console.log('getOrgAdminToken', response)
@@ -33,74 +33,53 @@ describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', fun
   })
 })
 
-// describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', function () {
-//   it('should get org admin token', function (done) {
-//     this.timeout(4000)
-//     lib.org.getAdminAccessToken({
-//       username: cache.orgEmail,
-//       password: cache.orgPassword,
-//       clientId: cache.clientId,
-//       clientSecret: cache.clientSecret,
-//       orgId: cache.orgId
-//     })
-//     .then(response => {
-//       // console.log('getOrgAdminToken', response)
-//       cache.adminBearer = response.access_token
-//       done()
-//     })
-//     .catch(e => {
-//       done(e)
-//     })
-//   })
-// })
+describe('lib.org.onboard()', function () {
+  it('should onboard org with Context Service', function (done) {
+    this.timeout(8000)
+    lib.org.onboard({
+      orgId: cache.orgId,
+      bearer: cache.adminBearer
+    })
+    .then(rsp => {
+      // console.log('access token:', rsp)
+      // cache.accessToken = rsp
+      // console.log('onboard', rsp)
+      done()
+    })
+    .catch(e => {
+      if (e.statusCode === 400) {
+        // this is OK - means it is done already
+        console.log(e.message)
+        return done()
+      }
+      done(e)
+    })
+  })
+})
 
-// describe('lib.org.onboard()', function () {
-//   it('should onboard org with Context Service', function (done) {
-//     this.timeout(8000)
-//     lib.org.onboard({
-//       orgId: cache.orgId,
-//       bearer: cache.adminBearer
-//     })
-//     .then(rsp => {
-//       // console.log('access token:', rsp)
-//       // cache.accessToken = rsp
-//       // console.log('onboard', rsp)
-//       done()
-//     })
-//     .catch(e => {
-//       if (e.statusCode === 400) {
-//         // this is OK - means it is done already
-//         console.log(e.message)
-//         return done()
-//       }
-//       done(e)
-//     })
-//   })
-// })
-//
-// describe('lib.org.migrate()', function () {
-//   it('should migrate org with Context Service', function (done) {
-//     this.timeout(8000)
-//     lib.org.migrate({
-//       orgId: cache.orgId,
-//       bearer: cache.adminBearer
-//     })
-//     .then(rsp => {
-//       // console.log('access token:', rsp)
-//       // cache.accessToken = rsp
-//       // console.log('onboard', rsp)
-//       done()
-//     })
-//     .catch(e => {
-//       if (e.statusCode === 400) {
-//         // this is OK - means it is done already
-//           console.log(e.message)
-//         return done()
-//       }
-//       done(e)
-//     })
-//   })
-// })
+describe('lib.org.migrate()', function () {
+  it('should migrate org with Context Service', function (done) {
+    this.timeout(8000)
+    lib.org.migrate({
+      orgId: cache.orgId,
+      bearer: cache.adminBearer
+    })
+    .then(rsp => {
+      // console.log('access token:', rsp)
+      // cache.accessToken = rsp
+      // console.log('onboard', rsp)
+      done()
+    })
+    .catch(e => {
+      if (e.statusCode === 400) {
+        // this is OK - means it is done already
+          console.log(e.message)
+        return done()
+      }
+      done(e)
+    })
+  })
+})
 
 describe('lib.machineAccount.create()', function () {
   it('should create machine account', function (done) {
@@ -233,7 +212,7 @@ describe('lib.dataObject.search()', function () {
     this.timeout(8000)
     lib.dataObject.search({
       type: 'customer',
-      query: 'Context_Last_Name:Littlefoot',
+      query: 'Context_Last_Name:Condry',
       token: cache.accessToken.access_token,
       labMode: cache.labMode
     })

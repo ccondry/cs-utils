@@ -1,18 +1,15 @@
-const connectionDataString = `yourConnectionDataString`
-
-const orgEmail = 'youremail@domain.com'
-const orgPassword = 'yourOrgPassword'
 const orgId = 'your-org-id'
-const customerId = 'test-customer-id'
+const orgUsername = 'username@domain.com'
+const orgPassword = 'password'
+const clientId = 'yourClientId'
+const clientSecret = 'yourClientSecret'
 const labMode = true
-const kmsScopes = true
 
 module.exports = {
-  connectionDataString,
-  orgEmail,
-  orgPassword,
   orgId,
-  customerId,
-  labMode,
-  kmsScopes
+  orgUsername,
+  orgPassword,
+  clientId,
+  clientSecret,
+  labMode
 }
