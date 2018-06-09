@@ -5,8 +5,6 @@ const config = require('./config')
 const cache = {
   orgId: config.orgId,
   labMode: config.labMode,
-  // orgEmail: config.orgEmail,
-  // orgPassword: config.orgPassword,
   clientId: config.clientId,
   clientSecret: config.clientSecret,
   adminBearer: config.adminBearer
