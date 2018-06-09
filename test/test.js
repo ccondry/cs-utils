@@ -226,6 +226,25 @@ describe('lib.dataObject.search()', function () {
   })
 })
 
+describe('lib.adminDataObject.search()', function () {
+  it('should search for fieldsets in Context Service', function (done) {
+    this.timeout(8000)
+    lib.adminDataObject.search({
+      type: 'fieldset',
+      bearer: cache.adminBearer,
+      query: 'id:*',
+      maxEntries: '1500'
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} results`, rsp)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
 describe('lib.machineAccount.refreshAccessToken()', function () {
   it('should refresh the machine account access token received in the previous test', function (done) {
     // auth.refreshToken(cache.credentials, cache.token)
@@ -248,6 +267,10 @@ describe('lib.machineAccount.refreshAccessToken()', function () {
     })
   })
 })
+
+
+
+
 
 describe('lib.machineAccount.remove()', function () {
   it('should delete the machine account that was created in the previous test', function (done) {
