@@ -55,8 +55,55 @@ describe('lib.org.getAdminAccessToken()', function () {
       clientSecret: cache.clientSecret,
     })
     .then(response => {
-      // console.log('getOrgAdminToken', response)
       cache.adminBearer = response.access_token
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.org.get()', function () {
+  it('should get org details', function (done) {
+    lib.org.get({
+      orgId: cache.orgId,
+      bearer: cache.adminBearer
+    })
+    .then(response => {
+      // console.log(JSON.parse(response.orgSettings))
+      console.log('org display name is', response.displayName)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.org.getProperty() - org.apptypes', function () {
+  it('should get org.apptypes property', function (done) {
+    lib.org.getProperty({
+      property: 'org.apptypes',
+      bearer: cache.adminBearer
+    })
+    .then(response => {
+      console.log('org.appTypes:', response.value)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.org.listApps()', function () {
+  it('should list platform apps', function (done) {
+    lib.org.listApps({
+      bearer: cache.adminBearer
+    })
+    .then(response => {
+      console.log(`found ${response.length} apps`)
       done()
     })
     .catch(e => {
@@ -74,8 +121,6 @@ describe('lib.org.listAccessTokens()', function () {
       clientId: cache.clientId
     })
     .then(rsp => {
-      // console.log(rsp)
-      // console.log(`found ${rsp.data.length} access tokens`)
       done()
     })
     .catch(e => {
@@ -744,9 +789,93 @@ describe('lib.dataObject.update() - workitem', function () {
 //   })
 // })
 
+/**************************
+Creating Admin Data Objects
+**************************/
+
+describe('lib.adminDataObject.create() - field', function () {
+  it('should create Context Service field', function (done) {
+    // set up test parameters
+    cache.fieldId = 'Mocha_Test_Field'
+    lib.adminDataObject.create({
+      type: 'field',
+      bearer: cache.adminBearer,
+      body: {
+        "id": cache.fieldId,
+        "description": "Mocha Test Field",
+        "classification": "UNENCRYPTED",
+        "classificationUI": "Unencrypted",
+        "dataType": "string",
+        "dataTypeUI": "",
+        "dataTypeValue": {
+          "label": "Short Text",
+          "value": "string"
+        },
+        "translations": {
+          "en_US": "Mocha Test"
+        },
+        "searchable": true,
+        "publiclyAccessible": false,
+        "publiclyAccessibleUI": ""
+      }
+    })
+    .then(rsp => {
+      cache.field = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.adminDataObject.create() - fieldset', function () {
+  it('should create Context Service fieldset', function (done) {
+    // set up test parameters
+    cache.fieldsetId = 'Mocha_Test_Fieldset'
+    lib.adminDataObject.create({
+      type: 'fieldset',
+      bearer: cache.adminBearer,
+      body: {
+        "id": cache.fieldsetId,
+        "description": "Mocha Test Fieldset",
+        "fields": [cache.fieldId],
+        "inactiveFields": [],
+        "publiclyAccessible": false,
+        "publiclyAccessibleUI": ""
+      }
+    })
+    .then(rsp => {
+      cache.field = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
 /*******************************
 Searching for Admin Data Objects
 *******************************/
+
+describe('lib.adminDataObject.search() - fields', function () {
+  it('should search for Context Service fields', function (done) {
+    lib.adminDataObject.search({
+      type: 'field',
+      query: 'id:*',
+      maxEntries: '1500',
+      bearer: cache.adminBearer,
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} fields`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
 
 describe('lib.adminDataObject.search() - fieldsets', function () {
   it('should search for Context Service fieldsets', function (done) {
@@ -766,16 +895,74 @@ describe('lib.adminDataObject.search() - fieldsets', function () {
   })
 })
 
-describe('lib.adminDataObject.search() - fields', function () {
-  it('should search for Context Service fields', function (done) {
-    lib.adminDataObject.search({
+/****************************
+Get Single Admin Data Objects
+****************************/
+
+describe('lib.adminDataObject.get() - field', function () {
+  it('should get Context Service field by ID', function (done) {
+    lib.adminDataObject.get({
       type: 'field',
-      query: 'id:*',
-      maxEntries: '1500',
+      id: cache.fieldId,
       bearer: cache.adminBearer,
     })
     .then(rsp => {
-      console.log(`found ${rsp.length} fields`)
+      cache.field = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.adminDataObject.get() - fieldset', function () {
+  it('should get Context Service fieldset by ID', function (done) {
+    lib.adminDataObject.get({
+      type: 'fieldset',
+      id: cache.fieldsetId,
+      bearer: cache.adminBearer,
+    })
+    .then(rsp => {
+      cache.fieldset = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+/************************
+Update Admin Data Objects
+************************/
+
+describe('lib.adminDataObject.update() - field', function () {
+  it('should update Context Service field', function (done) {
+    lib.adminDataObject.update({
+      type: 'field',
+      id: cache.fieldId,
+      body: cache.field,
+      bearer: cache.adminBearer,
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.adminDataObject.update() - fieldset', function () {
+  it('should update Context Service fieldset', function (done) {
+    lib.adminDataObject.get({
+      type: 'fieldset',
+      id: cache.fieldsetId,
+      body: cache.fieldset,
+      bearer: cache.adminBearer,
+    })
+    .then(rsp => {
       done()
     })
     .catch(e => {
@@ -889,6 +1076,43 @@ describe('lib.dataObject.remove() - detail', function () {
   })
 })
 
+
+/**************************
+Removing Admin Data Objects
+**************************/
+
+describe('lib.adminDataObject.remove() - fieldset', function () {
+  it('should remove Context Service fieldset that we created earlier', function (done) {
+    lib.adminDataObject.remove({
+      type: 'fieldset',
+      bearer: cache.adminBearer,
+      id: cache.fieldsetId
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.adminDataObject.remove() - field', function () {
+  it('should remove Context Service field that we created earlier', function (done) {
+    lib.adminDataObject.remove({
+      type: 'field',
+      bearer: cache.adminBearer,
+      id: cache.fieldId
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
 /********************************
 Remove machine account we created
 ********************************/
@@ -901,11 +1125,9 @@ describe('lib.machineAccount.remove()', function () {
       machineAccountId: cache.machineAccountId
     })
     .then(rsp => {
-      // console.log('removed machine account', rsp.id)
       done()
     })
     .catch(e => {
-      // console.error(e)
       done(e)
     })
   })
