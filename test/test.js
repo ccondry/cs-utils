@@ -17,6 +17,19 @@ console.log('org admin username', cache.orgUsername)
 console.log('lab mode', cache.labMode)
 // console.log('connection data string', cache.connectionDataString)
 
+describe('lib.platform.getStatus()', function () {
+  it('should get platform status', function (done) {
+    lib.platform.getStatus()
+    .then(response => {
+      console.log(response.message)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
 describe('lib.utils.decodeConnectionData()', function () {
   it('should decode connection data string into JSON', function (done) {
     try {
