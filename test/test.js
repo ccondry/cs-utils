@@ -46,7 +46,7 @@ describe('lib.utils.getCredentials()', function () {
 
 describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', function () {
   it('should get org admin token', function (done) {
-    this.timeout(4000)
+    this.timeout(8000)
     lib.org.getAdminAccessToken({
       username: cache.orgUsername,
       password: cache.orgPassword,
