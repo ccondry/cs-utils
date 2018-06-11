@@ -3,14 +3,46 @@ const config = require('./config')
 
 // get initial config for tests
 const cache = {
-  orgId: config.orgId,
+  // orgId: config.orgId,
+  connectionDataString: config.connectionDataString,
   orgUsername: config.orgUsername,
   orgPassword: config.orgPassword,
   labMode: config.labMode,
-  clientId: config.clientId,
-  clientSecret: config.clientSecret
+  // clientId: config.clientId,
+  // clientSecret: config.clientSecret
   // adminBearer: config.adminBearer
 }
+
+console.log('org admin username', cache.orgUsername)
+console.log('lab mode', cache.labMode)
+// console.log('connection data string', cache.connectionDataString)
+
+describe('lib.utils.decodeConnectionData()', function () {
+  it('should decode connection data string into JSON', function (done) {
+    try {
+      cache.connectionData = lib.utils.decodeConnectionData(cache.connectionDataString)
+      done()
+    } catch (e) {
+      done(`could not decoded connection string data`, e)
+    }
+  })
+})
+
+describe('lib.utils.getCredentials()', function () {
+  it('should extract labMode credentials from decoded connectionData string', function (done) {
+    const credentials = lib.utils.getCredentials(cache.connectionData, cache.labMode)
+    // check that we got the lab mode credentials
+    if (credentials !== cache.connectionData.credentialsLabMode) {
+      done('credentials extracted were not the correct ones. got', credentials)
+    } else {
+      // cache the relevant data
+      cache.clientId = credentials.clientId
+      cache.clientSecret = credentials.clientSecret
+      cache.orgId = credentials.orgId
+      done()
+    }
+  })
+})
 
 describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', function () {
   it('should get org admin token', function (done) {
@@ -41,9 +73,6 @@ describe('lib.org.onboard()', function () {
       bearer: cache.adminBearer
     })
     .then(rsp => {
-      // console.log('access token:', rsp)
-      // cache.accessToken = rsp
-      // console.log('onboard', rsp)
       done()
     })
     .catch(e => {
@@ -65,9 +94,6 @@ describe('lib.org.migrate()', function () {
       bearer: cache.adminBearer
     })
     .then(rsp => {
-      // console.log('access token:', rsp)
-      // cache.accessToken = rsp
-      // console.log('onboard', rsp)
       done()
     })
     .catch(e => {
@@ -107,6 +133,27 @@ describe('lib.machineAccount.create()', function () {
   })
 })
 
+describe('lib.machineAccount.setPassword()', function () {
+  const password = lib.utils.generatePassword()
+  it('should set Machine Account password', function (done) {
+    lib.machineAccount.setPassword({
+      orgId: cache.orgId,
+      machineAccountId: cache.machineAccountId,
+      bearer: cache.adminBearer,
+      password
+    })
+    .then(rsp => {
+      console.log(`set machine account ${cache.machineAccountId} password to ${password}:`)
+      cache.machineAccountPassword = password
+      done()
+    })
+    .catch(e => {
+      console.error(e)
+      done(e)
+    })
+  })
+})
+
 describe('lib.machineAccount.list()', function () {
   it('should list Context Service machine accounts', function (done) {
     // get machine account list
@@ -115,11 +162,6 @@ describe('lib.machineAccount.list()', function () {
       bearer: cache.adminBearer
     })
     .then(rsp => {
-      // console.log('machine accounts list:', rsp)
-      // console.log(rsp.data[0].meta)
-      // console.log(rsp.data[0])
-      // cache first result
-      // cache.machineId = rsp.data[0].id
       done()
     })
     .catch(e => {
@@ -130,10 +172,6 @@ describe('lib.machineAccount.list()', function () {
 
 describe('lib.machineAccount.get()', function () {
   it('should get Context Service machine account', function (done) {
-    // decode the connection data string into JSON
-    // const connectionData = lib.utils.decodeConnectionData(config.connectionDataString)
-    // get credentials
-    // const credentials = lib.utils.getCredentials(connectionData, config.labMode)
     // get machine account
     lib.machineAccount.get({
       orgId: cache.orgId,
@@ -218,6 +256,27 @@ describe('lib.dataObject.search()', function () {
     })
     .then(rsp => {
       console.log(`found ${rsp.length} results`)
+      // if we found anything, put customer ID in cache
+      if (rsp.length) {
+        cache.customerId = rsp[0].id
+      }
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('getCustomer()', function () {
+  it('should get Context Service customer by customer ID', function (done) {
+    lib.dataObject.get({
+      type: 'customer',
+      id: cache.customerId,
+      token: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
       done()
     })
     .catch(e => {
@@ -228,10 +287,6 @@ describe('lib.dataObject.search()', function () {
 
 describe('lib.machineAccount.refreshAccessToken()', function () {
   it('should refresh the machine account access token received in the previous test', function (done) {
-    // auth.refreshToken(cache.credentials, cache.token)
-    // cache.accessToken = {
-    //   refresh_token: 'YTMyYWZhYjYtYmRhZC00YmFlLTgxMmEtMjMzMTI5OTZiNDQ4NjM2Y2EzNDQtYjky'
-    // }
     lib.machineAccount.refreshAccessToken({
       clientId: cache.clientId,
       clientSecret: cache.clientSecret,
@@ -248,6 +303,27 @@ describe('lib.machineAccount.refreshAccessToken()', function () {
     })
   })
 })
+
+describe('listAccessTokens', function () {
+  it('should list the access tokens for org', function (done) {
+    lib.org.listAccessTokens({
+      orgId: cache.orgId,
+      username: cache.orgUsername,
+      bearer: cache.adminBearer,
+      clientId: cache.clientId
+    })
+    .then(rsp => {
+      // console.log(rsp)
+      console.log(`found ${rsp.data.length} access tokens`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+/****************/
 
 describe('lib.machineAccount.remove()', function () {
   it('should delete the machine account that was created in the previous test', function (done) {
@@ -266,162 +342,3 @@ describe('lib.machineAccount.remove()', function () {
     })
   })
 })
-
-/*********************/
-
-
-
-
-
-/*********************/
-
-// describe('getCustomer()', function () {
-//   it('should get Context Service customer by customer ID', function (done) {
-//     // decode the connection data string into JSON
-//     const connectionData = auth.decodeConnectionData(config.connectionDataString)
-//     // get credentials
-//     const credentials = auth.getCredentials(connectionData, config.labMode)
-//     // get customer
-//     customer.get({
-//       // config.customerId,
-//       token: cache.accessToken,
-//       clientId: cache.credentials.clientId,
-//       clientSecret: cache.credentials.clientSecret
-//     })
-//     .then(rsp => {
-//       console.log('refreshed access token:', rsp)
-//       done()
-//     })
-//     .catch(e => {
-//       done(e)
-//     })
-//   })
-// })
-
-// describe('get machine account', function () {
-//   it('should get machine account info, and hopefully refresh the lifetime on machine credentials', function (done) {
-//     // auth.refreshToken(cache.credentials, cache.token)
-//     auth.getMachineAccount(config.connectionDataString, true, cache.accessToken)
-//     .then(rsp => {
-//       console.log('refreshed access token:', rsp)
-//       done()
-//     })
-//     .catch(e => {
-//       done(e)
-//     })
-//   })
-// })
-
-// describe('listAccessTokens', function () {
-//   it('should list the access tokens for user', function (done) {
-//     // auth.listAccessTokens(config.connectionDataString, true)
-//     auth.listAccessTokens(cache.accessToken)
-//     .then(rsp => {
-//       console.log('list of access tokens:', rsp)
-//       done()
-//     })
-//     .catch(e => {
-//       done(e)
-//     })
-//   })
-// })
-
-// describe('getCustomer', function () {
-//   it('should list the access tokens for user', function (done) {
-//
-//
-//     var customer = sdk.constructCustomer();
-//     customer.fieldsets = fieldsets;
-//     customer.dataElements = dataElements;
-//     sdk.init({token: argv.token, discovery:discovery, clientId: client.id, clientSecret: client.secret},{ LAB_MODE: !argv.prod, DISABLE_TIMERS: true, SERVICE_NAME:"jstestutils"  })
-//     .then(function(){
-//     	return sdk.create(customer);
-//     })
-//     .then(function(custData){
-//     	console.log(chalk.green("Successfully created Customer with ID :" + custData.id));
-//     })
-//     .catch(function(e){
-//     	console.error(chalk.red("Cannot create customer"),(e.data? e.data.error: e)||'');
-//     });
-//
-//
-//     // auth.listAccessTokens(config.connectionDataString, true)
-//     auth.listAccessTokens(cache.accessToken)
-//     .then(rsp => {
-//       console.log('list of access tokens:', rsp)
-//       done()
-//     })
-//     .catch(e => {
-//       done(e)
-//     })
-//   })
-// })
-
-
-
-
-
-// describe('lib.utils.decodeConnectionData()', function () {
-//   it('should decode connection data string into JSON', function (done) {
-//     const connectionData = lib.utils.decodeConnectionData(config.connectionDataString)
-//     // console.log('decoded connection data', connectionData)
-//     cache.connectionData = connectionData
-//     done()
-//   })
-// })
-//
-// describe('lib.utils.getCredentials()', function () {
-//   it('should extract labMode credentials from decoded connectionData string', function (done) {
-//     const credentials = lib.utils.getCredentials(cache.connectionData, config.labMode)
-//     // console.log('lab mode credentials:', credentials)
-//     // check that we got the lab mode credentials
-//     if (credentials !== cache.connectionData.credentialsLabMode) {
-//       done('credentials extracted were not the correct ones. got', credentials)
-//     } else {
-//       // console.log('lab mode credentials', credentials)
-//       cache.credentials = credentials
-//       done()
-//     }
-//   })
-// })
-//
-
-//
-// describe('lib.machineAccount.create({orgId, bearer, name, password})', function () {
-//   it('should create Machine Account', function (done) {
-//     lib.machineAccount.create({
-//       orgId: cache.orgId,
-//       bearer: cache.adminBearer,
-//       name:
-//       password:
-//     })
-//     .then(rsp => {
-//       // console.log('created machine account', rsp.id)
-//       cache.machineAccountId = rsp.id
-//       done()
-//     })
-//     .catch(e => {
-//       done(e)
-//     })
-//   })
-// })
-
-// describe('lib.machineAccount.setPassword()', function () {
-//   it('should set Machine Account password', function (done) {
-//     const password = lib.utils.generatePassword()
-//     lib.machineAccount.setPassword({
-//       orgId: config.orgId,
-//       bearer: cache.adminBearer,
-//       password,
-//       machineAccountId: cache.machineAccountId
-//     })
-//     .then(rsp => {
-//       console.log(`set machine account ${machineAccountId} password to ${password}:`)
-//       done()
-//     })
-//     .catch(e => {
-//       console.error(e)
-//       done(e)
-//     })
-//   })
-// })
