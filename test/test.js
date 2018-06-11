@@ -44,7 +44,7 @@ describe('lib.utils.getCredentials()', function () {
   })
 })
 
-describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', function () {
+describe('lib.org.getAdminAccessToken()', function () {
   it('should get org admin token', function (done) {
     this.timeout(8000)
     lib.org.getAdminAccessToken({
@@ -57,6 +57,25 @@ describe('lib.org.getAdminAccessToken({username, password, orgId, scopes})', fun
     .then(response => {
       // console.log('getOrgAdminToken', response)
       cache.adminBearer = response.access_token
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.org.listAccessTokens()', function () {
+  it('should list the access tokens for org', function (done) {
+    lib.org.listAccessTokens({
+      orgId: cache.orgId,
+      username: cache.orgUsername,
+      bearer: cache.adminBearer,
+      clientId: cache.clientId
+    })
+    .then(rsp => {
+      // console.log(rsp)
+      // console.log(`found ${rsp.data.length} access tokens`)
       done()
     })
     .catch(e => {
@@ -78,7 +97,7 @@ describe('lib.org.onboard()', function () {
     .catch(e => {
       if (e.statusCode === 400) {
         // this is OK - means it is done already
-        console.log(e.message)
+        // console.log(e.message)
         return done()
       }
       done(e)
@@ -99,7 +118,7 @@ describe('lib.org.migrate()', function () {
     .catch(e => {
       if (e.statusCode === 400) {
         // this is OK - means it is done already
-          console.log(e.message)
+        // console.log(e.message)
         return done()
       }
       done(e)
@@ -123,7 +142,7 @@ describe('lib.machineAccount.create()', function () {
       password: cache.machineAccountPassword
     })
     .then(rsp => {
-      console.log('new machine account id', rsp.id)
+      // console.log('new machine account id', rsp.id)
       cache.machineAccountId = rsp.id
       done()
     })
@@ -143,7 +162,7 @@ describe('lib.machineAccount.setPassword()', function () {
       password
     })
     .then(rsp => {
-      console.log(`set machine account ${cache.machineAccountId} password to ${password}:`)
+      // console.log(`set machine account ${cache.machineAccountId} password to ${password}:`)
       cache.machineAccountPassword = password
       done()
     })
@@ -190,7 +209,7 @@ describe('lib.machineAccount.get()', function () {
 
 describe('lib.machineAccount.authorizeToCs()', function () {
   it('should authorize machine account to use CS', function (done) {
-    this.timeout(8000)
+    this.timeout(14000)
     lib.machineAccount.authorizeToCs({
       orgId: cache.orgId,
       bearer: cache.adminBearer,
@@ -208,7 +227,8 @@ describe('lib.machineAccount.authorizeToCs()', function () {
 
 describe('lib.machineAccount.getBearerToken()', function () {
   it('should get bearer token using machine account', function (done) {
-    this.timeout(8000)
+    // long timeout
+    this.timeout(14000)
     lib.machineAccount.getBearerToken({
       name: cache.machineAccountName,
       password: cache.machineAccountPassword,
@@ -245,46 +265,6 @@ describe('lib.machineAccount.getAccessToken()', function () {
   })
 })
 
-describe('lib.dataObject.search()', function () {
-  it('should search for data object in Context Service', function (done) {
-    this.timeout(8000)
-    lib.dataObject.search({
-      type: 'customer',
-      query: 'Context_Last_Name:Condry',
-      token: cache.accessToken.access_token,
-      labMode: cache.labMode
-    })
-    .then(rsp => {
-      console.log(`found ${rsp.length} results`)
-      // if we found anything, put customer ID in cache
-      if (rsp.length) {
-        cache.customerId = rsp[0].id
-      }
-      done()
-    })
-    .catch(e => {
-      done(e)
-    })
-  })
-})
-
-describe('getCustomer()', function () {
-  it('should get Context Service customer by customer ID', function (done) {
-    lib.dataObject.get({
-      type: 'customer',
-      id: cache.customerId,
-      token: cache.accessToken.access_token,
-      labMode: cache.labMode
-    })
-    .then(rsp => {
-      done()
-    })
-    .catch(e => {
-      done(e)
-    })
-  })
-})
-
 describe('lib.machineAccount.refreshAccessToken()', function () {
   it('should refresh the machine account access token received in the previous test', function (done) {
     lib.machineAccount.refreshAccessToken({
@@ -304,17 +284,37 @@ describe('lib.machineAccount.refreshAccessToken()', function () {
   })
 })
 
-describe('listAccessTokens', function () {
-  it('should list the access tokens for org', function (done) {
-    lib.org.listAccessTokens({
-      orgId: cache.orgId,
-      username: cache.orgUsername,
-      bearer: cache.adminBearer,
-      clientId: cache.clientId
+/********************
+Creating Data Objects
+********************/
+
+describe('lib.dataObject.create() - customer', function () {
+  it('should create Context Service customer', function (done) {
+    lib.dataObject.create({
+      type: 'customer',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: {
+        "fieldsets": [
+          "cisco.base.customer"
+        ],
+        "dataElements": [
+          {
+            "Context_First_Name": "Mocha",
+            "type": "string"
+          },
+          {
+            "Context_Last_Name": "Test",
+            "type": "string"
+          }
+        ]
+      }
     })
     .then(rsp => {
-      // console.log(rsp)
-      console.log(`found ${rsp.data.length} access tokens`)
+      // put customer ID in cache
+      cache.customerId = rsp.id
+      // put customer ref URL in cache
+      cache.customerRefUrl = rsp.refUrl
       done()
     })
     .catch(e => {
@@ -323,7 +323,575 @@ describe('listAccessTokens', function () {
   })
 })
 
-/****************/
+describe('lib.dataObject.create() - request', function () {
+  it('should create Context Service request object associated with the customer we created', function (done) {
+    lib.dataObject.create({
+      type: 'request',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: {
+        "customerRefUrl": cache.customerRefUrl,
+        "state": "active", // or "closed"
+        "fieldsets": [
+          "cisco.base.request"
+        ],
+        "dataElements": [
+          {
+            "Context_Title": "Mocha test request",
+            "type": "string"
+          }
+        ]
+      }
+    })
+    .then(rsp => {
+      // put request ID in cache
+      cache.requestId = rsp.id
+      // put request ref URL in cache
+      cache.requestRefUrl = rsp.refUrl
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.create() - activity', function () {
+  it('should create Context Service activity associated with customer and request', function (done) {
+    lib.dataObject.create({
+      type: 'activity',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: {
+        "state": "active", // or "closed"
+        "parentRefUrl": cache.requestRefUrl,
+        "customerRefUrl": cache.customerRefUrl,
+        "fieldsets": [
+          "cisco.base.pod"
+        ],
+        "dataElements": [
+          {
+            "Context_Notes": "Mocha test activity",
+            "type": "string"
+          }
+        ]
+      }
+    })
+    .then(rsp => {
+      // put activity ID in cache
+      cache.activityId = rsp.id
+      // put activity ref URL in cache
+      cache.activityRefUrl = rsp.refUrl
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.create() - workitem', function () {
+  it('should create Context Service workitem associated with customer and request', function (done) {
+    lib.dataObject.create({
+      type: 'workitem',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: {
+        "state": "active", // or "closed"
+        "parentRefUrl": cache.requestRefUrl,
+        "customerRefUrl": cache.customerRefUrl,
+        "fieldsets": [
+          "cisco.base.workitem"
+        ],
+        "dataElements": [
+          {
+            "Context_Title": "Mocha test workitem",
+            "type": "string"
+          }
+        ]
+      }
+    })
+    .then(rsp => {
+      // put work item ID in cache
+      cache.workitemId = rsp.id
+      // put work item ref URL in cache
+      cache.workitemRefUrl = rsp.refUrl
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.create() - detail', function () {
+  it('should create Context Service detail associated with workitem', function (done) {
+    lib.dataObject.create({
+      type: 'detail',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: {
+        "parentRefUrl": cache.workitemRefUrl,
+        "fieldsets": [
+          "cisco.base.comment"
+        ],
+        "dataElements": [
+          // {
+          //   "Context_Comment": "Mocha test detail",
+          //   "type": "string"
+          // },
+          {
+            "Context_DisplayName": "Mocha test detail",
+            "type": "string"
+          }
+        ]
+      }
+    })
+    .then(rsp => {
+      // put work item ID in cache
+      cache.detailId = rsp.id
+      // put work item ref URL in cache
+      cache.detailRefUrl = rsp.refUrl
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+/**************************
+Getting Single Data Objects
+**************************/
+
+describe('lib.dataObject.get() - customer', function () {
+  it('should get Context Service customer by ID', function (done) {
+    lib.dataObject.get({
+      type: 'customer',
+      id: cache.customerId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      cache.customer = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.get() - request', function () {
+  it('should get Context Service request by ID', function (done) {
+    lib.dataObject.get({
+      type: 'request',
+      id: cache.requestId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      cache.request = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.get() - activity', function () {
+  it('should get Context Service activity by ID', function (done) {
+    lib.dataObject.get({
+      type: 'activity',
+      id: cache.activityId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      cache.activity = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.get() - workitem', function () {
+  it('should get Context Service workitem by ID', function (done) {
+    lib.dataObject.get({
+      type: 'workitem',
+      id: cache.workitemId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      cache.workitem = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.get() - detail', function () {
+  it('should get Context Service detail by ID', function (done) {
+    lib.dataObject.get({
+      type: 'detail',
+      id: cache.detailId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      cache.detail = rsp
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+/*************************
+Searching for Data Objects
+*************************/
+
+describe('lib.dataObject.search() - customer', function () {
+  it('should search for Context Service customers', function (done) {
+    lib.dataObject.search({
+      type: 'customer',
+      query: 'Context_Last_Name:Test',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} customers`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.search() - request', function () {
+  it('should search for Context Service requests', function (done) {
+    lib.dataObject.search({
+      type: 'request',
+      query: 'Context_Title:Mocha test request',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} requests`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.search() - activity', function () {
+  it('should search for Context Service activities', function (done) {
+    lib.dataObject.search({
+      type: 'activity',
+      query: 'Context_Notes:Mocha test activity',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} activities`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.search() - workitem', function () {
+  it('should search for Context Service workitems', function (done) {
+    lib.dataObject.search({
+      type: 'workitem',
+      query: 'Context_Title:Mocha test workitem',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} workitems`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.search() - detail', function () {
+  it('should search for Context Service details', function (done) {
+    lib.dataObject.search({
+      type: 'detail',
+      query: 'Context_DisplayName:Mocha test detail',
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} details`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+/********************
+Updating Data Objects
+********************/
+
+describe('lib.dataObject.update() - customer', function () {
+  it('should update Context Service customer', function (done) {
+    lib.dataObject.update({
+      type: 'customer',
+      id: cache.customerId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: cache.customer
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.update() - request', function () {
+  it('should update Context Service request', function (done) {
+    lib.dataObject.update({
+      type: 'request',
+      id: cache.requestId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: cache.request
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.update() - activity', function () {
+  it('should update Context Service activity', function (done) {
+    lib.dataObject.update({
+      type: 'activity',
+      id: cache.activityId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: cache.activity
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.update() - workitem', function () {
+  it('should update Context Service workitem', function (done) {
+    lib.dataObject.update({
+      type: 'workitem',
+      id: cache.workitemId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode,
+      body: cache.workitem
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+// context service detail object cannot be updated because it is always in 'closed' state
+//
+// describe('lib.dataObject.update() - detail', function () {
+//   it('should update Context Service detail', function (done) {
+//     lib.dataObject.update({
+//       type: 'detail',
+//       id: cache.detailId,
+//       bearer: cache.accessToken.access_token,
+//       labMode: cache.labMode,
+//       body: cache.detail
+//     })
+//     .then(rsp => {
+//       done()
+//     })
+//     .catch(e => {
+//       done(e)
+//     })
+//   })
+// })
+
+/*******************************
+Searching for Admin Data Objects
+*******************************/
+
+describe('lib.adminDataObject.search() - fieldsets', function () {
+  it('should search for Context Service fieldsets', function (done) {
+    lib.adminDataObject.search({
+      type: 'fieldset',
+      query: 'id:*',
+      maxEntries: '1500',
+      bearer: cache.adminBearer,
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} fieldsets`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.adminDataObject.search() - fields', function () {
+  it('should search for Context Service fields', function (done) {
+    lib.adminDataObject.search({
+      type: 'field',
+      query: 'id:*',
+      maxEntries: '1500',
+      bearer: cache.adminBearer,
+    })
+    .then(rsp => {
+      console.log(`found ${rsp.length} fields`)
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+/**********************************
+Remove data objects that we created
+**********************************/
+
+describe('lib.dataObject.remove() - customer', function () {
+  it('should remove Context Service customer by ID', function (done) {
+    if (cache.labMode !== true) {
+      done('You can only use remove operation when labMode = true')
+    }
+    lib.dataObject.remove({
+      type: 'customer',
+      id: cache.customerId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.remove() - request', function () {
+  it('should remove Context Service request by ID', function (done) {
+    if (cache.labMode !== true) {
+      done('You can only use remove operation when labMode = true')
+    }
+    lib.dataObject.remove({
+      type: 'request',
+      id: cache.requestId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+
+describe('lib.dataObject.remove() - activity', function () {
+  it('should remove Context Service activity by ID', function (done) {
+    if (cache.labMode !== true) {
+      done('You can only use remove operation when labMode = true')
+    }
+    lib.dataObject.remove({
+      type: 'activity',
+      id: cache.activityId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.remove() - workitem', function () {
+  it('should remove Context Service workitem by ID', function (done) {
+    if (cache.labMode !== true) {
+      done('You can only use remove operation when labMode = true')
+    }
+    lib.dataObject.remove({
+      type: 'workitem',
+      id: cache.workitemId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+describe('lib.dataObject.remove() - detail', function () {
+  it('should remove Context Service detail by ID', function (done) {
+    if (cache.labMode !== true) {
+      done('You can only use remove operation when labMode = true')
+    }
+    lib.dataObject.remove({
+      type: 'detail',
+      id: cache.detailId,
+      bearer: cache.accessToken.access_token,
+      labMode: cache.labMode
+    })
+    .then(rsp => {
+      done()
+    })
+    .catch(e => {
+      done(e)
+    })
+  })
+})
+
+/********************************
+Remove machine account we created
+********************************/
 
 describe('lib.machineAccount.remove()', function () {
   it('should delete the machine account that was created in the previous test', function (done) {
@@ -333,7 +901,7 @@ describe('lib.machineAccount.remove()', function () {
       machineAccountId: cache.machineAccountId
     })
     .then(rsp => {
-      console.log('removed machine account', rsp.id)
+      // console.log('removed machine account', rsp.id)
       done()
     })
     .catch(e => {
