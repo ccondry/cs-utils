@@ -1,6 +1,6 @@
 {
   "name": "cs-utils",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "private": true,
   "description": "test utilities for Context Service REST API",
   "main": "lib/index.js",
