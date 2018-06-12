@@ -50,8 +50,10 @@ describe('lib.utils.getCredentials()', function () {
     } else {
       // cache the relevant data
       cache.clientId = credentials.clientId
+      console.log('clientId = ', cache.clientId)
       cache.clientSecret = credentials.clientSecret
       cache.orgId = credentials.orgId
+      console.log('orgId = ', cache.orgId)
       done()
     }
   })
