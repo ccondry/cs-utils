@@ -5,7 +5,7 @@
   "description": "test utilities for Context Service REST API",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test --timeout 10000"
   },
   "keywords": [
     "context service",
