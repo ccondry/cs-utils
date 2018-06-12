@@ -359,14 +359,11 @@ describe('lib.dataObject.create() - customer', function () {
           "cisco.base.customer"
         ],
         "dataElements": [
-          {
-            "Context_First_Name": "Mocha",
-            "type": "string"
-          },
-          {
-            "Context_Last_Name": "Test",
-            "type": "string"
-          }
+          // name is encrypted PII
+          { "Context_First_Name": "Mocha" },
+          { "Context_Last_Name": "Test" },
+          // preferred language is unencrypted, non-PII
+          { "Context_Preferred_Language": "it-IT" }
         ]
       }
     })
