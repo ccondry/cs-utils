@@ -531,6 +531,7 @@ describe('lib.dataObject.get() - customer', function () {
     })
     .then(rsp => {
       cache.customer = rsp
+      console.log(rsp)
       done()
     })
     .catch(e => {
@@ -625,6 +626,7 @@ describe('lib.dataObject.search() - customer', function () {
     })
     .then(rsp => {
       console.log(`found ${rsp.length} customers`)
+      console.log('first customer', rsp[0])
       done()
     })
     .catch(e => {
