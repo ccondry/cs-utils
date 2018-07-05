@@ -364,7 +364,8 @@ describe('lib.dataObject.create() - customer', function () {
           { "Context_Last_Name": "Test" },
           // preferred language is unencrypted, non-PII
           { "Context_Preferred_Language": "it-IT" }
-        ]
+        ],
+        "contributors": []
       }
     })
     .then(rsp => {
@@ -397,7 +398,8 @@ describe('lib.dataObject.create() - request', function () {
             "Context_Title": "Mocha test request",
             "type": "string"
           }
-        ]
+        ],
+        "contributors": []
       }
     })
     .then(rsp => {
@@ -431,7 +433,8 @@ describe('lib.dataObject.create() - activity', function () {
             "Context_Notes": "Mocha test activity",
             "type": "string"
           }
-        ]
+        ],
+        "contributors": []
       }
     })
     .then(rsp => {
@@ -465,7 +468,8 @@ describe('lib.dataObject.create() - workitem', function () {
             "Context_Title": "Mocha test workitem",
             "type": "string"
           }
-        ]
+        ],
+        "contributors": []
       }
     })
     .then(rsp => {
@@ -501,7 +505,8 @@ describe('lib.dataObject.create() - detail', function () {
             "Context_DisplayName": "Mocha test detail",
             "type": "string"
           }
-        ]
+        ],
+        "contributors": []
       }
     })
     .then(rsp => {
