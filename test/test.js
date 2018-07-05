@@ -512,6 +512,7 @@ describe('lib.dataObject.create() - detail', function () {
     .then(rsp => {
       // put detail ID in cache
       cache.detailId = rsp.id
+      console.log('created detail', cache.detailId)
       // put detail ref URL in cache
       cache.detailRefUrl = rsp.refUrl
       done()
@@ -609,6 +610,7 @@ describe('lib.dataObject.get() - detail', function () {
     })
     .then(rsp => {
       cache.detail = rsp
+      console.log('got detail', rsp)
       done()
     })
     .catch(e => {
@@ -1075,25 +1077,25 @@ describe('lib.dataObject.remove() - workitem', function () {
   })
 })
 
-describe('lib.dataObject.remove() - detail', function () {
-  it('should remove Context Service detail by ID', function (done) {
-    if (cache.labMode !== true) {
-      done('You can only use remove operation when labMode = true')
-    }
-    lib.dataObject.remove({
-      type: 'detail',
-      id: cache.detailId,
-      bearer: cache.accessToken.access_token,
-      labMode: cache.labMode
-    })
-    .then(rsp => {
-      done()
-    })
-    .catch(e => {
-      done(e)
-    })
-  })
-})
+// describe('lib.dataObject.remove() - detail', function () {
+//   it('should remove Context Service detail by ID', function (done) {
+//     if (cache.labMode !== true) {
+//       done('You can only use remove operation when labMode = true')
+//     }
+//     lib.dataObject.remove({
+//       type: 'detail',
+//       id: cache.detailId,
+//       bearer: cache.accessToken.access_token,
+//       labMode: cache.labMode
+//     })
+//     .then(rsp => {
+//       done()
+//     })
+//     .catch(e => {
+//       done(e)
+//     })
+//   })
+// })
 
 
 /**************************
