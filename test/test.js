@@ -510,9 +510,9 @@ describe('lib.dataObject.create() - detail', function () {
       }
     })
     .then(rsp => {
-      // put work item ID in cache
+      // put detail ID in cache
       cache.detailId = rsp.id
-      // put work item ref URL in cache
+      // put detail ref URL in cache
       cache.detailRefUrl = rsp.refUrl
       done()
     })
