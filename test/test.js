@@ -269,7 +269,7 @@ describe('lib.machineAccount.get()', function () {
 
 describe('lib.machineAccount.authorizeToCs()', function () {
   it('should authorize machine account to use CS', function (done) {
-    this.timeout(14000)
+    this.timeout(20000)
     lib.machineAccount.authorizeToCs({
       orgId: cache.orgId,
       bearer: cache.adminBearer,
