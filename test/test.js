@@ -3,14 +3,11 @@ const config = require('./config')
 
 // get initial config for tests
 const cache = {
-  // orgId: config.orgId,
   connectionDataString: config.connectionDataString,
   orgUsername: config.orgUsername,
   orgPassword: config.orgPassword,
   labMode: config.labMode,
-  // clientId: config.clientId,
-  // clientSecret: config.clientSecret
-  // adminBearer: config.adminBearer
+  workitemEnabled: config.workitemEnabled
 }
 
 console.log('org admin username', cache.orgUsername)
@@ -450,40 +447,42 @@ describe('lib.dataObject.create() - activity', function () {
   })
 })
 
-describe('lib.dataObject.create() - workitem', function () {
-  it('should create Context Service workitem associated with customer and request', function (done) {
-    lib.dataObject.create({
-      type: 'workitem',
-      bearer: cache.accessToken.access_token,
-      labMode: cache.labMode,
-      body: {
-        "state": "active", // or "closed"
-        "parentRefUrl": cache.requestRefUrl,
-        "customerRefUrl": cache.customerRefUrl,
-        "fieldsets": [
-          "cisco.base.workitem"
-        ],
-        "dataElements": [
-          {
-            "Context_Title": "Mocha test workitem",
-            "type": "string"
-          }
-        ],
-        "contributors": []
-      }
-    })
-    .then(rsp => {
-      // put work item ID in cache
-      cache.workitemId = rsp.id
-      // put work item ref URL in cache
-      cache.workitemRefUrl = rsp.refUrl
-      done()
-    })
-    .catch(e => {
-      done(e)
+if (config.workitemEnabled) {
+  describe('lib.dataObject.create() - workitem', function () {
+    it('should create Context Service workitem associated with customer and request', function (done) {
+      lib.dataObject.create({
+        type: 'workitem',
+        bearer: cache.accessToken.access_token,
+        labMode: cache.labMode,
+        body: {
+          "state": "active", // or "closed"
+          "parentRefUrl": cache.requestRefUrl,
+          "customerRefUrl": cache.customerRefUrl,
+          "fieldsets": [
+            "cisco.base.workitem"
+          ],
+          "dataElements": [
+            {
+              "Context_Title": "Mocha test workitem",
+              "type": "string"
+            }
+          ],
+          "contributors": []
+        }
+      })
+      .then(rsp => {
+        // put work item ID in cache
+        cache.workitemId = rsp.id
+        // put work item ref URL in cache
+        cache.workitemRefUrl = rsp.refUrl
+        done()
+      })
+      .catch(e => {
+        done(e)
+      })
     })
   })
-})
+}
 
 describe('lib.dataObject.create() - detail', function () {
   it('should create Context Service detail associated with workitem', function (done) {
@@ -492,7 +491,7 @@ describe('lib.dataObject.create() - detail', function () {
       bearer: cache.accessToken.access_token,
       labMode: cache.labMode,
       body: {
-        "parentRefUrl": cache.workitemRefUrl,
+        "parentRefUrl": cache.activityRefUrl,
         "fieldsets": [
           "cisco.base.comment"
         ],
@@ -582,23 +581,25 @@ describe('lib.dataObject.get() - activity', function () {
   })
 })
 
-describe('lib.dataObject.get() - workitem', function () {
-  it('should get Context Service workitem by ID', function (done) {
-    lib.dataObject.get({
-      type: 'workitem',
-      id: cache.workitemId,
-      bearer: cache.accessToken.access_token,
-      labMode: cache.labMode
-    })
-    .then(rsp => {
-      cache.workitem = rsp
-      done()
-    })
-    .catch(e => {
-      done(e)
+if (config.workitemEnabled) {
+  describe('lib.dataObject.get() - workitem', function () {
+    it('should get Context Service workitem by ID', function (done) {
+      lib.dataObject.get({
+        type: 'workitem',
+        id: cache.workitemId,
+        bearer: cache.accessToken.access_token,
+        labMode: cache.labMode
+      })
+      .then(rsp => {
+        cache.workitem = rsp
+        done()
+      })
+      .catch(e => {
+        done(e)
+      })
     })
   })
-})
+}
 
 describe('lib.dataObject.get() - detail', function () {
   it('should get Context Service detail by ID', function (done) {
@@ -620,14 +621,20 @@ describe('lib.dataObject.get() - detail', function () {
 })
 
 /*************************
-Searching for Data Objects
+Searching for Data Objects with filter
 *************************/
 
-describe('lib.dataObject.search() - customer', function () {
+describe('lib.dataObject.search() - customers', function () {
   it('should search for Context Service customers', function (done) {
     lib.dataObject.search({
       type: 'customer',
-      query: 'Context_Last_Name:Test',
+      query: {
+        q: 'Context_Last_Name:Test',
+        startIndex: 0,
+        maxEntries: 200,
+        sortedBy: 'lastUpdated',
+        sortOrder: 'desc'
+      },
       bearer: cache.accessToken.access_token,
       labMode: cache.labMode
     })
@@ -642,11 +649,17 @@ describe('lib.dataObject.search() - customer', function () {
   })
 })
 
-describe('lib.dataObject.search() - request', function () {
+describe('lib.dataObject.search() - requests', function () {
   it('should search for Context Service requests', function (done) {
     lib.dataObject.search({
       type: 'request',
-      query: 'Context_Title:Mocha test request',
+      query: {
+        q: 'Context_Title:Mocha test request',
+        startIndex: 0,
+        maxEntries: 200,
+        sortedBy: 'lastUpdated',
+        sortOrder: 'desc'
+      },
       bearer: cache.accessToken.access_token,
       labMode: cache.labMode
     })
@@ -660,11 +673,17 @@ describe('lib.dataObject.search() - request', function () {
   })
 })
 
-describe('lib.dataObject.search() - activity', function () {
+describe('lib.dataObject.search() - activities', function () {
   it('should search for Context Service activities', function (done) {
     lib.dataObject.search({
       type: 'activity',
-      query: 'Context_Notes:Mocha test activity',
+      query: {
+        q: 'Context_Notes:Mocha test activity',
+        startIndex: 0,
+        maxEntries: 200,
+        sortedBy: 'lastUpdated',
+        sortOrder: 'desc'
+      },
       bearer: cache.accessToken.access_token,
       labMode: cache.labMode
     })
@@ -678,29 +697,43 @@ describe('lib.dataObject.search() - activity', function () {
   })
 })
 
-describe('lib.dataObject.search() - workitem', function () {
-  it('should search for Context Service workitems', function (done) {
-    lib.dataObject.search({
-      type: 'workitem',
-      query: 'Context_Title:Mocha test workitem',
-      bearer: cache.accessToken.access_token,
-      labMode: cache.labMode
-    })
-    .then(rsp => {
-      console.log(`found ${rsp.length} workitems`)
-      done()
-    })
-    .catch(e => {
-      done(e)
+if (config.workitemEnabled) {
+  describe('lib.dataObject.search() - workitem', function () {
+    it('should search for Context Service workitems', function (done) {
+      lib.dataObject.search({
+        type: 'workitem',
+        query: {
+          q: 'Context_Title:Mocha test workitem',
+          startIndex: 0,
+          maxEntries: 200,
+          sortedBy: 'lastUpdated',
+          sortOrder: 'desc'
+        },
+        bearer: cache.accessToken.access_token,
+        labMode: cache.labMode
+      })
+      .then(rsp => {
+        console.log(`found ${rsp.length} workitems`)
+        done()
+      })
+      .catch(e => {
+        done(e)
+      })
     })
   })
-})
+}
 
 describe('lib.dataObject.search() - detail', function () {
   it('should search for Context Service details', function (done) {
     lib.dataObject.search({
       type: 'detail',
-      query: 'Context_DisplayName:Mocha test detail',
+      query: {
+        q: 'Context_DisplayName:Mocha test detail',
+        startIndex: 0,
+        maxEntries: 200,
+        sortedBy: 'lastUpdated',
+        sortOrder: 'desc'
+      },
       bearer: cache.accessToken.access_token,
       labMode: cache.labMode
     })
@@ -772,23 +805,25 @@ describe('lib.dataObject.update() - activity', function () {
   })
 })
 
-describe('lib.dataObject.update() - workitem', function () {
-  it('should update Context Service workitem', function (done) {
-    lib.dataObject.update({
-      type: 'workitem',
-      id: cache.workitemId,
-      bearer: cache.accessToken.access_token,
-      labMode: cache.labMode,
-      body: cache.workitem
-    })
-    .then(rsp => {
-      done()
-    })
-    .catch(e => {
-      done(e)
+if (config.workitemEnabled) {
+  describe('lib.dataObject.update() - workitem', function () {
+    it('should update Context Service workitem', function (done) {
+      lib.dataObject.update({
+        type: 'workitem',
+        id: cache.workitemId,
+        bearer: cache.accessToken.access_token,
+        labMode: cache.labMode,
+        body: cache.workitem
+      })
+      .then(rsp => {
+        done()
+      })
+      .catch(e => {
+        done(e)
+      })
     })
   })
-})
+}
 
 // context service detail object cannot be updated because it is always in 'closed' state
 //
@@ -1057,26 +1092,27 @@ describe('lib.dataObject.remove() - activity', function () {
   })
 })
 
-describe('lib.dataObject.remove() - workitem', function () {
-  it('should remove Context Service workitem by ID', function (done) {
-    if (cache.labMode !== true) {
-      done('You can only use remove operation when labMode = true')
-    }
-    lib.dataObject.remove({
-      type: 'workitem',
-      id: cache.workitemId,
-      bearer: cache.accessToken.access_token,
-      labMode: cache.labMode
-    })
-    .then(rsp => {
-      done()
-    })
-    .catch(e => {
-      done(e)
+if (config.workitemEnabled) {
+  describe('lib.dataObject.remove() - workitem', function () {
+    it('should remove Context Service workitem by ID', function (done) {
+      if (cache.labMode !== true) {
+        done('You can only use remove operation when labMode = true')
+      }
+      lib.dataObject.remove({
+        type: 'workitem',
+        id: cache.workitemId,
+        bearer: cache.accessToken.access_token,
+        labMode: cache.labMode
+      })
+      .then(rsp => {
+        done()
+      })
+      .catch(e => {
+        done(e)
+      })
     })
   })
-})
-
+}
 // describe('lib.dataObject.remove() - detail', function () {
 //   it('should remove Context Service detail by ID', function (done) {
 //     if (cache.labMode !== true) {
