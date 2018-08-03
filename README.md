@@ -1,5 +1,6 @@
 # cs-utils
 A collection of JavaScript utilities for using Context Service REST APIs
+http://jimhenson.cisco.com/thunderhead/csapi/
 
 # test
 1. copy test/config.example.js to test/config.js
