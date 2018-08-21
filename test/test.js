@@ -359,6 +359,8 @@ describe('lib.dataObject.create() - customer', function () {
           // name is encrypted PII
           { "Context_First_Name": "Mocha" },
           { "Context_Last_Name": "Test" },
+          { "Context_Mobile_Phone": "1234567890" },
+          { "Context_Work_Email": "test@test.mocha" },
           // preferred language is unencrypted, non-PII
           { "Context_Preferred_Language": "it-IT" }
         ],
